@@ -38,7 +38,7 @@ import com.google.common.io.ByteStreams;
  */
 public class Main {
 	public static final String HOST = "localhost";
-	public static final int PORT = 7000;
+	public static final int PORT = 7001;
 	private static final Logger logger = Logger.getLogger(Main.class.getName());
 	private static StudentRepository studentRepo = StudentRepository.withDB("src/main/resources/students.db");
 
@@ -66,7 +66,7 @@ public class Main {
 		Iterables.addAll(students, repo);
 
 		for (int i = 0; i < students.size(); i++) {
-			if (i == studentId) {
+			if (studentId == students.get(i).getId()) {
 				return students.get(i);
 			}
 		}
