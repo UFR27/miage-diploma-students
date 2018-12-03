@@ -67,6 +67,7 @@ public class Main {
 
 		for (int i = 0; i < students.size(); i++) {
 			if (i == studentId) {
+				System.out.println("hello");
 				return students.get(i);
 			}
 		}
