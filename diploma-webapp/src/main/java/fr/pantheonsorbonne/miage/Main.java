@@ -1,5 +1,6 @@
 package fr.pantheonsorbonne.miage;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 import java.util.ArrayList;
@@ -38,16 +39,17 @@ public class Main {
 			java.awt.Desktop.getDesktop().browse(new URI("http://localhost:8080/home"));
 			System.out.println("Press any key to stop the server...");
 			System.in.read();
-		} catch (Exception e) { 
+		} catch (Exception e) { //exception non used
 			System.err.println(e);
 		}
 	}
 
 	private static Student getStudentData(int studentId, StudentRepository repo) {
+		// create an arrayList of the students, because iterables are too hard
 		ArrayList<Student> students = new ArrayList<>();
 		Iterables.addAll(students, repo);
 
-
+		//index changed to get the appropriate name
 		for (int i = 1; i <= students.size(); i++) {
 			if (i == studentId) {
 				return students.get(i-1);
@@ -71,7 +73,7 @@ public class Main {
 			}
 
 		}
-		return;
+
 	}
 
 	private static void addDiplomaPath(HttpServer server, String path) {
@@ -97,12 +99,11 @@ public class Main {
 				sb.append("<!DOCTYPE html><head><meta charset='utf-8'></head><body><h1>Liste des diplômés</h1><ul>");
 				for (Student stu : StudentRepository.withDB("src/main/resources/students.db")) {
 					sb.append("<li>");
-					sb.append(
-							"<a href='/diploma/" + stu.getId() + "'>" + stu.getTitle() + ' ' + stu.getName() + "</a>");
 					final StringBuilder append = sb.append("<a href='/diploma/").append(stu.getId()).append("'>").append(stu.getTitle()).append(' ').append(stu.getName()).append("</a>");
 					sb.append("</li>");
 				}
 
+				sb.append("</ul></body></html>");
 				response.setContentType("text/html; charset=utf-8");
 				response.setContentLength(sb.length());
 				response.getWriter().write(sb.toString());
