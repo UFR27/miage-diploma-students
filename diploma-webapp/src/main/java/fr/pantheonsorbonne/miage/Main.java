@@ -77,7 +77,7 @@ public class Main {
 			}
 
 		}
-		return;
+		//return;
 	}
 
 	private static void addDiplomaPath(HttpServer server, String path) {
