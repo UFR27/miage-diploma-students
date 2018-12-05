@@ -37,10 +37,10 @@ public class Main {
 			server.start();
 			String url = "http://localhost:8080/home";
 			java.awt.Desktop.getDesktop().browse(new URI(url));
-			System.out.println("Press any key to stop the server...");
+			logger.info("Press any key to stop the server...");
 			System.in.read();
 		} catch (Exception e) {
-			System.err.println(e);
+			logger.severe(e.getMessage());
 		}
 	}
 
