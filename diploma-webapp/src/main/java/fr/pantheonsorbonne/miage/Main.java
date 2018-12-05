@@ -52,8 +52,13 @@ public class Main {
 		Iterables.addAll(students, repo);
 
 		for (int i = 0; i < students.size(); i++) {
+<<<<<<< HEAD
 			if (students.get(i).getId() == studentId) {
 				return students.get(i);
+=======
+			if (i == studentId) {
+				return students.get(i-1);
+>>>>>>> 91f6fd20f23a9c3d9270f2540a993e4dfc803682
 			}
 		}
 
