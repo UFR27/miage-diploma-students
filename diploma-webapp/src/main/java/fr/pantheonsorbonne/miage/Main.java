@@ -99,6 +99,8 @@ public class Main {
 				sb.append("<!DOCTYPE html><head><meta charset='utf-8'></head><body><h1>Liste des diplômés</h1><ul>");
 				for (Student stu : StudentRepository.withDB("src/main/resources/students.db")) {
 					sb.append("<li>");
+					sb.append(
+							"<a href='/diploma/" + stu.getId() + "'>" + stu.getTitle() + ' ' + stu.getName() + "</a>");
 					final StringBuilder append = sb.append("<a href='/diploma/").append(stu.getId()).append("'>").append(stu.getTitle()).append(' ').append(stu.getName()).append("</a>");
 					sb.append("</li>");
 				}
