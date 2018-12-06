@@ -41,7 +41,11 @@ public class DiplomaGeneratorTest {
 
 		try {
 
+<<<<<<< HEAD
 			Student stu = new Student(0, "Nicolas", "","");
+=======
+			Student stu = new Student(0, "Nicolas", "","nico");
+>>>>>>> refs/heads/encryption-unit-tests
 
 			File generatedFileTarget = generateDiplomaForStudent(stu, currentDate);
 
