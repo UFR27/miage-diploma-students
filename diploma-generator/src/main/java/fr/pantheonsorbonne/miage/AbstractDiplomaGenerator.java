@@ -21,7 +21,6 @@ import fr.pantheonsorbonne.miage.diploma.DiplomaSnippet;
 
 public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
-
 	public AbstractDiplomaGenerator() {
 		super();
 		
