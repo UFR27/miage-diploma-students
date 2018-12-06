@@ -68,8 +68,8 @@ public class StudentRepository implements Iterable<Student> {
 
 		} catch (IOException e) {
 			Logger.getGlobal().info("IO PB" + e.getMessage());
-			return Collections.emptySet().iterator();
 		}
+		return currentIterator;
 	}
 
 }
