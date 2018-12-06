@@ -39,6 +39,7 @@ public class Student {
 	@Override
 	public String toString() {
 		return this.getTitle() + " " + this.getName();
+
 	}
 	
 	public String getPassword() {
