@@ -59,6 +59,7 @@ public class StudentRepository implements Iterable<Student> {
 
 	@Override
 	public java.util.Iterator<Student> iterator() {
+		java.util.Iterator<Student> currentIterator = null;
 		try (FileReader reader = new FileReader(this.db)) {
 
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
