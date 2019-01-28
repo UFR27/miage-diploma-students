@@ -32,6 +32,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Streams;
 import com.google.common.io.ByteStreams;
 
+
 /**
  * Main class.
  *
@@ -66,7 +67,7 @@ public class Main {
 		Iterables.addAll(students, repo);
 
 		for (int i = 0; i < students.size(); i++) {
-			if (i == studentId) {
+			if (i+1 == studentId) {
 				return students.get(i);
 			}
 		}
