@@ -35,7 +35,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 	 * 
 	 * @return
 	 */
-	abstract protected Collection<DiplomaSnippet> getDiplomaSnippets();
+	protected abstract Collection<DiplomaSnippet> getDiplomaSnippets();
 
 	/*
 	 * (non-Javadoc)
@@ -53,7 +53,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
 		} catch (IOException e) {
 
-			throw new RuntimeException("failed to generate the file to stream to", e);
+			throw new IllegalArgumentException("failed to generate the file to stream to", e);
 		}
 
 	}
@@ -77,7 +77,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 			document.add(Image.getInstance(image.toAbsolutePath().toString()));
 
 		} catch (DocumentException | IOException e) {
-			throw new RuntimeException("failed to generate Document", e);
+			throw new IllegalArgumentException("failed to generate Document", e);
 		} finally {
 			document.close();
 		}
