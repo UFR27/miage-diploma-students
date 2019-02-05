@@ -1,11 +1,5 @@
 package fr.pantheonsorbonne.miage;
 
-/**
- * an object able to be serialized as a File
- * 
- * @author nherbaut
- *
- */
 public abstract class FileGenerator<GENERATOR extends DiplomaGenerator> {
 
 	protected final GENERATOR generator;
