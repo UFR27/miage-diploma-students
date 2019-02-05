@@ -62,7 +62,7 @@ public class Main {
 
 	protected static Student getStudentData(int studentId, StudentRepository repo) {
 		
-		for (Student stu : repo) {
+		for (Student stu : students) {
 			if (stu.getId() == studentId) {
 				return stu;
 			}
