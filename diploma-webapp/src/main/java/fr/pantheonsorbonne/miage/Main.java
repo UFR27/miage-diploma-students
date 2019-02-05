@@ -62,9 +62,9 @@ public class Main {
 
 	protected static Student getStudentData(int studentId, StudentRepository repo) {
 		
-		for (Student stu : repo) {
-			if (stu.getId() == studentId) {
-				return stu;
+		for (Student stud: repo) {
+			if (stud.getId() == studentId) {
+				return stud;
 			}
 		}
 
@@ -108,7 +108,7 @@ public class Main {
 			public void service(Request request, Response response) throws Exception {
 
 				StringBuilder sb = new StringBuilder();
-				sb.append("<!DOCTYPE html><head><meta charset='utf-8'></head><body><h1>Liste des diplômés</h1><ul>");
+				sb.append("<!DOCTYPE html><head><meta charset='utf-8'></head><body><h1>Liste des diplÃ´mÃ©s</h1><ul>");
 				for (Student stu : StudentRepository.withDB("src/main/resources/students.db")) {
 					sb.append("<li>");
 					sb.append(
