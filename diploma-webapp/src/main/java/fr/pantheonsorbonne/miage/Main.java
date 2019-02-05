@@ -61,11 +61,8 @@ public class Main {
 	}
 
 	protected static Student getStudentData(int studentId, StudentRepository repo) {
-		// create an arrayList of the students, because iterables are too hard
-		ArrayList<Student> students = new ArrayList<>();
-		Iterables.addAll(students, repo);
 
-		for (Student student:students) {
+		for (Student student:repo) {
 			if (student.getId() == studentId) {
 				return student;
 			}
