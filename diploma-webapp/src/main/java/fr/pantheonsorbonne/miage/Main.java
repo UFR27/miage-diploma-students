@@ -6,6 +6,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
@@ -39,10 +40,10 @@ public class Main {
 			server.start();
 			String t = "http://localhost:8080/home";
 			java.awt.Desktop.getDesktop().browse(new URI(t));
-			logger.info("Press any key to stop the server...");
+			logger.log(Level.ALL,"Press any key to stop the server...");
 			System.in.read();
 		} catch (Exception e) {
-			System.out.println(e);
+			logger.log(Level.ALL,"Erreur");
 		}
 	}
 
