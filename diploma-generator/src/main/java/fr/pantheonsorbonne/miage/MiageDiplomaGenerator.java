@@ -3,6 +3,7 @@ package fr.pantheonsorbonne.miage;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
+
 import fr.pantheonsorbonne.miage.diploma.NameSnippet;
 import fr.pantheonsorbonne.miage.diploma.DateSnippet;
 import fr.pantheonsorbonne.miage.diploma.DiplomaSnippet;
