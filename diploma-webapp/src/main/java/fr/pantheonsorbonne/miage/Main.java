@@ -1,7 +1,7 @@
 package fr.pantheonsorbonne.miage;
 
 import java.io.IOException;
-import java.io.InputStream;
+import java.util.logging.Level;
 import java.io.OutputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -52,7 +52,9 @@ public class Main {
 
 		{
 			server.start();
-			java.awt.Desktop.getDesktop().browse(new URI("http://localhost:8080/home"));
+			String url = "http://localhost:8080/home";
+			java.awt.Desktop.getDesktop().browse(new URI(url));
+			logger.log(level.ALL,"Press any key to stop the server...");
 			System.out.println("Press any key to stop the server...");
 			System.in.read();
 		} catch (Exception e) {
@@ -62,12 +64,10 @@ public class Main {
 
 	protected static Student getStudentData(int studentId, StudentRepository repo) {
 		// create an arrayList of the students, because iterables are too hard
-		ArrayList<Student> students = new ArrayList<>();
-		Iterables.addAll(students, repo);
 
-		for (int i = 0; i <= students.size(); i++) {
-			if (i == studentId) {
-				return students.get(i-1);
+		for (int i = 0; i < students.size(); i++) {
+			if (i == studentId-1) {
+				return students.get(i);
 			}
 		}
 
