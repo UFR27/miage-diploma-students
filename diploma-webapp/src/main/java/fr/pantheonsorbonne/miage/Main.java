@@ -66,7 +66,7 @@ public class Main {
 		Iterables.addAll(students, repo);
 
 		for (int i = 0; i < students.size(); i++) {
-			if (i == studentId) {
+			if (i == studentId -1) {
 				return students.get(i);
 			}
 		}
@@ -111,7 +111,7 @@ public class Main {
 			public void service(Request request, Response response) throws Exception {
 
 				StringBuilder sb = new StringBuilder();
-				sb.append("<!DOCTYPE html><head><meta charset='utf-8'></head><body><h1>Liste des diplômés</h1><ul>");
+				sb.append("<!DOCTYPE html><head><meta charset='utf-8'></head><body><h1>Liste des diplÃ´mÃ©s</h1><ul>");
 				for (Student stu : StudentRepository.withDB("src/main/resources/students.db")) {
 					sb.append("<li>");
 					sb.append(
