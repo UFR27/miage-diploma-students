@@ -2,34 +2,17 @@ package fr.pantheonsorbonne.miage;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Date;
-import java.util.Locale;
 import java.util.NoSuchElementException;
-import java.util.logging.Logger;
-
-import javax.servlet.Servlet;
-import javax.servlet.ServletRegistration;
-
 import org.glassfish.grizzly.http.io.NIOOutputStream;
 import org.glassfish.grizzly.http.server.HttpHandler;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.grizzly.http.server.Request;
 import org.glassfish.grizzly.http.server.Response;
-import org.glassfish.grizzly.http.util.ContentType;
-import org.glassfish.grizzly.servlet.WebappContext;
-import org.glassfish.jersey.grizzly2.servlet.GrizzlyWebContainerFactory;
 
-import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Streams;
 import com.google.common.io.ByteStreams;
 
 /**
@@ -39,7 +22,6 @@ import com.google.common.io.ByteStreams;
 public class Main {
 	public static final String HOST = "localhost";
 	public static final int PORT = 7000;
-	private static final Logger logger = Logger.getLogger(Main.class.getName());
 	private static StudentRepository studentRepo = StudentRepository.withDB("src/main/resources/students.db");
 
 	public static void main(String[] args) throws IOException, URISyntaxException {
@@ -65,9 +47,9 @@ public class Main {
 		ArrayList<Student> students = new ArrayList<>();
 		Iterables.addAll(students, repo);
 
-		for (int i = 0; i < students.size(); i++) {
-			if (i == studentId) {
-				return students.get(i);
+		for (Student stu : repo) {
+			if (stu.getId() == studentId) {
+				return stu;
 			}
 		}
 
@@ -111,7 +93,7 @@ public class Main {
 			public void service(Request request, Response response) throws Exception {
 
 				StringBuilder sb = new StringBuilder();
-				sb.append("<!DOCTYPE html><head><meta charset='utf-8'></head><body><h1>Liste des diplômés</h1><ul>");
+				sb.append("<!DOCTYPE html><head><meta charset='utf-8'></head><body><h1>Liste des diplÃ´mÃ©s</h1><ul>");
 				for (Student stu : StudentRepository.withDB("src/main/resources/students.db")) {
 					sb.append("<li>");
 					sb.append(
