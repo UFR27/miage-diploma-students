@@ -49,14 +49,15 @@ public class Main {
 		addDiplomaPath(server, "/diploma/*");
 
 		try
-
+ 
 		{
 			server.start();
-			java.awt.Desktop.getDesktop().browse(new URI("http://localhost:8080/home"));
-			System.out.println("Press any key to stop the server...");
+			String urlLocal = "http://localhost:8080/home";
+			java.awt.Desktop.getDesktop().browse(new URI(urlLocal));
+			logger.info("Press any key to stop the server...");
 			System.in.read();
 		} catch (Exception e) {
-			System.err.println(e);
+			logger.throwing("Main","main", e);
 		}
 	}
 
@@ -88,7 +89,7 @@ public class Main {
 			}
 
 		}
-		return;
+
 	}
 
 	protected static void addDiplomaPath(HttpServer server, String path) {
