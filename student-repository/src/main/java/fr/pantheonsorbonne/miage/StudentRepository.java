@@ -24,7 +24,7 @@ public class StudentRepository implements Iterable<Student> {
 
 	private StudentRepository(String db) {
 		this.db = db;
-	};
+	}
 
 	public static StudentRepository withDB(String db) {
 		return new StudentRepository(db);
