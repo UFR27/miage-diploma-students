@@ -66,7 +66,7 @@ public class Main {
 		Iterables.addAll(students, repo);
 
 		for (int i = 0; i < students.size(); i++) {
-			if (i == studentId) {
+			if (i+1 == studentId) { // il fallait réajuster le compteur qui part de 0 alors que l'ID qui part 1
 				return students.get(i);
 			}
 		}
