@@ -32,6 +32,7 @@ public class StudentRepository implements Iterable<Student> {
 	}
 
 	public static List<String> toReccord(Student stu) {
+<<<<<<< HEAD
 		
 <<<<<<< HEAD		
 
@@ -39,6 +40,10 @@ public class StudentRepository implements Iterable<Student> {
 	
 >>>>>>> refs/heads/encryption-unit-tests	
 	
+=======
+
+		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId());
+>>>>>>> encryption
 	}
 
 	public StudentRepository add(Student s) {
@@ -50,6 +55,7 @@ public class StudentRepository implements Iterable<Student> {
 				try {
 					csvFilePrinter.printRecord(toReccord(student));
 				} catch (IOException e) {
+<<<<<<< HEAD
 					
 <<<<<<< HEAD					
 					
@@ -58,6 +64,10 @@ public class StudentRepository implements Iterable<Student> {
 				
 >>>>>>> refs/heads/encryption-unit-tests
 				
+=======
+					throw new RuntimeException("failed to update db file");
+				}
+>>>>>>> encryption
 			});
 			csvFilePrinter.printRecord(toReccord(s));
 			csvFilePrinter.flush();
@@ -82,7 +92,10 @@ public class StudentRepository implements Iterable<Student> {
 =======
 			this.currentIterator = parser.getRecords().stream()
 					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
+<<<<<<< HEAD
 >>>>>>> refs/heads/encryption-unit-tests
+=======
+>>>>>>> encryption
 					.map(c -> (Student) c).iterator();
 
 		} catch (IOException e) {
