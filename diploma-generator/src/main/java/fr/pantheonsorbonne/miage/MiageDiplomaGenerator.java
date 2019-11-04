@@ -1,6 +1,9 @@
 package fr.pantheonsorbonne.miage;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> correction_bug
 import java.util.Arrays;
 import java.util.Collection;
 

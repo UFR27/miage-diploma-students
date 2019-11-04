@@ -7,7 +7,10 @@ import java.io.InputStream;
 
 import com.google.common.io.ByteStreams;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> correction_bug
 
 public class DiplomaFileAdapter extends FileGenerator<AbstractDiplomaGenerator> {
 
