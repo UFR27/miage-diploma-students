@@ -17,6 +17,7 @@ import com.itextpdf.text.pdf.PdfStamper;
 
 public class EncryptedDiplomaGeneratorTest extends DiplomaGeneratorTest {
 
+	@SuppressWarnings("unused")
 	private final class EncryptedPdfReader extends PdfReader {
 		private EncryptedPdfReader(String filename, String password) throws IOException {
 			super(filename);
@@ -24,6 +25,7 @@ public class EncryptedDiplomaGeneratorTest extends DiplomaGeneratorTest {
 
 		}
 
+		@SuppressWarnings("unused")
 		public void setEncrypted(boolean encrypted) {
 			this.encrypted = encrypted;
 		}
