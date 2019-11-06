@@ -65,8 +65,14 @@ public class Main {
 		ArrayList<Student> students = new ArrayList<>();
 		Iterables.addAll(students, repo);
 
+		/*for (Student std : students) {
+			if(std.getId() == studentId) {
+				return std;
+			}
+		}*/
+		
 		for (int i = 0; i < students.size(); i++) {
-			if (i == studentId) {
+			if (i == studentId - 1) {
 				return students.get(i);
 			}
 		}
