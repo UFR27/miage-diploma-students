@@ -20,6 +20,7 @@ import org.apache.commons.csv.CSVPrinter;
 public class StudentRepository implements Iterable<Student> {
 
 	private String db;
+	private Iterator<Student> currentIterator;
 
 	private StudentRepository(String db) {
 		this.db = db;
@@ -68,9 +69,12 @@ public class StudentRepository implements Iterable<Student> {
 		try (FileReader reader = new FileReader(this.db)) {
 
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
-			return parser.getRecords().stream()
-					.map(reccord -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1)))
+
+			this.currentIterator = parser.getRecords().stream()
+					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
 					.map(c -> (Student) c).iterator();
+			
+			return this.currentIterator;
 
 		} catch (IOException e) {
 			Logger.getGlobal().info("IO PB" + e.getMessage());
