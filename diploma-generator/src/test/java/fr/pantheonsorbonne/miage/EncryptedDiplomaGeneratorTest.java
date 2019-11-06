@@ -64,6 +64,9 @@ public class EncryptedDiplomaGeneratorTest extends DiplomaGeneratorTest {
 
 		stamper.close();
 		reader.close();
+		generatedImageData.close();
+		referenceImageData.close();
+		
 
 	}
 }
