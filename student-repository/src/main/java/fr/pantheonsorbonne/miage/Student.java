@@ -1,10 +1,12 @@
-
 package fr.pantheonsorbonne.miage;
 
 public class Student {
 
+	
 	private int id;
 	private String password;
+	private String name;
+	private String title;
 
 	public Student(int id, String name, String title, String password) {
 		this.name = name;
@@ -46,4 +48,3 @@ public class Student {
 		return this.password;
 	}
 }
->>>>>>> origin/encryption
