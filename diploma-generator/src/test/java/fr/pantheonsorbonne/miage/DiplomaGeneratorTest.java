@@ -35,13 +35,13 @@ public class DiplomaGeneratorTest {
 			throw new RuntimeException("failed to compute test date", e);
 		}
 	}
-
+ 
 	@Test
 	void compareGeneratedDiploma() {
 
 		try {
 
-			Student stu = new Student(0, "Nicolas", "", null);
+			Student stu = new Student(0, "Nicolas", "","nico");
 
 			File generatedFileTarget = generateDiplomaForStudent(stu, currentDate);
 
