@@ -36,6 +36,7 @@ import com.google.common.io.ByteStreams;
  * Main class.
  *
  */
+
 public class Main {
 	public static final String HOST = "localhost";
 	public static final int PORT = 7000;
@@ -66,7 +67,7 @@ public class Main {
 		Iterables.addAll(students, repo);
 
 		for (int i = 0; i < students.size(); i++) {
-			if (i == studentId) {
+			if (students.get(i).getId() == studentId) {
 				return students.get(i);
 			}
 		}
@@ -75,7 +76,7 @@ public class Main {
 
 	}
 
-	protected static void handleResponse(Response response, int studentId) throws IOException {
+	protected static void handleResponse(Response response, int studentId) throws IOException, GenerateFileException, GenerateDocumentException {
 
 		response.setContentType("application/pdf");
 
