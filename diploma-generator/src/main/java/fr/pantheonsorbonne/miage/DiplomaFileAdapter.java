@@ -3,14 +3,14 @@ package fr.pantheonsorbonne.miage;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Collection;
 
 import com.google.common.io.ByteStreams;
+import com.itextpdf.text.log.LoggerFactory;
 
-import fr.pantheonsorbonne.miage.diploma.DiplomaSnippet;
 
 public class DiplomaFileAdapter extends FileGenerator<AbstractDiplomaGenerator> {
 
+	protected final com.itextpdf.text.log.Logger logger=LoggerFactory.getLogger(getClass());
 	public DiplomaFileAdapter(AbstractDiplomaGenerator generator) {
 		super(generator);
 
@@ -23,8 +23,8 @@ public class DiplomaFileAdapter extends FileGenerator<AbstractDiplomaGenerator> 
 			ByteStreams.copy(is, fos);
 			is.close();
 		} catch (IOException e) {
-			e.printStackTrace();
-			throw new RuntimeException("failed to write diploma file", e);
+			logger.error("" + e);
+			throw new FailWriteDiplomaException("failed to write diploma file", e);
 		}
 	}
 
