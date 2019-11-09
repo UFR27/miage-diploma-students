@@ -3,7 +3,8 @@ package fr.pantheonsorbonne.miage;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
-
+import static org.junit.jupiter.api.Assertions.*;
+//
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -62,7 +63,7 @@ public class DiplomaGeneratorTest {
 		}
 
 	}
-
+	
 	protected void writePDFImageRasterBytes(File generatedFileTarget, OutputStream generatedImageData)
 			throws IOException, InvalidPasswordException, FileNotFoundException {
 		BufferedImage genetatedbim = new PDFRenderer(PDDocument.load(new File(generatedFileTarget.getPath())))
@@ -73,7 +74,7 @@ public class DiplomaGeneratorTest {
 		FileInputStream generatedImageReader = new FileInputStream(generatedImage);
 		ByteStreams.copy(generatedImageReader, generatedImageData);
 	}
-
+	
 	protected File generateDiplomaForStudent(Student stu, Date date) throws IOException, FileNotFoundException {
 		ByteArrayOutputStream generatedFileContent = new ByteArrayOutputStream();
 		File generatedFileTarget = Files.createTempFile("prefix_", "_suffic").toFile();
