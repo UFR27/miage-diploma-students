@@ -14,7 +14,9 @@ public interface DiplomaGenerator {
 	 * Generate the diploma in a Stream
 	 * 
 	 * @return
+	 * @throws NoFilegeneratedException 
+	 * @throws NoDocumentGeneratedException 
 	 */
-	InputStream getContent();
+	InputStream getContent() throws NoFilegeneratedException, NoDocumentGeneratedException;
 
 }
