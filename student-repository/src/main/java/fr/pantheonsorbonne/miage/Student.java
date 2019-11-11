@@ -5,12 +5,19 @@ public class Student {
 	private int id;
 	private String password;
 
+<<<<<<< HEAD
 	public Student(int id, String name, String title,String password) {
+=======
+	public Student(int id, String name, String title, String password) {
+>>>>>>> origin/encryption
 		this.name = name;
 		this.title = title;
 		this.id = id;
 		this.password = password;
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/encryption
 	}
 
 	private String name;
@@ -42,5 +49,7 @@ public class Student {
 		return this.getTitle() + " " + this.getName();
 	}
 
-	
+	public String getPassword() {
+		return this.password;
+	}
 }
