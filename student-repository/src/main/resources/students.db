@@ -1,7 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 Nicolas Herbaut, Dr,1,mdp1
 Mohamed Tebib, M.,2,mdp2
 =======
 Nicolas Herbaut, Dr,1,nico
 Mohamed Tebib, M.,2,momo
 >>>>>>> origin/encryption
+=======
+Nicolas Herbaut, Dr.,1,nico
+Mohamed Tebib, M.,2,momo
+>>>>>>> encryption-unit-tests
