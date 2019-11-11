@@ -73,7 +73,7 @@ public class Main {
 		throw new NoSuchElementException();
 	}
 
-	protected static void handleResponse(Response response, int studentId) throws IOException {
+	protected static void handleResponse(Response response, int studentId) throws IOException, NoFilegeneratedException, NoDocumentGeneratedException {
 
 		response.setContentType("application/pdf");
 
