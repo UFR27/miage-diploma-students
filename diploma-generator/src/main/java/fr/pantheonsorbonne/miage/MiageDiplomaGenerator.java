@@ -14,7 +14,7 @@ public class MiageDiplomaGenerator extends AbstractDiplomaGenerator {
 
 	/**
 	 * Create the generator using a student name
-	 * 
+	 * test908
 	 * @param name
 	 */
 	public MiageDiplomaGenerator(Student student) {
