@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
@@ -23,8 +24,8 @@ public class StudentRepository implements Iterable<Student> {
 
 	public static StudentRepository withDB(String db) {
 		if (!Paths.get(db).toFile().exists()) {
-			String msg = "failed to find db file : " + String.format(Paths.get(db).toAbsolutePath().toString());
-			Logger.getGlobal().info(msg);
+			String path = "failed to find" + Paths.get(db).toAbsolutePath().toString();
+			Logger.getGlobal().severe(path);
 		}
 		return new StudentRepository(db);
 	}
@@ -43,7 +44,7 @@ public class StudentRepository implements Iterable<Student> {
 				try {
 					csvFilePrinter.printRecord(toReccord(student));
 				} catch (IOException e) {
-					Logger.getGlobal().info("failed to update db file" + e.getMessage());
+					Logger.getGlobal().severe("failed to update db file");
 				}
 			});
 			csvFilePrinter.printRecord(toReccord(s));
@@ -51,24 +52,25 @@ public class StudentRepository implements Iterable<Student> {
 			csvFilePrinter.close(true);
 
 		} catch (IOException e) {
-			Logger.getGlobal().info("failed to update db file" + e.getMessage());
+			Logger.getGlobal().severe("failed to update db file");
 		}
 		return this;
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public java.util.Iterator<Student> iterator() {
 		try (FileReader reader = new FileReader(this.db)) {
 
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
 			return parser.getRecords().stream()
-					.map(reccord -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1)))
+					.map(reccord -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
 					.map(c -> (Student) c).iterator();
 
 		} catch (IOException e) {
 			Logger.getGlobal().info("IO PB" + e.getMessage());
-			return null;
+			return Collections.EMPTY_SET.iterator();
 		}
 	}
 

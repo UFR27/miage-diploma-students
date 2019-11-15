@@ -21,7 +21,7 @@ public class DiplomaFileAdapter extends FileGenerator<AbstractDiplomaGenerator> 
 			ByteStreams.copy(is, fos);
 			is.close();
 		} catch (IOException e) {
-			Logger.getGlobal().info("failed to write diploma file" + e.getMessage());
+			Logger.getGlobal().severe("failed to write diploma file" + e.getMessage());
 		}
 	}
 

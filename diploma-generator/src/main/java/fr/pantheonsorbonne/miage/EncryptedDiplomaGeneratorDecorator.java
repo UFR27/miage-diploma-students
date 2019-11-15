@@ -1,0 +1,63 @@
+package fr.pantheonsorbonne.miage;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.logging.Logger;
+
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.PdfStamper;
+import com.itextpdf.text.pdf.PdfWriter;
+
+import fr.pantheonsorbonne.miage.diploma.DiplomaSnippet;
+
+/**
+ * This decorator pattern allow you to encrypt whatever DiplomaGenerator by providing a password.
+ * to use it, simply replace
+ * DiplomaGenerator generator = new MiageDiplomaGenerator(...);
+ * by
+ * EncryptedDiplomaGeneratorDecorator generator = new EncryptedDiplomaGeneratorDecorator(new MiageDiplomaGenerator(...)); 
+ * @author nherbaut
+ *
+ */
+public class EncryptedDiplomaGeneratorDecorator extends DiplomaGeneratorDecorator {
+
+	private String password;
+
+	public EncryptedDiplomaGeneratorDecorator(DiplomaGenerator other, String password) {
+		super(other);
+		this.password = password;
+	}
+
+	@Override
+	public InputStream getContent() {
+
+		try (InputStream is = other.getContent()) {
+			try (ByteArrayOutputStream os = new ByteArrayOutputStream()) {
+				PdfReader pdfReader = new PdfReader(is);
+				PdfStamper pdfStamper = new PdfStamper(pdfReader, os);
+
+				pdfStamper.setEncryption(this.password.getBytes(), this.password.getBytes(), 0,
+						PdfWriter.ENCRYPTION_AES_256 );
+				pdfStamper.close();
+				return new ByteArrayInputStream(os.toByteArray());
+			}
+
+		} catch (IOException | DocumentException e) {
+
+			Logger.getGlobal().severe("failed to generate Encrypted File");
+		}
+		return null;
+
+	}
+
+	@Override
+	protected Collection<DiplomaSnippet> getDiplomaSnippets() {
+		return Collections.emptyList();
+	}
+
+}

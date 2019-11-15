@@ -22,8 +22,6 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
 	public AbstractDiplomaGenerator() {
 		super();
-		
-
 	}
 
 	/**
@@ -49,9 +47,9 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
 		} catch (IOException e) {
 
-			Logger.getGlobal().info("failed to generate the file to stream to" + e.getMessage());
-			return null;
+			Logger.getGlobal().severe("failed to generate the file to stream to" + e.getMessage());
 		}
+		return null;
 
 	}
 
@@ -74,7 +72,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 			document.add(Image.getInstance(image.toAbsolutePath().toString()));
 
 		} catch (DocumentException | IOException e) {
-			Logger.getGlobal().info("failed to generate Document" + e.getMessage());
+			Logger.getGlobal().severe("failed to generate Document" + e.getMessage());
 		} finally {
 			document.close();
 		}
