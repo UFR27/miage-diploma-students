@@ -15,7 +15,6 @@ import java.util.stream.StreamSupport;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
-import org.apache.commons.csv.CSVRecord;
 
 public class StudentRepository implements Iterable<Student> {
 
@@ -30,30 +29,17 @@ public class StudentRepository implements Iterable<Student> {
 		return new StudentRepository(db);
 	}
 
-	public static List<String> toReccord(Student stu) {
-
-<<<<<<< HEAD
-		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId(),stu.getPassword());
-=======
-		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId());
->>>>>>> origin/encryption
-	}
-
 	public StudentRepository add(Student s) {
-		Iterator<Student> previousContent = StudentRepository.withDB(this.db).iterator();
 		try (FileWriter writer = new FileWriter(this.db)) {
 			CSVPrinter csvFilePrinter = new CSVPrinter(writer, CSVFormat.DEFAULT);
 
-			previousContent.forEachRemaining(student -> {
-				try {
-					csvFilePrinter.printRecord(toReccord(student));
-				} catch (IOException e) {
-					throw new RuntimeException("failed to update db file");
-				}
-			});
-			csvFilePrinter.printRecord(toReccord(s));
-			csvFilePrinter.flush();
-			csvFilePrinter.close(true);
+			List<?> lst = StreamSupport.stream(this.spliterator(), false)
+					.map((student -> Arrays.asList(student.getId(), student.getName(), student.getTitle())))
+					.collect(Collectors.toList());
+			for (Object o : lst) {
+				csvFilePrinter.printRecord(o);
+			}
+			csvFilePrinter.close();
 
 		} catch (IOException e) {
 			throw new RuntimeException("failed to update db file");
@@ -69,7 +55,7 @@ public class StudentRepository implements Iterable<Student> {
 
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
 			this.currentIterator = parser.getRecords().stream()
-					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
+					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1)))
 					.map(c -> (Student) c).iterator();
 			return this.currentIterator;
 
