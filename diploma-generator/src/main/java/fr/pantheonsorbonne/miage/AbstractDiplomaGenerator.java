@@ -21,8 +21,8 @@ import com.itextpdf.text.pdf.PdfWriter;
 import fr.pantheonsorbonne.miage.diploma.DiplomaSnippet;
 
 public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
-	@SuppressWarnings("unused")
-	private Collection<DiplomaSnippet> snippets = new HashSet<>();
+
+	Collection<DiplomaSnippet> snippets = new HashSet<>();
 
 	public AbstractDiplomaGenerator() {
 		super();
