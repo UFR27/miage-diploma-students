@@ -3,6 +3,8 @@ package fr.pantheonsorbonne.miage;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
@@ -26,6 +28,10 @@ public class StudentRepository implements Iterable<Student> {
 	}
 
 	public static StudentRepository withDB(String db) {
+		Path myPath = Paths.get(db).toAbsolutePath();
+		if (!(myPath.toFile().exists())) {
+			throw new NotFoundException("failed to find" + Paths.get(db).toAbsolutePath().toString());
+		}
 		return new StudentRepository(db);
 	}
 
@@ -43,7 +49,11 @@ public class StudentRepository implements Iterable<Student> {
 				try {
 					csvFilePrinter.printRecord(toReccord(student));
 				} catch (IOException e) {
+<<<<<<< HEAD
 					throw new UpdateException("failed to update db file");
+=======
+					throw new NotUpdatedException("failed to update db file");
+>>>>>>> webapp
 				}
 			});
 			csvFilePrinter.printRecord(toReccord(s));
@@ -51,7 +61,11 @@ public class StudentRepository implements Iterable<Student> {
 			csvFilePrinter.close(true);
 
 		} catch (IOException e) {
+<<<<<<< HEAD
 			throw new UpdateException("failed to update db file");
+=======
+			throw new NotUpdatedException("failed to update db file");
+>>>>>>> webapp
 		}
 		return this;
 
@@ -61,9 +75,9 @@ public class StudentRepository implements Iterable<Student> {
 	public java.util.Iterator<Student> iterator() {
 		java.util.Iterator<Student> currentIterator = null;
 		try (FileReader reader = new FileReader(this.db)) {
-			
 
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
+<<<<<<< HEAD
 <<<<<<< HEAD
 			currentIterator = parser.getRecords().stream()
 					.map(reccord -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1)))
@@ -74,12 +88,17 @@ public class StudentRepository implements Iterable<Student> {
 >>>>>>> origin/encryption
 =======
 >>>>>>> origin/encryption
+=======
+			currentIterator = parser.getRecords().stream()
+					.map(reccord -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1)))
+>>>>>>> webapp
 					.map(c -> (Student) c).iterator();
 			return currentIterator;
 
 		} catch (IOException e) {
 			Logger.getGlobal().info("IO PB" + e.getMessage());
-			return Collections.EMPTY_SET.iterator();
+			return (Iterator<Student>) Collections.emptySet();
+			
 		}
 	}
 

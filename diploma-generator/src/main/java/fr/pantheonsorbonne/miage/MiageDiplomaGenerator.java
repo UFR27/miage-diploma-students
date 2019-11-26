@@ -1,5 +1,6 @@
 package fr.pantheonsorbonne.miage;
 
+<<<<<<< HEAD
 
 
 
@@ -16,6 +17,13 @@ import java.util.Date;
 
 
 
+=======
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Date;
+
+
+>>>>>>> webapp
 
 import fr.pantheonsorbonne.miage.diploma.NameSnippet;
 import fr.pantheonsorbonne.miage.diploma.DateSnippet;

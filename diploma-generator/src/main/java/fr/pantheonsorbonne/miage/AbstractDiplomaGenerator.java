@@ -34,7 +34,11 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 	 * 
 	 * @return
 	 */
+<<<<<<< HEAD
 	abstract Collection<DiplomaSnippet> getDiplomaSnippets();
+=======
+	protected abstract Collection<DiplomaSnippet> getDiplomaSnippets();
+>>>>>>> webapp
 
 	/*
 	 * (non-Javadoc)
@@ -42,7 +46,11 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 	 * @see fr.pantheonsorbonne.miage.DiplomaGenerator#getContent()
 	 */
 	@Override
+<<<<<<< HEAD
 	public InputStream getContent() throws GenerationFailedException {
+=======
+	public InputStream getContent() throws GenerateFileException {
+>>>>>>> webapp
 
 		try (ByteArrayOutputStream bos = new ByteArrayOutputStream();) {
 
@@ -52,12 +60,20 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
 		} catch (IOException e) {
 
+<<<<<<< HEAD
 			throw new GenerationFailedException("failed to generate the file to stream to", e);
+=======
+			throw new GenerateFileException("failed to generate the file to stream to", e);
+>>>>>>> webapp
 		}
 
 	}
 
+<<<<<<< HEAD
 	protected void writeToStream(OutputStream os) throws GenerationFailedException {
+=======
+	protected void writeToStream(OutputStream os) throws GenerateFileException {
+>>>>>>> webapp
 		Document document = new Document();
 	
 		try {
@@ -76,7 +92,11 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 			document.add(Image.getInstance(image.toAbsolutePath().toString()));
 
 		} catch (DocumentException | IOException e) {
+<<<<<<< HEAD
 			throw new GenerationFailedException("failed to generate Document", e);
+=======
+			throw new GenerateFileException("failed to generate Document", e);
+>>>>>>> webapp
 		} finally {
 			document.close();
 		}
