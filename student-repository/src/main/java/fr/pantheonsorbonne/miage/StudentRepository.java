@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
+import org.apache.commons.csv.CSVRecord;
 
 
 public class StudentRepository implements Iterable<Student> {
@@ -36,13 +37,22 @@ public class StudentRepository implements Iterable<Student> {
 	}
 
 	public static List<String> toReccord(Student stu) {
+<<<<<<< HEAD
 
 		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId());
+=======
+  
+		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId(),stu.getPassword());
+>>>>>>> encryption-unit-tests
 	}
 
 	public StudentRepository add(Student s) {
 		Iterator<Student> previousContent = StudentRepository.withDB(this.db).iterator();
+<<<<<<< HEAD
 		try (FileWriter writer = new FileWriter(this.db)) {
+=======
+		try (FileWriter writer = new FileWriter(this.db)) {  
+>>>>>>> encryption-unit-tests
 			CSVPrinter csvFilePrinter = new CSVPrinter(writer, CSVFormat.DEFAULT);
 
 			previousContent.forEachRemaining(student -> {
@@ -50,12 +60,18 @@ public class StudentRepository implements Iterable<Student> {
 					csvFilePrinter.printRecord(toReccord(student));
 				} catch (IOException e) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 					throw new UpdateException("failed to update db file");
 =======
 					throw new NotUpdatedException("failed to update db file");
 >>>>>>> webapp
 				}
 			});
+=======
+					throw new RuntimeException("failed to update db file");
+				}  
+			});  
+>>>>>>> encryption-unit-tests
 			csvFilePrinter.printRecord(toReccord(s));
 			csvFilePrinter.flush();
 			csvFilePrinter.close(true);
@@ -85,6 +101,7 @@ public class StudentRepository implements Iterable<Student> {
 			this.currentIterator = parser.getRecords().stream()
 					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> origin/encryption
 =======
 >>>>>>> origin/encryption
@@ -92,6 +109,8 @@ public class StudentRepository implements Iterable<Student> {
 			currentIterator = parser.getRecords().stream()
 					.map(reccord -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1)))
 >>>>>>> webapp
+=======
+>>>>>>> encryption-unit-tests
 					.map(c -> (Student) c).iterator();
 			return currentIterator;
 
