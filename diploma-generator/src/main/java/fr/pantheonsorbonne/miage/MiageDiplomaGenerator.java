@@ -1,10 +1,14 @@
 package fr.pantheonsorbonne.miage;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0840c9fd57eedb1f9867fc2beb8740d8ad33d288
 
 
 
 
+<<<<<<< HEAD
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -24,6 +28,20 @@ import java.util.Date;
 
 
 >>>>>>> webapp
+=======
+import java.util.Arrays;
+import java.util.Collection;
+
+import java.util.Date;
+
+
+
+
+
+
+
+
+>>>>>>> 0840c9fd57eedb1f9867fc2beb8740d8ad33d288
 
 import fr.pantheonsorbonne.miage.diploma.NameSnippet;
 import fr.pantheonsorbonne.miage.diploma.DateSnippet;

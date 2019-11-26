@@ -35,10 +35,14 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 	 * @return
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	abstract Collection<DiplomaSnippet> getDiplomaSnippets();
 =======
 	protected abstract Collection<DiplomaSnippet> getDiplomaSnippets();
 >>>>>>> webapp
+=======
+	abstract Collection<DiplomaSnippet> getDiplomaSnippets();
+>>>>>>> 0840c9fd57eedb1f9867fc2beb8740d8ad33d288
 
 	/*
 	 * (non-Javadoc)
@@ -47,10 +51,14 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 	 */
 	@Override
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public InputStream getContent() throws GenerationFailedException {
 =======
 	public InputStream getContent() throws GenerateFileException {
 >>>>>>> webapp
+=======
+	public InputStream getContent() throws GenerationFailedException {
+>>>>>>> 0840c9fd57eedb1f9867fc2beb8740d8ad33d288
 
 		try (ByteArrayOutputStream bos = new ByteArrayOutputStream();) {
 
@@ -61,19 +69,27 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 		} catch (IOException e) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			throw new GenerationFailedException("failed to generate the file to stream to", e);
 =======
 			throw new GenerateFileException("failed to generate the file to stream to", e);
 >>>>>>> webapp
+=======
+			throw new GenerationFailedException("failed to generate the file to stream to", e);
+>>>>>>> 0840c9fd57eedb1f9867fc2beb8740d8ad33d288
 		}
 
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	protected void writeToStream(OutputStream os) throws GenerationFailedException {
 =======
 	protected void writeToStream(OutputStream os) throws GenerateFileException {
 >>>>>>> webapp
+=======
+	protected void writeToStream(OutputStream os) throws GenerationFailedException {
+>>>>>>> 0840c9fd57eedb1f9867fc2beb8740d8ad33d288
 		Document document = new Document();
 	
 		try {
@@ -93,10 +109,14 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
 		} catch (DocumentException | IOException e) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			throw new GenerationFailedException("failed to generate Document", e);
 =======
 			throw new GenerateFileException("failed to generate Document", e);
 >>>>>>> webapp
+=======
+			throw new GenerationFailedException("failed to generate Document", e);
+>>>>>>> 0840c9fd57eedb1f9867fc2beb8740d8ad33d288
 		} finally {
 			document.close();
 		}
