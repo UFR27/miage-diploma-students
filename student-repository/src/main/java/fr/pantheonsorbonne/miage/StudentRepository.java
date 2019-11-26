@@ -23,6 +23,7 @@ import org.apache.commons.csv.CSVPrinter;
 public class StudentRepository implements Iterable<Student> {
 
 	private String db;
+	private Iterator<Student> currentIterator;
 
 	private StudentRepository(String db) {
 		this.db = db;
@@ -37,59 +38,26 @@ public class StudentRepository implements Iterable<Student> {
 	}
 
 	public static List<String> toReccord(Student stu) {
-<<<<<<< HEAD
-
-		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId());
-=======
-  
 		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId(),stu.getPassword());
->>>>>>> encryption-unit-tests
 	}
 
 	public StudentRepository add(Student s) {
 		Iterator<Student> previousContent = StudentRepository.withDB(this.db).iterator();
-<<<<<<< HEAD
 		try (FileWriter writer = new FileWriter(this.db)) {
-=======
-		try (FileWriter writer = new FileWriter(this.db)) {  
->>>>>>> encryption-unit-tests
 			CSVPrinter csvFilePrinter = new CSVPrinter(writer, CSVFormat.DEFAULT);
-
 			previousContent.forEachRemaining(student -> {
 				try {
 					csvFilePrinter.printRecord(toReccord(student));
 				} catch (IOException e) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 					throw new UpdateException("failed to update db file");
-=======
-					throw new NotUpdatedException("failed to update db file");
->>>>>>> webapp
-=======
-					throw new UpdateException("failed to update db file");
->>>>>>> 0840c9fd57eedb1f9867fc2beb8740d8ad33d288
 				}
 			});
-=======
-					throw new RuntimeException("failed to update db file");
-				}  
-			});  
->>>>>>> encryption-unit-tests
 			csvFilePrinter.printRecord(toReccord(s));
 			csvFilePrinter.flush();
 			csvFilePrinter.close(true);
 
 		} catch (IOException e) {
-<<<<<<< HEAD
-<<<<<<< HEAD
 			throw new UpdateException("failed to update db file");
-=======
-			throw new NotUpdatedException("failed to update db file");
->>>>>>> webapp
-=======
-			throw new UpdateException("failed to update db file");
->>>>>>> 0840c9fd57eedb1f9867fc2beb8740d8ad33d288
 		}
 		return this;
 
@@ -101,33 +69,10 @@ public class StudentRepository implements Iterable<Student> {
 		try (FileReader reader = new FileReader(this.db)) {
 
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 0840c9fd57eedb1f9867fc2beb8740d8ad33d288
-			currentIterator = parser.getRecords().stream()
-					.map(reccord -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1)))
-=======
 			this.currentIterator = parser.getRecords().stream()
 					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> origin/encryption
-=======
->>>>>>> origin/encryption
-=======
-			currentIterator = parser.getRecords().stream()
-					.map(reccord -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1)))
->>>>>>> webapp
-=======
->>>>>>> encryption-unit-tests
-=======
->>>>>>> origin/encryption
->>>>>>> 0840c9fd57eedb1f9867fc2beb8740d8ad33d288
 					.map(c -> (Student) c).iterator();
-			return currentIterator;
+			return this.currentIterator;
 
 		} catch (IOException e) {
 			Logger.getGlobal().info("IO PB" + e.getMessage());

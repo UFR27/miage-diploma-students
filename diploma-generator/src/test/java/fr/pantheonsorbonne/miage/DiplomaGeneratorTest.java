@@ -27,7 +27,7 @@ import com.google.common.io.ByteStreams;
 
 public class DiplomaGeneratorTest {
 
-	static protected Date currentDate;
+     protected static Date currentDate;
 	{
 		try {
 			currentDate = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").parse("11/23/2018 17:00:00");
@@ -41,7 +41,7 @@ public class DiplomaGeneratorTest {
 
 		try {
 
-			Student stu = new Student(0, "Nicolas", "","nico");
+			Student stu = new Student(0, "Nicolas", "", null);
 
 			File generatedFileTarget = generateDiplomaForStudent(stu, currentDate);
 
@@ -74,7 +74,7 @@ public class DiplomaGeneratorTest {
 		ByteStreams.copy(generatedImageReader, generatedImageData);
 	}
 
-	protected File generateDiplomaForStudent(Student stu, Date date) throws IOException, FileNotFoundException {
+	protected File generateDiplomaForStudent(Student stu, Date date) throws IOException, FileNotFoundException, GenerationFailedException, WritingException {
 		ByteArrayOutputStream generatedFileContent = new ByteArrayOutputStream();
 		File generatedFileTarget = Files.createTempFile("prefix_", "_suffic").toFile();
 		MiageDiplomaGenerator generator = new MiageDiplomaGenerator(stu, date);
