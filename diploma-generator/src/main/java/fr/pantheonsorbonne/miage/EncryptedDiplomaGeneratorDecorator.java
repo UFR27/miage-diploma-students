@@ -46,7 +46,7 @@ public class EncryptedDiplomaGeneratorDecorator extends DiplomaGeneratorDecorato
 				return new ByteArrayInputStream(os.toByteArray());
 			}
 
-		} catch (IOException | DocumentException e) {
+		} catch (IOException | DocumentException | DiplomaGenerationException e) {
 
 			e.printStackTrace();
 			throw new RuntimeException("failed to generate Encrypted File");

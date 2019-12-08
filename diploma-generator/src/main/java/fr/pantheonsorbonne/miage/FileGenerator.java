@@ -6,13 +6,13 @@ package fr.pantheonsorbonne.miage;
  * @author nherbaut
  *
  */
-public abstract class FileGenerator<GENERATOR extends DiplomaGenerator> {
+public abstract class FileGenerator<G9 extends DiplomaGenerator> {
 
-	protected final GENERATOR generator;
+	protected final G9 generator;
 
-	public FileGenerator(GENERATOR t) {
+	public FileGenerator(G9 t) {
 		this.generator = t;
 	}
 
-	public abstract void generateFile(String outputFile);
+	public abstract void generateFile(String outputFile) throws FileWrittingException, DiplomaGenerationException;
 }

@@ -2,6 +2,8 @@ package fr.pantheonsorbonne.miage;
 
 import java.io.InputStream;
 
+import com.itextpdf.text.DocumentException;
+
 /**
  * a Diploma generator for the MIAGE section
  * 
@@ -15,7 +17,8 @@ public interface DiplomaGenerator {
 	 * 
 	 * @return
 	 * @throws DiplomaGenerationException 
+	 * @throws DocumentException 
 	 */
-	InputStream getContent();
+	InputStream getContent() throws DiplomaGenerationException;
 
 }

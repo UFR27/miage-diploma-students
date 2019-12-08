@@ -1,7 +1,6 @@
 package fr.pantheonsorbonne.miage;
 
 import java.io.ByteArrayInputStream;
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -9,8 +8,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Path;
 import java.util.Collection;
-import java.util.logging.Logger;
-
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
@@ -24,8 +21,6 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
 	public AbstractDiplomaGenerator() {
 		super();
-		
-
 	}
 
 	/**
@@ -41,7 +36,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 	 * @see fr.pantheonsorbonne.miage.DiplomaGenerator#getContent()
 	 */
 	@Override
-	public InputStream getContent() {
+	public InputStream getContent() throws DiplomaGenerationException {
 
 		try (ByteArrayOutputStream bos = new ByteArrayOutputStream();) {
 
@@ -50,18 +45,12 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 			return new ByteArrayInputStream(bos.toByteArray());
 
 		} catch (IOException e) {
-
-			try {
-				throw new DiplomaGenerationException("failed to generate the file to stream to", e);
-			} catch (DiplomaGenerationException e1) {
-				Logger.getGlobal().info("IO PB" + e1.getMessage());
-			}
+			throw new DiplomaGenerationException("failed to generate the file to stream to", e);
 		}
-		return null;
 
 	}
 
-	protected void writeToStream(OutputStream os) {
+	protected void writeToStream(OutputStream os) throws DiplomaGenerationException {
 		Document document = new Document();
 	
 		try {
@@ -80,11 +69,8 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 			document.add(Image.getInstance(image.toAbsolutePath().toString()));
 
 		} catch (DocumentException | IOException e) {
-			try {
-				throw new DiplomaGenerationException("failed to generate Document", e);
-			} catch (DiplomaGenerationException e1) {
-				Logger.getGlobal().info("IO PB" + e1.getMessage());
-			}
+			throw new DiplomaGenerationException("failed to generate Document", e);
+			
 		} finally {
 			document.close();
 		}
