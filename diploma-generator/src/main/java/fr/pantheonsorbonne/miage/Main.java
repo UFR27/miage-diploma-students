@@ -10,9 +10,7 @@ public class Main {
 		
 		MiageDiplomaGenerator generator = new MiageDiplomaGenerator(student);
 		DiplomaFileAdapter adapter = new DiplomaFileAdapter(generator);
-		adapter.generateFile("temp_diploma.pdf");
-				
-				
+		adapter.generateFile("temp_diploma.pdf");		
 
 	}
 
