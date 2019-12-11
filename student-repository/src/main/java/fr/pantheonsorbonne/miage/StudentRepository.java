@@ -9,11 +9,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
-<<<<<<< HEAD
 
-
-=======
->>>>>>> master
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
@@ -68,20 +64,19 @@ public class StudentRepository implements Iterable<Student> {
 	@Override
 	public java.util.Iterator<Student> iterator() {
 		try (FileReader reader = new FileReader(this.db)) {
-<<<<<<< HEAD
-=======
+
 			Iterator<Student> currentIterator = null;
->>>>>>> master
+
 
 			java.util.Iterator<Student> currentIterator = null;
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
 			currentIterator = parser.getRecords().stream()
-<<<<<<< HEAD
+
 					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
 			
-=======
+
 					.map(reccord -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1)))
->>>>>>> master
+
 					.map(c -> (Student) c).iterator();
 			return currentIterator;
 
