@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 package fr.pantheonsorbonne.miage;
 
 import com.google.common.collect.Iterables;
@@ -38,4 +38,3 @@ public class Main {
 	}
 
 }
->>>>>>> master
