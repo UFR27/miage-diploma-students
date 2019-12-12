@@ -3,7 +3,6 @@
  */
 package fr.pantheonsorbonne.miage;
 
-import java.io.IOException;
 
 /**
  * @author sarah
