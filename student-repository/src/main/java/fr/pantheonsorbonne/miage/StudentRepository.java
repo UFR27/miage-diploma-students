@@ -11,13 +11,17 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.stream.Stream;
+
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
+import org.apache.commons.csv.CSVRecord;
 
 public class StudentRepository implements Iterable<Student> {
 
 	private String db;
+	private Stream<CSVRecord> currentIterator;
 	
 	private StudentRepository(String db) {
 		this.db = db;
@@ -32,7 +36,7 @@ public class StudentRepository implements Iterable<Student> {
 
 	public static List<String> toReccord(Student stu) {
 
-		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId());
+		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId(),stu.getPassword());
 	}
 
 	public StudentRepository add(Student s) {
@@ -61,15 +65,12 @@ public class StudentRepository implements Iterable<Student> {
 	@Override
 	public java.util.Iterator<Student> iterator() {
 		try (FileReader reader = new FileReader(this.db)) {
-<<<<<<< HEAD
 			java.util.Iterator<Student> currentIterator;
-=======
-
->>>>>>> webapp
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
-			currentIterator = parser.getRecords().stream()
-					.map(reccord -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1)))
+			currentIterator = parser.getRecords().stream()	
+					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
 					.map(c -> (Student) c).iterator();
+			this.currentIterator = parser.getRecords().stream();
 			return currentIterator;
 
 		} catch (IOException e) {
