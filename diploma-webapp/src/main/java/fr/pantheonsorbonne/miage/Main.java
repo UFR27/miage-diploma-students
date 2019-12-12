@@ -51,7 +51,7 @@ public class Main {
 		Iterables.addAll(students, repo);
 
 		for (int i = 0; i < students.size(); i++) {
-			if (i == studentId - 1) {
+			if (students.get(i).getId() == studentId) {
 				return students.get(i);
 			}
 		}
