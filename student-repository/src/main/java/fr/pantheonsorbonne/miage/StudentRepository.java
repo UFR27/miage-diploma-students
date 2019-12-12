@@ -19,6 +19,8 @@ import org.apache.commons.csv.CSVPrinter;
 public class StudentRepository implements Iterable<Student> {
 
 	private String db;
+	private java.util.Iterator<Student> currentIterator = null;
+
 
 	private StudentRepository(String db) {
 		this.db = db;
@@ -65,13 +67,10 @@ public class StudentRepository implements Iterable<Student> {
 
 
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
-<<<<<<< HEAD
-			currentIterator = parser.getRecords().stream()
-					.map(reccord -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1)))
-=======
+
+			
 			this.currentIterator = parser.getRecords().stream()
 					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
->>>>>>> origin/encryption
 					.map(c -> (Student) c).iterator();
 			return currentIterator;
 
