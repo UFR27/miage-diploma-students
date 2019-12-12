@@ -20,12 +20,8 @@ import fr.pantheonsorbonne.miage.diploma.DiplomaSnippet;
 
 public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
-	private Collection<DiplomaSnippet> snippets = new HashSet<>();
-
 	public AbstractDiplomaGenerator() {
 		super();
-		
-
 	}
 
 	/**
