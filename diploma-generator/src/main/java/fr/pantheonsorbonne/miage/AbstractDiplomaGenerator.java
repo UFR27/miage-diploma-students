@@ -10,7 +10,10 @@ import java.io.OutputStream;
 import java.nio.file.Path;
 import java.util.Collection;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import java.util.HashSet;
+=======
+>>>>>>> master
 =======
 >>>>>>> master
 
@@ -39,7 +42,11 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 	 * @return
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	protected abstract  Collection<DiplomaSnippet> getDiplomaSnippets();
+=======
+	abstract protected Collection<DiplomaSnippet> getDiplomaSnippets();
+>>>>>>> master
 =======
 	abstract protected Collection<DiplomaSnippet> getDiplomaSnippets();
 >>>>>>> master
@@ -51,7 +58,11 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 	 */
 	@Override
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public InputStream getContent() throws GenerateFileException {
+=======
+	public InputStream getContent() throws GenerateFileException, GeneratorDocumentException {
+>>>>>>> master
 =======
 	public InputStream getContent() throws GenerateFileException, GeneratorDocumentException {
 >>>>>>> master
@@ -64,7 +75,11 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
 		} catch (IOException e) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> master
 =======
  
 >>>>>>> master
@@ -74,7 +89,11 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	protected void writeToStream(OutputStream os) throws GenerateDocumentException {
+=======
+	protected void writeToStream(OutputStream os) throws GeneratorDocumentException {
+>>>>>>> master
 =======
 	protected void writeToStream(OutputStream os) throws GeneratorDocumentException {
 >>>>>>> master
@@ -97,7 +116,11 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
 		} catch (DocumentException | IOException e) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			throw new GenerateDocumentException();
+=======
+			throw new GeneratorDocumentException();
+>>>>>>> master
 =======
 			throw new GeneratorDocumentException();
 >>>>>>> master

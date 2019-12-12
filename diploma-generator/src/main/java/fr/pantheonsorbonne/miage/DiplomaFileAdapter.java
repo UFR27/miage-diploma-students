@@ -18,7 +18,11 @@ public class DiplomaFileAdapter extends FileGenerator<AbstractDiplomaGenerator> 
 
 	@Override
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public void generateFile(String outputFile) throws WriteException, GenerateFileException {
+=======
+	public void generateFile(String outputFile) throws GenerateFileException, GeneratorDocumentException, WriteFileException {
+>>>>>>> master
 =======
 	public void generateFile(String outputFile) throws GenerateFileException, GeneratorDocumentException, WriteFileException {
 >>>>>>> master
@@ -29,7 +33,11 @@ public class DiplomaFileAdapter extends FileGenerator<AbstractDiplomaGenerator> 
 		} catch (IOException e) {
 			
 <<<<<<< HEAD
+<<<<<<< HEAD
 			throw new WriteException();
+=======
+			throw new WriteFileException();
+>>>>>>> master
 =======
 			throw new WriteFileException();
 >>>>>>> master
