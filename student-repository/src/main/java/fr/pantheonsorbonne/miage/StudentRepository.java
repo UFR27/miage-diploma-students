@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
+import org.apache.commons.csv.CSVRecord;
 
 public class StudentRepository implements Iterable<Student> {
 
@@ -33,7 +34,11 @@ public class StudentRepository implements Iterable<Student> {
 
 	public static List<String> toReccord(Student stu) {
 
+<<<<<<< HEAD
 		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId());
+=======
+		return Arrays.asList("" + stu.getId(), stu.getName(), stu.getTitle(),stu.getPassword());
+>>>>>>> encryption-unit-tests
 	}
 
 	public StudentRepository add(Student s) {
@@ -45,7 +50,11 @@ public class StudentRepository implements Iterable<Student> {
 				try {
 					csvFilePrinter.printRecord(toReccord(student));
 				} catch (IOException e) {
+<<<<<<< HEAD
 					throw new NoUpdateException("failed to db file", e);
+=======
+					throw new RuntimeException("failed to update db file");
+>>>>>>> encryption-unit-tests
 				}
 			});
 			csvFilePrinter.printRecord(toReccord(s));
@@ -63,6 +72,7 @@ public class StudentRepository implements Iterable<Student> {
 	public java.util.Iterator<Student> iterator() {
 		java.util.Iterator<Student> currentIterator = null;
 		try (FileReader reader = new FileReader(this.db)) {
+<<<<<<< HEAD
 
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
 <<<<<<< HEAD
@@ -72,6 +82,13 @@ public class StudentRepository implements Iterable<Student> {
 			this.currentIterator = parser.getRecords().stream()
 					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
 >>>>>>> encryption
+=======
+			java.util.Iterator<Student> currentIterator = null;
+
+			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
+			currentIterator = parser.getRecords().stream()
+					.map(reccord -> new Student(Integer.parseInt(reccord.get(0)), reccord.get(1), reccord.get(2), reccord.get(3)))
+>>>>>>> encryption-unit-tests
 					.map(c -> (Student) c).iterator();
 			return currentIterator;
 
