@@ -59,6 +59,7 @@ public class StudentRepository implements Iterable<Student> {
 
 	}
 
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public Iterator<Student> iterator() {
@@ -67,13 +68,8 @@ public class StudentRepository implements Iterable<Student> {
 
 
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
-<<<<<<< HEAD
 			currentIterator = parser.getRecords().stream()
-					.map(reccord -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1)))
-=======
-			this.currentIterator = parser.getRecords().stream()
 					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
->>>>>>> origin/encryption
 					.map(c -> (Student) c).iterator();
 			return currentIterator;
 
