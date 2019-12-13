@@ -49,30 +49,19 @@ public class Main {
 		addDiplomaPath(server, "/diploma/*");
 
 		try
-
+		
 		{
 			server.start();
-			java.awt.Desktop.getDesktop().browse(new URI("http://localhost:8080/home"));
-			System.out.println("Press any key to stop the server...");
-			System.in.read();
-		} catch (Exception e) {
-			System.err.println(e);
-		}
-	}
 
-	protected static Student getStudentData(int studentId, StudentRepository repo) {
-		// create an arrayList of the students, because iterables are too hard
 		ArrayList<Student> students = new ArrayList<>();
 		Iterables.addAll(students, repo);
-
-		for (int i = 0; i < students.size(); i++) {
-			if (i == studentId) {
-				return students.get(i);
+				
+		for (Student i: students) {
+			if (i.getId()== studentId) {
+				return i;
 			}
 		}
-
 		throw new NoSuchElementException();
-
 	}
 
 	protected static void handleResponse(Response response, int studentId) throws IOException {
