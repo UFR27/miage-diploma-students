@@ -16,8 +16,9 @@ import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
 
 public class StudentRepository implements Iterable<Student> {
-	private Iterator<Student> currentIterator = null;
+
 	private String db;
+	private Iterator<Student> currentIterator;
 
 	private StudentRepository(String db) {
 		this.db = db;
@@ -57,7 +58,6 @@ public class StudentRepository implements Iterable<Student> {
 
 	}
 
-	@SuppressWarnings({ "unused", "unchecked" })
 	@Override
 	public java.util.Iterator<Student> iterator() {
 		java.util.Iterator<Student> currentIterator = null;
@@ -65,7 +65,7 @@ public class StudentRepository implements Iterable<Student> {
 
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
 			this.currentIterator = parser.getRecords().stream()
-					.map(reccord -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1),
+					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1),
 							reccord.get(3)))
 					.map(c -> (Student) c).iterator();
 			return this.currentIterator;
@@ -73,6 +73,8 @@ public class StudentRepository implements Iterable<Student> {
 		} catch (IOException e) {
 			Logger.getGlobal().info("IO PB" + e.getMessage());
 			return (Iterator<Student>) Collections.emptySet();
+
 		}
 	}
+
 }

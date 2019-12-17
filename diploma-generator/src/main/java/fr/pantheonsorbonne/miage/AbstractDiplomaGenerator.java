@@ -3,11 +3,14 @@ package fr.pantheonsorbonne.miage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Path;
 import java.util.Collection;
+
+
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -19,8 +22,10 @@ import fr.pantheonsorbonne.miage.diploma.DiplomaSnippet;
 
 public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
+
 	public AbstractDiplomaGenerator() {
 		super();
+		
 
 	}
 
@@ -29,6 +34,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 	 * 
 	 * @return
 	 */
+
 	abstract Collection<DiplomaSnippet> getDiplomaSnippets();
 
 	/*
@@ -37,7 +43,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 	 * @see fr.pantheonsorbonne.miage.DiplomaGenerator#getContent()
 	 */
 	@Override
-	public InputStream getContent() {
+	public InputStream getContent() throws IllegalArgumentException {
 
 		try (ByteArrayOutputStream bos = new ByteArrayOutputStream();) {
 
@@ -46,15 +52,13 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 			return new ByteArrayInputStream(bos.toByteArray());
 
 		} catch (IOException e) {
-
 			throw new IllegalArgumentException("failed to generate the file to stream to", e);
-		}
+		} 
 
 	}
-
-	protected void writeToStream(OutputStream os) {
+	protected void writeToStream(OutputStream os) throws IllegalArgumentException {
 		Document document = new Document();
-
+	
 		try {
 
 			Path image = new File("src/main/resources/diploma.png").toPath();

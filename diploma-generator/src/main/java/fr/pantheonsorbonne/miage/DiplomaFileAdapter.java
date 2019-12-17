@@ -7,6 +7,8 @@ import java.util.logging.Logger;
 
 import com.google.common.io.ByteStreams;
 
+
+
 public class DiplomaFileAdapter extends FileGenerator<AbstractDiplomaGenerator> {
 
 	public DiplomaFileAdapter(AbstractDiplomaGenerator generator) {
@@ -15,7 +17,8 @@ public class DiplomaFileAdapter extends FileGenerator<AbstractDiplomaGenerator> 
 	}
 
 	@Override
-	public void generateFile(String outputFile) {
+
+	public void generateFile(String outputFile) throws IllegalArgumentException {
 		try (FileOutputStream fos = new FileOutputStream(outputFile)) {
 			InputStream is = this.generator.getContent();
 			ByteStreams.copy(is, fos);
