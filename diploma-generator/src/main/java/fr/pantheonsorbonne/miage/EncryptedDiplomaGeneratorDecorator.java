@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.logging.Logger;
 
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfReader;
@@ -48,8 +49,8 @@ public class EncryptedDiplomaGeneratorDecorator extends DiplomaGeneratorDecorato
 
 		} catch (IOException | DocumentException e) {
 
-			e.printStackTrace();
-			throw new RuntimeException("failed to generate Encrypted File");
+			Logger.getLogger(e.getMessage());
+			throw new GenerateFailException("failed to generate Encrypted File");
 		}
 
 	}
