@@ -4,11 +4,9 @@ public class Student {
 
 	private int id;
 	private String password;
-<<<<<<< HEAD
 	private String name;
 	private String title;
-=======
->>>>>>> encryption
+
 
 	public Student(int id, String name, String title, String password) {
 		this.name = name;
@@ -45,8 +43,5 @@ public class Student {
 	public String getPassword() {
 		return this.password;
 	}
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> encryption
+
