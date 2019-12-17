@@ -15,6 +15,6 @@ public interface DiplomaGenerator {
 	 * 
 	 * @return
 	 */
-	InputStream getContent();
+	InputStream getContent() throws IllegalArgumentException;
 
 }
