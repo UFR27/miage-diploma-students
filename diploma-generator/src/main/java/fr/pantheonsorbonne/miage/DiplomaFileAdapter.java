@@ -14,7 +14,7 @@ public class DiplomaFileAdapter extends FileGenerator<AbstractDiplomaGenerator> 
 	}
 
 	@Override
-	public void generateFile(String outputFile) throws FileUpdateWriteDiplomaException {
+	public void generateFile(String outputFile) throws FileUpdateWriteDiplomaException, FileUpdateException {
 		try (FileOutputStream fos = new FileOutputStream(outputFile)) {
 			InputStream is = this.generator.getContent();
 			ByteStreams.copy(is, fos);
@@ -26,7 +26,8 @@ public class DiplomaFileAdapter extends FileGenerator<AbstractDiplomaGenerator> 
 	}
 
 	@Override
-	public void getContent() throws FileUpdateGenerateException, FileUpdateException {
+	public InputStream getContent() throws FileUpdateGenerateException, FileUpdateException {
+		return null;
 		// TODO Auto-generated method stub
 		
 	}

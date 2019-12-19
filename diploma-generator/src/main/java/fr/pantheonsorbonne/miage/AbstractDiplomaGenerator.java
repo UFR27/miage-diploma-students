@@ -3,6 +3,7 @@ package fr.pantheonsorbonne.miage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Path;
 import java.util.Collection;
@@ -38,7 +39,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 	 * @see fr.pantheonsorbonne.miage.DiplomaGenerator#getContent()
 	 */
 	@Override
-	public void getContent() throws FileUpdateException {
+	public InputStream getContent() throws FileUpdateException {
 
 		try (ByteArrayOutputStream bos = new ByteArrayOutputStream();) {
 
@@ -51,6 +52,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 			
 			e.printStackTrace();
 		}
+		return null;
 
 	}
 

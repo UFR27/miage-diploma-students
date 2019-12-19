@@ -17,6 +17,6 @@ public interface DiplomaGenerator {
 	 * @throws FileUpdateGenerateException 
 	 * @throws FileUpdateException 
 	 */
-	void getContent() throws FileUpdateGenerateException, FileUpdateException;
+	InputStream getContent() throws FileUpdateGenerateException, FileUpdateException;
 
 }
