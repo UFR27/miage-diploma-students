@@ -47,7 +47,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
 		} catch (IOException e) {
 
-			throw new GenerateFileException("failed to generate the file to stream to", e);
+			throw new GenerateFileException("failed to generate the file to stream to");
 		}
 
 	}
@@ -71,7 +71,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 			document.add(Image.getInstance(image.toAbsolutePath().toString()));
 
 		} catch (DocumentException | IOException e) {
-			throw new GenerateFileException( "failed to generate Document",e);
+			throw new GenerateFileException( "failed to generate Document");
 		} finally {
 			document.close();
 		}
