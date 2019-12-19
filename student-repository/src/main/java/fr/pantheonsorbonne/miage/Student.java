@@ -12,6 +12,10 @@ public class Student {
 
 	}
 
+	public void Student1(int id2, String name2, String title2) {
+		// TODO Auto-generated constructor stub
+	}
+
 	private String name;
 
 	public String getName() {
@@ -39,6 +43,11 @@ public class Student {
 	@Override
 	public String toString() {
 		return this.getTitle() + " " + this.getName();
+	}
+
+	public Object getPassword() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	
