@@ -66,14 +66,16 @@ public class Main {
 		Iterables.addAll(students, repo);
 
 		for (int i = 0; i < students.size(); i++) {
-			if (i == studentId) {
+			if (i+1 == studentId) {
 				return students.get(i);
 			}
 		}
-
-		throw new NoSuchElementException();
-
+			throw new NoSuchElementException();
+		
+		
 	}
+	
+
 
 	protected static void handleResponse(Response response, int studentId) throws IOException {
 
