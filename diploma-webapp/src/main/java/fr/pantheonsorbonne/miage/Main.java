@@ -53,10 +53,10 @@ public class Main {
 		{
 			server.start();
 			java.awt.Desktop.getDesktop().browse(new URI("http://localhost:8080/home"));
-			System.out.println("Press any key to stop the server...");
+			logger.info("Press any key to stop the server...");
 			System.in.read();
 		} catch (Exception e) {
-			System.err.println(e);
+			logger.warning("error");
 		}
 	}
 
@@ -66,7 +66,7 @@ public class Main {
 		Iterables.addAll(students, repo);
 
 		for (int i = 0; i < students.size(); i++) {
-			if (i == studentId) {
+			if (students.get(i).getId() == studentId) {
 				return students.get(i);
 			}
 		}
