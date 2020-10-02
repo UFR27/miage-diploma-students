@@ -56,7 +56,7 @@ public class Main {
 			System.out.println("Press any key to stop the server...");
 			System.in.read();
 		} catch (Exception e) {
-			System.err.println(e);
+			logger.warning("Server start crashed");					//Modifié
 		}
 	}
 
@@ -65,10 +65,9 @@ public class Main {
 		ArrayList<Student> students = new ArrayList<>();
 		Iterables.addAll(students, repo);
 
-		for (int i = 0; i < students.size(); i++) {
-			if (i == studentId) {
-				return students.get(i);
-			}
+		for (Student s : students) { 						//Modifié
+			if (s.getId() == studentId)
+				return s;
 		}
 
 		throw new NoSuchElementException();
