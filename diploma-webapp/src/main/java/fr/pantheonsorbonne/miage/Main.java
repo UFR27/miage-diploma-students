@@ -62,14 +62,13 @@ public class Main {
 
 	protected static Student getStudentData(int studentId, StudentRepository repo) {
 		// create an arrayList of the students, because iterables are too hard
-		ArrayList<Student> students = new ArrayList<>();
-		Iterables.addAll(students, repo);
-
-		for (int i = 0; i < students.size(); i++) {
-			if (i + 1 == studentId) {
-				return students.get(i);
+		
+		for (Student stud : repo) {
+			if (studentId==stud.getId()) {
+				return stud;
 			}
 		}
+		
 		throw new NoSuchElementException();
 
 	}
