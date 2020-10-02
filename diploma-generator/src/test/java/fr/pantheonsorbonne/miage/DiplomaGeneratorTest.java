@@ -25,6 +25,7 @@ import org.junit.jupiter.api.Test;
 
 import com.google.common.io.ByteStreams;
 
+// JUNIT TESTS - Déjà corrigé 
 public class DiplomaGeneratorTest {
 
 	static protected Date currentDate;
