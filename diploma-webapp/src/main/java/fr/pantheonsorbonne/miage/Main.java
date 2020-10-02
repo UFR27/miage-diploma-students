@@ -49,7 +49,6 @@ public class Main {
 		addDiplomaPath(server, "/diploma/*");
 
 		try
-
 		{
 			server.start();
 			java.awt.Desktop.getDesktop().browse(new URI("http://localhost:8080/home"));
@@ -65,10 +64,9 @@ public class Main {
 		ArrayList<Student> students = new ArrayList<>();
 		Iterables.addAll(students, repo);
 
-		for (int i = 0; i < students.size(); i++) {
-			if (i == studentId) {
-				return students.get(i);
-			}
+		for (Student stud : repo) {
+			if(studentId == stud.getId())
+				return stud;
 		}
 
 		throw new NoSuchElementException();
