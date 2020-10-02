@@ -1,6 +1,7 @@
 package fr.pantheonsorbonne.miage;
 
 import java.io.FileReader;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
@@ -8,14 +9,9 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
-import org.apache.commons.csv.CSVRecord;
 
 public class StudentRepository implements Iterable<Student> {
 
@@ -35,24 +31,26 @@ public class StudentRepository implements Iterable<Student> {
 		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId());
 	}
 
-	public StudentRepository add(Student s) {
+	public StudentRepository add(Student s) throws FailedUpdateFile {
 		Iterator<Student> previousContent = StudentRepository.withDB(this.db).iterator();
 		try (FileWriter writer = new FileWriter(this.db)) {
 			CSVPrinter csvFilePrinter = new CSVPrinter(writer, CSVFormat.DEFAULT);
 
 			previousContent.forEachRemaining(student -> {
-				try {
-					csvFilePrinter.printRecord(toReccord(student));
-				} catch (IOException e) {
-					throw new RuntimeException("failed to update db file");
-				}
+					try {
+						csvFilePrinter.printRecord(toReccord(student));
+					} catch (IOException e) {
+						
+						e.printStackTrace();
+					}
+				
 			});
 			csvFilePrinter.printRecord(toReccord(s));
 			csvFilePrinter.flush();
 			csvFilePrinter.close(true);
 
 		} catch (IOException e) {
-			throw new RuntimeException("failed to update db file");
+			throw new FailedUpdateFile("failed to update db file");
 		}
 		return this;
 
