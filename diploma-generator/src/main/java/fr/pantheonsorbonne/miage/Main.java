@@ -4,7 +4,7 @@ import com.google.common.collect.Iterables;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileException {
 		StudentRepository repo = StudentRepository.withDB("../student-repository/src/main/resources/students.db");
 		Student student = Iterables.get(repo, 0);
 		
