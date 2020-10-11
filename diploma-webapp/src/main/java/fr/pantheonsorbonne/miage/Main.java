@@ -4,10 +4,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
-
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.logging.Logger;
-
 
 import org.glassfish.grizzly.http.io.NIOOutputStream;
 import org.glassfish.grizzly.http.server.HttpHandler;
@@ -15,7 +14,7 @@ import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.grizzly.http.server.Request;
 import org.glassfish.grizzly.http.server.Response;
 
-
+import com.google.common.collect.Iterables;
 import com.google.common.io.ByteStreams;
 
 /**
@@ -48,13 +47,18 @@ public class Main {
 
 	protected static Student getStudentData(int studentId, StudentRepository repo) {
 		// create an arrayList of the students, because iterables are too hard
+
+		ArrayList<Student> students = new ArrayList<>();
+		Iterables.addAll(students, repo);
+
+			for (Student stud : students) {
+					if (stud.getId() == studentId) {
+							return stud;
+					}
+				}
+			
 		
-		for (Student stud : repo) {
-			if (studentId==stud.getId()) {
-				return stud;
-			}
-		}
-		
+
 		throw new NoSuchElementException();
 
 	}
