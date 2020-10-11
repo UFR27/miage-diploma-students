@@ -57,6 +57,7 @@ public class StudentRepository implements Iterable<Student> {
 
 	}
 
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public java.util.Iterator<Student> iterator() {
@@ -64,8 +65,8 @@ public class StudentRepository implements Iterable<Student> {
 
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
 			return parser.getRecords().stream()
-					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1)))
-					.map(c -> (Student) c).iterator();
+					.map(reccord -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1)))
+					.map(c -> c).iterator();
 
 		} catch (IOException e) {
 			Logger.getGlobal().info("IO PB" + e.getMessage());
