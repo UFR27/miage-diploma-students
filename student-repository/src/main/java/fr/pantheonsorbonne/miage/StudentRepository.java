@@ -24,7 +24,7 @@ public class StudentRepository implements Iterable<Student> {
 
 	private StudentRepository(String db) {
 		this.db = db;
-	};
+	}
 
 	public static StudentRepository withDB(String db) {
 		return new StudentRepository(db);
@@ -65,8 +65,8 @@ public class StudentRepository implements Iterable<Student> {
 
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
 			this.currentIterator = parser.getRecords().stream()
-					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1)))
-					.map(c -> (Student) c).iterator();
+					.map(reccord -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1)))
+					.map(c ->  c).iterator();
 			return this.currentIterator;
 
 		} catch (IOException e) {
