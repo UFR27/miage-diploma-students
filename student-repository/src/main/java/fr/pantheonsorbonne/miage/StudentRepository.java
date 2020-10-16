@@ -51,6 +51,7 @@ public class StudentRepository implements Iterable<Student> {
 			csvFilePrinter.flush();
 			csvFilePrinter.close(true);
 
+
 		} catch (IOException e) {
 			throw new RuntimeException("failed to update db file");
 		}
