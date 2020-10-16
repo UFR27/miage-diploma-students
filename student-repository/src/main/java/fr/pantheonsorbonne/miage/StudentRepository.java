@@ -58,6 +58,7 @@ public class StudentRepository implements Iterable<Student> {
 		} catch (IOException e) {
 			throw new FailedToUpdate("failed to update db file");
 		}
+		
 		return this;
 
 	}
