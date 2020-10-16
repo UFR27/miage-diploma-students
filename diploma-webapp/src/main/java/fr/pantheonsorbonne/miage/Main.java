@@ -66,16 +66,15 @@ public class Main {
 		Iterables.addAll(students, repo);
 
 		for (int i = 0; i < students.size(); i++) {
-			if (i+1 == studentId) {
+			if (i == studentId) {
 				return students.get(i);
 			}
-		}
-		for(Student student: repo) {
-			if(student.getId()==studentId) {
-				return student;
+		for(Student stud: repo) {
+			if(stud.getId()==studentId) {
+				return stud;
 			}
 		}
-
+		}
 		throw new NoSuchElementException();
 
 	}
