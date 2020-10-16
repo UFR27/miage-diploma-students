@@ -17,6 +17,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import fr.pantheonsorbonne.miage.diploma.DiplomaSnippet;
 
+//Changement essai
 public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
 
