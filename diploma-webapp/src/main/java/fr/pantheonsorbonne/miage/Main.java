@@ -2,46 +2,49 @@ package fr.pantheonsorbonne.miage;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Date;
-import java.util.Locale;
+
 import java.util.NoSuchElementException;
 import java.util.logging.Logger;
 
-import javax.servlet.Servlet;
-import javax.servlet.ServletRegistration;
 
 import org.glassfish.grizzly.http.io.NIOOutputStream;
 import org.glassfish.grizzly.http.server.HttpHandler;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.grizzly.http.server.Request;
 import org.glassfish.grizzly.http.server.Response;
-import org.glassfish.grizzly.http.util.ContentType;
-import org.glassfish.grizzly.servlet.WebappContext;
-import org.glassfish.jersey.grizzly2.servlet.GrizzlyWebContainerFactory;
 
-import com.google.common.collect.Collections2;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Streams;
 import com.google.common.io.ByteStreams;
 
 /**
  * Main class.
  *
  */
-public class Main {
+public class Main{
 	public static final String HOST = "localhost";
 	public static final int PORT = 7000;
 	protected static final Logger logger = Logger.getLogger(Main.class.getName());
-	private static final StudentRepository studentRepo = StudentRepository.withDB("src/main/resources/students.db");
+	
+	
+	private static StudentRepository studentRepo = null;
 
+	static {
+
+	    
+	    try {
+	        studentRepo =StudentRepository.withDB("src/main/resources/students.db");
+	    } catch (FailedToFind e) {
+	    	logger.warning(" base donnée Etudiant Introuvable");    }
+	   
+	}
+	
+	
+	
+	
+	
+	
+	
 	public static void main(String[] args) throws IOException, URISyntaxException {
 
 		HttpServer server = HttpServer.createSimpleServer();
@@ -69,7 +72,7 @@ public class Main {
 		throw new NoSuchElementException();
 	}
 
-	protected static void handleResponse(Response response, int studentId) throws IOException {
+	protected static void handleResponse(Response response, int studentId) throws IOException, FailedToGenerateException, FailedEncryption {
 
 		response.setContentType("application/pdf");
 

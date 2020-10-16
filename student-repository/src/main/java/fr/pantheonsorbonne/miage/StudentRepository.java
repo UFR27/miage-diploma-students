@@ -4,7 +4,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
+
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collections;
@@ -25,9 +25,9 @@ public class StudentRepository implements Iterable<Student> {
 		this.db = db;
 	}
 
-	public static StudentRepository withDB(String db) {
+	public static StudentRepository withDB(String db) throws FailedToFind {
 		if (!Files.exists(Paths.get(db))) {
-			throw new RuntimeException("failed to find" + Paths.get(db).toAbsolutePath().toString());
+			throw new FailedToFind("failed to find" + Paths.get(db).toAbsolutePath().toString());
 		}
 		return new StudentRepository(db);
 	}
@@ -37,7 +37,7 @@ public class StudentRepository implements Iterable<Student> {
 		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId());
 	}
 
-	public StudentRepository add(Student s) throws FailedToUpdate {
+	public StudentRepository add(Student s) throws FailedToUpdate, FailedToFind {
 		Iterator<Student> previousContent = StudentRepository.withDB(this.db).iterator();
 		try (FileWriter writer = new FileWriter(this.db)) {
 			CSVPrinter csvFilePrinter = new CSVPrinter(writer, CSVFormat.DEFAULT);
@@ -68,8 +68,8 @@ public class StudentRepository implements Iterable<Student> {
 
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
 			this.currentIterator = parser.getRecords().stream()
-					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
-					.map(c -> (Student) c).iterator();
+					.map(reccord -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
+					.map(c ->  c).iterator();
 			return this.currentIterator;
 
 		} catch (IOException e) {

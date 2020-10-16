@@ -4,7 +4,7 @@ import com.google.common.collect.Iterables;
 
 public class Main {
 
-	public static void main(String[] args) throws FailedToGenerateException, FailedToWriteDiplomaFile {
+	public static void main(String[] args) throws FailedToGenerateException, FailedToWriteDiplomaFile, FailedEncryption, FailedToFind {
 		StudentRepository repo = StudentRepository.withDB("../student-repository/src/main/resources/students.db");
 		Student student = Iterables.get(repo, 0);
 		

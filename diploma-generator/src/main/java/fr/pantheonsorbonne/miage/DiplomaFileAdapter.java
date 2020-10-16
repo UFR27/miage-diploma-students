@@ -15,7 +15,7 @@ public class DiplomaFileAdapter extends FileGenerator<AbstractDiplomaGenerator> 
 	}
 
 	@Override
-	public void generateFile(String outputFile) throws FailedToGenerateException, FailedToWriteDiplomaFile {
+	public void generateFile(String outputFile) throws FailedToGenerateException, FailedToWriteDiplomaFile, FailedEncryption {
 		try (FileOutputStream fos = new FileOutputStream(outputFile)) {
 			InputStream is = this.generator.getContent();
 			ByteStreams.copy(is, fos);
