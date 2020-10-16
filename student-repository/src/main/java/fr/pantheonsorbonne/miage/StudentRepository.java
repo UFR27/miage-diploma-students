@@ -3,6 +3,9 @@ package fr.pantheonsorbonne.miage;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
@@ -24,9 +27,12 @@ public class StudentRepository implements Iterable<Student> {
 
 	private StudentRepository(String db) {
 		this.db = db;
-	};
+	}
 
 	public static StudentRepository withDB(String db) {
+		if (!Files.exists(Paths.get(db))) {
+			throw new RuntimeException("failed to find" + Paths.get(db).toAbsolutePath().toString());
+		}
 		return new StudentRepository(db);
 	}
 
@@ -61,17 +67,20 @@ public class StudentRepository implements Iterable<Student> {
 	@Override
 	public java.util.Iterator<Student> iterator() {
 		try (FileReader reader = new FileReader(this.db)) {
-			
 
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
 			this.currentIterator = parser.getRecords().stream()
-					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1)))
-					.map(c -> (Student) c).iterator();
+
+					.map(reccord -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1)))
+					.map(c ->  c).iterator();
+
+					
 			return this.currentIterator;
 
 		} catch (IOException e) {
 			Logger.getGlobal().info("IO PB" + e.getMessage());
 			return Collections.EMPTY_SET.iterator();
+			
 		}
 	}
 
