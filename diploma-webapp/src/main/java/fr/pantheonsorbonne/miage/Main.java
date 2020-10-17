@@ -50,9 +50,9 @@ public class Main {
 		ArrayList<Student> students = new ArrayList<>();
 		Iterables.addAll(students, repo);
 
-		for (int i = 0; i < students.size(); i++) {
-			if (i+1 == studentId) {
-				return students.get(i);
+		for ( Student stud : students ) {
+			if (stud.getId() == studentId) {
+				return stud;
 			}
 		}
 
@@ -65,8 +65,8 @@ public class Main {
 		response.setContentType("application/pdf");
 
 		Student student = getStudentData(studentId, studentRepo);
-
-		DiplomaGenerator generator = new MiageDiplomaGenerator(student);
+		
+		EncryptedDiplomaGeneratorDecorator generator = new EncryptedDiplomaGeneratorDecorator (new MiageDiplomaGenerator(student), student.getPassword());
 		try (InputStream is = generator.getContent()) {
 			try (NIOOutputStream os = response.createOutputStream()) {
 				ByteStreams.copy(is, os);
