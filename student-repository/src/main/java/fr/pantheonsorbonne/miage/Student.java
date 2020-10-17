@@ -4,7 +4,6 @@ public class Student {
 
 	private int id;
 
-
 	public Student(int id, String name, String title) {
 		this.name = name;
 		this.title = title;
