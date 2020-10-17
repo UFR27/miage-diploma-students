@@ -12,6 +12,10 @@ public class FailedException extends RuntimeException {
 		super(string,e);
 	}
 
+	public FailedException(String string) {
+		super(string);
+	}
+
 	/**
 	 * 
 	 */

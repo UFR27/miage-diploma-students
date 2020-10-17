@@ -40,6 +40,7 @@
 			<version>5.1.0</version>
 		</dependency>
 
+
 		<!-- https://mvnrepository.com/artifact/com.sun.pdfview/pdfrenderer -->
 		<dependency>
 			<groupId>fr.pantheonsorbonne.miage</groupId>
