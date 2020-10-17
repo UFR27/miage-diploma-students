@@ -16,6 +16,6 @@ public interface DiplomaGenerator {
 	 * @return
 	 * @throws FailedGenerateFile 
 	 */
-	InputStream getContent() throws FailedGenerateFile;
+	InputStream getContent() throws FailedGenerateException;
 
 }
