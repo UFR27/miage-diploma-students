@@ -79,7 +79,7 @@ public class Main {
 
 	}
 
-	protected static void handleResponse(Response response, int studentId) throws IOException {
+	protected static void handleResponse(Response response, int studentId) throws IOException, FailedGenerateException {
 
 		response.setContentType("application/pdf");
 
