@@ -36,11 +36,8 @@ public class StudentRepository implements Iterable<Student> {
 
 	public static List<String> toReccord(Student stu) {
 
-<<<<<<< HEAD
-		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId());
-=======
 		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId(),stu.getPassword());
->>>>>>> 95dd29517a6ee278afbd0078ce62023d4d93f96f
+
 	}
 
 	public StudentRepository add(Student s) {
