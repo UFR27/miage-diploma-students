@@ -23,6 +23,7 @@ import fr.pantheonsorbonne.miage.diploma.DiplomaSnippet;
  * @author nherbaut
  *
  */
+
 public class EncryptedDiplomaGeneratorDecorator extends DiplomaGeneratorDecorator {
 
 	private String password;
@@ -50,6 +51,7 @@ public class EncryptedDiplomaGeneratorDecorator extends DiplomaGeneratorDecorato
 
 			e.printStackTrace();
 			throw new FailedException("failed to generate Encrypted File");
+
 		}
 
 	}
