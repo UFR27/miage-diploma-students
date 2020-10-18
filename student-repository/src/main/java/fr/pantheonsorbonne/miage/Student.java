@@ -8,7 +8,11 @@ public class Student {
 	public Student(int id, String name, String title, String password) {
 		this.name = name;
 		this.title = title;
+<<<<<<< HEAD
 		this.id = id; 
+=======
+		this.id = id;
+>>>>>>> encryption-unit-tests
 		this.password = password;
 	}
 	
