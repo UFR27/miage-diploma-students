@@ -28,7 +28,7 @@ public class EncryptedDiplomaGeneratorTest extends DiplomaGeneratorTest {
 			this.encrypted = encrypted;
 		}
 	}
-
+ 
 	@Test
 	public void testEncryptedPdfTest() throws IOException, DocumentException {
 

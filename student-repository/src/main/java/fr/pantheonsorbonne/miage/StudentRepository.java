@@ -49,7 +49,7 @@ public class StudentRepository implements Iterable<Student> {
 			csvFilePrinter.printRecord(toReccord(s));
 			csvFilePrinter.flush();
 			csvFilePrinter.close(true);
-
+ 
 		} catch (IOException e) {
 			throw new DbException("failed to update db file");
 		}
