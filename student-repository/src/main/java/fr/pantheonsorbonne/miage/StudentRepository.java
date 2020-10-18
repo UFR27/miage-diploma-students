@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Logger;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -53,8 +54,9 @@ public class StudentRepository implements Iterable<Student> {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public java.util.Iterator<Student> iterator() {
+	public Iterator<Student> iterator() {
 		try (FileReader reader = new FileReader(this.db)) {
 			
 
@@ -66,7 +68,7 @@ public class StudentRepository implements Iterable<Student> {
 
 		} catch (IOException e) {
 			Logger.getGlobal().info("IO PB" + e.getMessage());
-			return Collections.EMPTY_SET.iterator();
+			return (Iterator<Student>) Collections.emptySet();
 		}
 	}
 
