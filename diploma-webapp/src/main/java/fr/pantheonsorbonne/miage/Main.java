@@ -41,7 +41,7 @@ public class Main {
 			logger.log(Level.INFO,"Press any key to stop the server...");
 			System.in.read();
 		} catch (Exception e) {
-			System.err.println(e);
+			logger.println(e);
 		}
 	}
 
@@ -70,7 +70,7 @@ public class Main {
 			try (NIOOutputStream os = response.createOutputStream()) {
 				ByteStreams.copy(is, os);
 			}
-
+			
 		}
 	}
 
