@@ -13,7 +13,7 @@ public class Main {
 		adapter.generateFile("temp_diploma.pdf");
 				
 				
-
+		
 	}
 
 }
