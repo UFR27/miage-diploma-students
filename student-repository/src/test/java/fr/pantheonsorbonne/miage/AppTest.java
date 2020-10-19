@@ -14,16 +14,18 @@ import com.google.common.collect.Iterables;
 /**
  * Unit test for simple App.
  */
-public class AppTest {
+class AppTest {
 	/**
 	 * Rigorous Test :-)
 	 * 
 	 * @throws IOException
 	 */
 	@Test
-	public void shouldAnswerWithTrue() throws IOException {
+	void shouldAnswerWithTrue() throws IOException {
+
 		File tempDB = Files.createTempFile("prefix", ".csv").toFile();
 		FileWriter fw = new FileWriter(tempDB);
+
 		fw.write("Nicolas,Dr.,1,nico\n");
 		fw.write("Francois,M.,2,franco\n");
 		fw.close();
@@ -43,17 +45,16 @@ public class AppTest {
 		assertEquals("M.", francois.getTitle());
 		assertEquals(2, francois.getId());
 		assertEquals("franco", francois.getPassword());
-		
+
 		StudentRepository.withDB(tempDB.toString()).add(new Student(3, "Mohamed", "M.", "momo"));
-		
+
 		assertEquals(3, Iterables.size(StudentRepository.withDB(tempDB.toString())));
-		
+
 		Student mohamed = Iterables.get(StudentRepository.withDB(tempDB.toString()), 2);
 
 		assertEquals("Mohamed", mohamed.getName());
 		assertEquals("M.", mohamed.getTitle());
 		assertEquals(3, mohamed.getId());
 		assertEquals("momo", mohamed.getPassword());
-
 	}
 }
