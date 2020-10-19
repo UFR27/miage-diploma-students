@@ -1,10 +1,12 @@
 package fr.pantheonsorbonne.miage;
 
+import java.nio.file.NoSuchFileException;
+
 import com.google.common.collect.Iterables;
 
 public class Main {
 
-	public static void main(String[] args) throws DiplomaNotGeneratedException {
+	public static void main(String[] args) throws NoSuchFileException, DiplomaNotGeneratedException {
 		StudentRepository repo = StudentRepository.withDB("../student-repository/src/main/resources/students.db");
 		Student student = Iterables.get(repo, 0);
 

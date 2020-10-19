@@ -3,6 +3,9 @@ package fr.pantheonsorbonne.miage;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
@@ -21,7 +24,11 @@ public class StudentRepository implements Iterable<Student> {
 		this.db = db;
 	}
 
-	public static StudentRepository withDB(String db) {
+	public static StudentRepository withDB(String db) throws NoSuchFileException {
+		if (!Files.exists(Paths.get(db))) {
+			throw new NoSuchFileException("failed to find" + Paths.get(db).toAbsolutePath().toString());
+		}
+
 		return new StudentRepository(db);
 	}
 
@@ -30,10 +37,11 @@ public class StudentRepository implements Iterable<Student> {
 	}
 
 	public StudentRepository add(Student s) throws DBFileNotUpdatedException {
-		Iterator<Student> previousContent = StudentRepository.withDB(this.db).iterator();
 
 		try (FileWriter writer = new FileWriter(this.db)) {
 			CSVPrinter csvFilePrinter = new CSVPrinter(writer, CSVFormat.DEFAULT);
+
+			Iterator<Student> previousContent = StudentRepository.withDB(this.db).iterator();
 
 			previousContent.forEachRemaining(student -> {
 				try {
