@@ -16,19 +16,20 @@
 
 	<dependencyManagement>
 		<dependencies>
-			
 			<dependency>
 				<groupId>com.google.guava</groupId>
 				<artifactId>guava</artifactId>
 				<version>27.0-jre</version>
 			</dependency>
+
 			<dependency>
 				<groupId>org.junit.jupiter</groupId>
 				<artifactId>junit-jupiter-api</artifactId>
-				<version>5.1.0</version>
+				<version>5.7.0</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
 	<build>
 		<pluginManagement>
 			<plugins>
@@ -43,8 +44,5 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
-
 	</build>
-
-
 </project>
