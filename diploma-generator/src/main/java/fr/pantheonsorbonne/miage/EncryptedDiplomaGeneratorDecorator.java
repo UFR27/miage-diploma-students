@@ -15,11 +15,12 @@ import com.itextpdf.text.pdf.PdfWriter;
 import fr.pantheonsorbonne.miage.diploma.DiplomaSnippet;
 
 /**
- * This decorator pattern allow you to encrypt whatever DiplomaGenerator by providing a password.
+ * This decorator pattern allows you to encrypt whatever DiplomaGenerator by providing a password.
  * to use it, simply replace
  * DiplomaGenerator generator = new MiageDiplomaGenerator(...);
  * by
  * EncryptedDiplomaGeneratorDecorator generator = new EncryptedDiplomaGeneratorDecorator(new MiageDiplomaGenerator(...)); 
+ * 
  * @author nherbaut
  *
  */
@@ -33,9 +34,10 @@ public class EncryptedDiplomaGeneratorDecorator extends DiplomaGeneratorDecorato
 	}
 
 	@Override
-	public InputStream getContent() {
+	public InputStream getContent() throws DiplomaNotGeneratedException {
 
 		try (InputStream is = other.getContent()) {
+
 			try (ByteArrayOutputStream os = new ByteArrayOutputStream()) {
 				PdfReader pdfReader = new PdfReader(is);
 				PdfStamper pdfStamper = new PdfStamper(pdfReader, os);
@@ -43,20 +45,18 @@ public class EncryptedDiplomaGeneratorDecorator extends DiplomaGeneratorDecorato
 				pdfStamper.setEncryption(this.password.getBytes(), this.password.getBytes(), 0,
 						PdfWriter.ENCRYPTION_AES_256 );
 				pdfStamper.close();
+
 				return new ByteArrayInputStream(os.toByteArray());
 			}
 
 		} catch (IOException | DocumentException e) {
-
 			e.printStackTrace();
-			throw new RuntimeException("failed to generate Encrypted File");
+			throw new DiplomaNotGeneratedException("failed to generate encrypted file", e);
 		}
-
 	}
 
 	@Override
 	protected Collection<DiplomaSnippet> getDiplomaSnippets() {
 		return Collections.emptyList();
 	}
-
 }

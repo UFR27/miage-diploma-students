@@ -20,10 +20,11 @@ public class NameSnippet implements DiplomaSnippet {
 	public void write(PdfWriter writer) throws DocumentException {
 		ColumnText ct = new ColumnText(writer.getDirectContent());
 		ct.setSimpleColumn(200, 50, 550, 350);
+
 		Font font = FontFactory.getFont(FontFactory.COURIER, 30, BaseColor.BLACK);
 		Chunk chunk = new Chunk(name, font);
+
 		ct.addElement(chunk);
 		ct.go();
 	}
-
 }

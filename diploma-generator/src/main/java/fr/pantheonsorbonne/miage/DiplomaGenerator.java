@@ -3,7 +3,7 @@ package fr.pantheonsorbonne.miage;
 import java.io.InputStream;
 
 /**
- * a Diploma generator for the MIAGE section
+ * a diploma generator for the MIAGE section
  * 
  * @author nherbaut
  *
@@ -15,6 +15,5 @@ public interface DiplomaGenerator {
 	 * 
 	 * @return
 	 */
-	InputStream getContent();
-
+	InputStream getContent() throws DiplomaNotGeneratedException;
 }

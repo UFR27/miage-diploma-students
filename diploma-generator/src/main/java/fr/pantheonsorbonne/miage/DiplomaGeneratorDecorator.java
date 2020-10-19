@@ -7,5 +7,4 @@ public abstract class DiplomaGeneratorDecorator extends AbstractDiplomaGenerator
 	public DiplomaGeneratorDecorator(DiplomaGenerator other) {
 		this.other = other;
 	}
-
 }
