@@ -38,17 +38,12 @@ public class StudentRepository implements Iterable<Student> {
 
 	public static List<String> toReccord(Student stu) {
 
-<<<<<<< HEAD
-		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId());
-	}
 
-	public StudentRepository add(Student s) throws FailedUpdateException {
-=======
 		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId(),stu.getPassword());
 	}
 
-	public StudentRepository add(Student s) {
->>>>>>> encryption-unit-tests
+	public StudentRepository add(Student s) throws FailedUpdateException {
+
 		Iterator<Student> previousContent = StudentRepository.withDB(this.db).iterator();
 		try (FileWriter writer = new FileWriter(this.db)) {
 			CSVPrinter csvFilePrinter = new CSVPrinter(writer, CSVFormat.DEFAULT);
