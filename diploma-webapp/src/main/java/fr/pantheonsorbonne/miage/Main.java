@@ -73,7 +73,8 @@ public class Main {
 	protected static void handleResponse(Response response, int studentId) throws IOException {
 		response.setContentType("application/pdf");
 		Student student = getStudentData(studentId, studentRepo);
-		EncryptedDiplomaGeneratorDecorator generator = new EncryptedDiplomaGeneratorDecorator (new MiageDiplomaGenerator(student), student.getPassword());
+		EncryptedDiplomaGeneratorDecorator generator = new EncryptedDiplomaGeneratorDecorator(
+				new MiageDiplomaGenerator(student), student.getPassword());
 		try (InputStream is = generator.getContent()) {
 			try (NIOOutputStream os = response.createOutputStream()) {
 				ByteStreams.copy(is, os);
