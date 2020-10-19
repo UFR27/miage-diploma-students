@@ -1,4 +1,5 @@
 package fr.pantheonsorbonne.miage;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -27,6 +28,7 @@ import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Streams;
 import com.google.common.io.ByteStreams;
+
 /**
  * Main class.
  *
@@ -36,12 +38,12 @@ public class Main {
 	public static final int PORT = 7000;
 	private static final Logger logger = Logger.getLogger(Main.class.getName());
 	private static StudentRepository studentRepo = StudentRepository.withDB("src/main/resources/students.db");
+
 	public static void main(String[] args) throws IOException, URISyntaxException {
 		HttpServer server = HttpServer.createSimpleServer();
 		addRootPath(server, "/home");
 		addDiplomaPath(server, "/diploma/*");
-		try
-		{
+		try {
 			server.start();
 			java.awt.Desktop.getDesktop().browse(new URI("http://localhost:8080/home"));
 			System.out.println("Press any key to stop the server...");
@@ -50,26 +52,28 @@ public class Main {
 			System.err.println(e);
 		}
 	}
+
 	protected static Student getStudentData(int studentId, StudentRepository repo) {
 		// create an arrayList of the students, because iterables are too hard
 		ArrayList<Student> students = new ArrayList<>();
 		Iterables.addAll(students, repo);
 		for (int i = 0; i < students.size(); i++) {
-			if (i+1 == studentId) {
+			if (i + 1 == studentId) {
 				return students.get(i);
 			}
 		}
-		for(Student student: repo) {
-			if(student.getId()==studentId) {
+		for (Student student : repo) {
+			if (student.getId() == studentId) {
 				return student;
 			}
 		}
 		throw new NoSuchElementException();
 	}
+
 	protected static void handleResponse(Response response, int studentId) throws IOException {
 		response.setContentType("application/pdf");
 		Student student = getStudentData(studentId, studentRepo);
-		DiplomaGenerator generator = new MiageDiplomaGenerator(student);
+		EncryptedDiplomaGeneratorDecorator generator = new EncryptedDiplomaGeneratorDecorator (new MiageDiplomaGenerator(student), student.getPassword());
 		try (InputStream is = generator.getContent()) {
 			try (NIOOutputStream os = response.createOutputStream()) {
 				ByteStreams.copy(is, os);
@@ -77,6 +81,7 @@ public class Main {
 		}
 		return;
 	}
+
 	protected static void addDiplomaPath(HttpServer server, String path) {
 		server.getServerConfiguration().addHttpHandler(new HttpHandler() {
 			public void service(Request request, Response response) throws Exception {
@@ -89,6 +94,7 @@ public class Main {
 			}
 		}, path);
 	}
+
 	protected static void addRootPath(HttpServer server, String path) {
 		server.getServerConfiguration().addHttpHandler(new HttpHandler() {
 			public void service(Request request, Response response) throws Exception {
