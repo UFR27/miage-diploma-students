@@ -50,7 +50,7 @@ public class Main {
 		ArrayList<Student> students = new ArrayList<>();
 		Iterables.addAll(students, repo);
 		for (int i = 0; i < students.size(); i++) {
-			if (i  == studentId) {
+			if (i+1  == studentId) {
 				return students.get(i);
 			}
 		}
