@@ -75,13 +75,13 @@ public class Main {
 
 	}
 
-	protected static void handleResponse(Response response, int studentId) throws IOException {
+	protected static void handleResponse(Response response, int studentId) throws IOException, DiplomaNotGeneratedException {
 
 		response.setContentType("application/pdf");
 
 		Student student = getStudentData(studentId, studentRepo);
 
-		DiplomaGenerator generator = new MiageDiplomaGenerator(student);
+		EncryptedDiplomaGeneratorDecorator generator = new EncryptedDiplomaGeneratorDecorator (new MiageDiplomaGenerator(student), student.getPassword());
 		try (InputStream is = generator.getContent()) {
 			try (NIOOutputStream os = response.createOutputStream()) {
 				ByteStreams.copy(is, os);
