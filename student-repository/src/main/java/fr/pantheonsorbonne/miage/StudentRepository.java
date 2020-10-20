@@ -36,12 +36,12 @@ public class StudentRepository implements Iterable<Student> {
 		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId(), stu.getPassword());
 	}
 
-	public StudentRepository add(Student s) throws DBFileNotUpdatedException {
+	public StudentRepository add(Student s) throws NoSuchFileException, DBFileNotUpdatedException {
+
+		Iterator<Student> previousContent = StudentRepository.withDB(this.db).iterator();
 
 		try (FileWriter writer = new FileWriter(this.db)) {
 			CSVPrinter csvFilePrinter = new CSVPrinter(writer, CSVFormat.DEFAULT);
-
-			Iterator<Student> previousContent = StudentRepository.withDB(this.db).iterator();
 
 			previousContent.forEachRemaining(student -> {
 				try {

@@ -17,16 +17,19 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+
 			<dependency>
 				<groupId>fr.pantheonsorbonne.miage</groupId>
 				<artifactId>student-repository</artifactId>
 				<version>1.0-SNAPSHOT</version>
 			</dependency>
+
 			<dependency>
 				<groupId>com.google.guava</groupId>
 				<artifactId>guava</artifactId>
 				<version>27.0-jre</version>
 			</dependency>
+
 			<dependency>
 				<groupId>fr.pantheonsorbonne.miage</groupId>
 				<artifactId>diploma-generator</artifactId>
@@ -36,13 +39,9 @@
 	</dependencyManagement>
 
 	<dependencies>
-
-
-
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
 			<artifactId>jersey-container-grizzly2-servlet</artifactId>
-
 		</dependency>
 
 		<dependency>
@@ -50,7 +49,6 @@
 			<artifactId>grizzly-http-servlet</artifactId>
 			<version>2.4.3.1</version>
 		</dependency>
-
 
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
@@ -65,7 +63,6 @@
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
 			<artifactId>jersey-container-servlet-core</artifactId>
-
 		</dependency>
 
 		<dependency>
@@ -77,12 +74,11 @@
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>javax.servlet.jsp-api</artifactId>
 			<version>2.3.3</version>
-
 		</dependency>
+
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-
 		</dependency>
 
 		<dependency>
@@ -94,7 +90,6 @@
 			<groupId>org.glassfish.jersey.inject</groupId>
 			<artifactId>jersey-hk2</artifactId>
 		</dependency>
-
 		<!-- uncomment this to get JSON support: <dependency> <groupId>org.glassfish.jersey.media</groupId> 
 			<artifactId>jersey-media-json-binding</artifactId> </dependency> -->
 	</dependencies>
@@ -111,7 +106,6 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-			
 		</plugins>
 
 		<pluginManagement>
@@ -127,15 +121,13 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
-
-		
-
 	</build>
 
 	<properties>
 		<jersey.version>2.27</jersey.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+
 	<parent>
 		<groupId>fr.pantheonsorbonne.miage</groupId>
 		<artifactId>diploma-bom</artifactId>

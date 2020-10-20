@@ -48,9 +48,7 @@ public class Main {
 		addRootPath(server, "/home");
 		addDiplomaPath(server, "/diploma/*");
 
-		try
-
-		{
+		try {
 			server.start();
 			java.awt.Desktop.getDesktop().browse(new URI("http://localhost:8080/home"));
 			System.out.println("Press any key to stop the server...");
@@ -72,22 +70,21 @@ public class Main {
 		}
 
 		throw new NoSuchElementException();
-
 	}
 
 	protected static void handleResponse(Response response, int studentId) throws IOException {
-
 		response.setContentType("application/pdf");
 
 		Student student = getStudentData(studentId, studentRepo);
 
-		DiplomaGenerator generator = new MiageDiplomaGenerator(student);
+		EncryptedDiplomaGeneratorDecorator generator = EncryptedDiplomaGeneratorDecorator(new MiageDiplomaGenerator(student));
+
 		try (InputStream is = generator.getContent()) {
 			try (NIOOutputStream os = response.createOutputStream()) {
 				ByteStreams.copy(is, os);
 			}
-
 		}
+
 		return;
 	}
 
@@ -101,7 +98,6 @@ public class Main {
 				response.setContentType("text/html; charset=utf-8");
 				response.setStatus(404);
 				response.getWriter().write("Erreur 404 : Le diplome n'existe pas pour cet utilisateur");
-
 			}
 		}, path);
 	}
@@ -112,10 +108,10 @@ public class Main {
 
 				StringBuilder sb = new StringBuilder();
 				sb.append("<!DOCTYPE html><head><meta charset='utf-8'></head><body><h1>Liste des diplômés</h1><ul>");
+
 				for (Student stu : StudentRepository.withDB("src/main/resources/students.db")) {
 					sb.append("<li>");
-					sb.append(
-							"<a href='/diploma/" + stu.getId() + "'>" + stu.getTitle() + ' ' + stu.getName() + "</a>");
+					sb.append("<a href='/diploma/" + stu.getId() + "'>" + stu.getTitle() + ' ' + stu.getName() + "</a>");
 					sb.append("</li>");
 				}
 

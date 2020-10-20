@@ -29,6 +29,7 @@ class AppTest {
 
 		fw.write("Nicolas,Dr.,1,nico\n");
 		fw.write("Francois,M.,2,franco\n");
+
 		fw.close();
 
 		assertEquals(2, Iterables.size(StudentRepository.withDB(tempDB.toString())));
