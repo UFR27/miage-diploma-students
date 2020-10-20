@@ -14,14 +14,15 @@ import com.google.common.collect.Iterables;
 /**
  * Unit test for simple App.
  */
-public class AppTest {
+ class AppTest {
 	/**
 	 * Rigorous Test :-)
 	 * 
 	 * @throws IOException
+	 * @throws FailedUpdateFileException 
 	 */
 	@Test
-	public void shouldAnswerWithTrue() throws IOException {
+	 void shouldAnswerWithTrue() throws IOException, FailedUpdateFileException {
 		File tempDB = Files.createTempFile("prefix", ".csv").toFile();
 		FileWriter fw = new FileWriter(tempDB);
 		fw.write("Nicolas,Dr.,1,nico\n");
