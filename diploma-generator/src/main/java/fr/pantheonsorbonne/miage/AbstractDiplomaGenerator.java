@@ -10,8 +10,6 @@ import java.io.OutputStream;
 import java.nio.file.Path;
 import java.util.Collection;
 
-
-
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
@@ -83,8 +81,5 @@ protected	abstract  Collection<DiplomaSnippet> getDiplomaSnippets();
 		}
 	}
 
-<<<<<<< HEAD
 
-=======
->>>>>>> webapp
 }
