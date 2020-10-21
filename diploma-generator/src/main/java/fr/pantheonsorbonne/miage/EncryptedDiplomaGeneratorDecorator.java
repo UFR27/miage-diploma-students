@@ -23,6 +23,7 @@ public class EncryptedDiplomaGeneratorDecorator extends DiplomaGeneratorDecorato
 		this.password = password;
 	}
 
+	
 	@Override
 	public InputStream getContent() {
 
