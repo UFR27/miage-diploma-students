@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> webapp
 package fr.pantheonsorbonne.miage;
 
 import java.io.FileOutputStream;
@@ -18,10 +21,14 @@ public class DiplomaFileAdapter extends FileGenerator<AbstractDiplomaGenerator> 
 		super(generator);
 
 	}
+<<<<<<< HEAD
 
 	
 	
 	
+=======
+
+>>>>>>> webapp
 	@Override
 	public void generateFile(String outputFile) {
 		try (FileOutputStream fos = new FileOutputStream(outputFile)) {
@@ -32,7 +39,13 @@ public class DiplomaFileAdapter extends FileGenerator<AbstractDiplomaGenerator> 
 			e.printStackTrace();
 			throw new RuntimeException("failed to write diploma file", e);
 		}
+<<<<<<< HEAD
 	
 
 }
 }
+=======
+	}
+
+}
+>>>>>>> webapp

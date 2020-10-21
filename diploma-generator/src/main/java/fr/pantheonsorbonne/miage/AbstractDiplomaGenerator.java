@@ -83,5 +83,8 @@ protected	abstract  Collection<DiplomaSnippet> getDiplomaSnippets();
 		}
 	}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> webapp
 }

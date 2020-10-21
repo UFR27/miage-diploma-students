@@ -19,5 +19,8 @@ public interface DiplomaGenerator {
 	 */
 	InputStream getContent() throws failedToGenerateException, OtherRuntimeException;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> webapp
 }
