@@ -58,7 +58,7 @@ protected	abstract  Collection<DiplomaSnippet> getDiplomaSnippets();
 
 	protected void writeToStream(OutputStream os) throws failedToGenerateException  {
 		Document document = new Document();
-	
+	//
 		try {
 
 			Path image = new File("src/main/resources/diploma.png").toPath();
