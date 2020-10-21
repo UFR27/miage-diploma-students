@@ -16,8 +16,9 @@ public interface DiplomaGenerator {
 	 * @return
 	 * @throws failedToGenerateException 
 	 * @throws OtherRuntimeException 
+	 * @throws FailedException 
 	 */
-	InputStream getContent() throws failedToGenerateException, OtherRuntimeException;
+	InputStream getContent() throws FailedToGenerateException, OtherRuntimeException;
 
 
 }
