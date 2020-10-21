@@ -8,7 +8,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Path;
 import java.util.Collection;
-import java.util.HashSet;
+
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -20,12 +20,9 @@ import fr.pantheonsorbonne.miage.diploma.DiplomaSnippet;
 
 public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
-	private Collection<DiplomaSnippet>  = new HashSet<>();
-
+	
 	public AbstractDiplomaGenerator() {
 		super();
-		
-
 	}
 
 	/**
@@ -56,7 +53,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
 	}
 
-	protected void writeToStream(OutputStream os) {
+	protected void writeToStream(OutputStream os) throws FailedGenerateException {
 		Document document = new Document();
 	
 		try {
