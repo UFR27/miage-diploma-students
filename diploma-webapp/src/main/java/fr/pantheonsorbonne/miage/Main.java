@@ -75,7 +75,7 @@ public class Main {
 
 	}
 
-	protected static void handleResponse(Response response, int studentId) throws IOException {
+	protected static void handleResponse(Response response, int studentId) throws IOException, failedToGenerateException, OtherRuntimeException {
 
 		response.setContentType("application/pdf");
 
