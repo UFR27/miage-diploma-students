@@ -38,7 +38,11 @@ public class StudentRepository implements Iterable<Student> {
 
 	public static List<String> toReccord(Student stu) {
 
+<<<<<<< HEAD
 		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId());
+=======
+		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId(),stu.getPassword());
+>>>>>>> encryption-unit-tests
 	}
 
 	public StudentRepository add(Student s) {
@@ -70,8 +74,12 @@ public class StudentRepository implements Iterable<Student> {
 
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
 			this.currentIterator = parser.getRecords().stream()
+<<<<<<< HEAD
 					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
 					.map(c -> (Student) c).iterator();
+=======
+				.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))					.map(c -> (Student) c).iterator();
+>>>>>>> encryption-unit-tests
 			return this.currentIterator;
 
 		} catch (IOException e) {
