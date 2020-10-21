@@ -19,6 +19,9 @@ public class DiplomaFileAdapter extends FileGenerator<AbstractDiplomaGenerator> 
 
 	}
 
+	
+	
+	
 	@Override
 	public void generateFile(String outputFile) {
 		try (FileOutputStream fos = new FileOutputStream(outputFile)) {
