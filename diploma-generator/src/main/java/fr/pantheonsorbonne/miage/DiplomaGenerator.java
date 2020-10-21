@@ -2,6 +2,8 @@ package fr.pantheonsorbonne.miage;
 
 import java.io.InputStream;
 
+
+
 /**
  * a Diploma generator for the MIAGE section
  * 
@@ -14,7 +16,8 @@ public interface DiplomaGenerator {
 	 * Generate the diploma in a Stream
 	 * 
 	 * @return
+	 * @throws FailedException 
 	 */
-	InputStream getContent();
+	InputStream getContent() throws FailedException ;
 
 }
