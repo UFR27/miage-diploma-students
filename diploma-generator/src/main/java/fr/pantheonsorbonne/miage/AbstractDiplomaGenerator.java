@@ -42,7 +42,11 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 	 * @see fr.pantheonsorbonne.miage.DiplomaGenerator#getContent()
 	 */
 	@Override
+<<<<<<< HEAD
 	public InputStream getContent() throws FailedFileStreamException {
+=======
+	public InputStream getContent() throws FailedFileStreamException, FailedGenerateException {
+>>>>>>> encryption
 
 		try (ByteArrayOutputStream bos = new ByteArrayOutputStream();) {
 
@@ -57,7 +61,11 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
 	}
 
+<<<<<<< HEAD
 	protected void writeToStream(OutputStream os) throws FailedFileStreamException {
+=======
+	protected void writeToStream(OutputStream os) throws FailedGenerateException {
+>>>>>>> encryption
 		Document document = new Document();
 	
 		try {
@@ -76,7 +84,11 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 			document.add(Image.getInstance(image.toAbsolutePath().toString()));
 
 		} catch (DocumentException | IOException e) {
+<<<<<<< HEAD
 			throw new FailedFileStreamException("failed to generate Document", e);
+=======
+			throw new FailedGenerateException("failed to generate Document", e);
+>>>>>>> encryption
 		} finally {
 			document.close();
 		}
