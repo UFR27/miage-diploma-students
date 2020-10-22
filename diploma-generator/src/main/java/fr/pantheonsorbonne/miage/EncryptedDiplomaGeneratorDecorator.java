@@ -17,14 +17,12 @@ import fr.pantheonsorbonne.miage.diploma.DiplomaSnippet;
 public class EncryptedDiplomaGeneratorDecorator extends DiplomaGeneratorDecorator {
 
 	private String password;
-	
 
 	public EncryptedDiplomaGeneratorDecorator(DiplomaGenerator other, String password) {
 		super(other);
 		this.password = password;
 	}
 
-	
 	
 	@Override
 	public InputStream getContent() {
@@ -48,8 +46,6 @@ public class EncryptedDiplomaGeneratorDecorator extends DiplomaGeneratorDecorato
 
 	}
 
-	
-	
 	@Override
 	protected Collection<DiplomaSnippet> getDiplomaSnippets() {
 		return Collections.emptyList();
