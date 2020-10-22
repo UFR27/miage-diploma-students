@@ -30,7 +30,7 @@ class EncryptedDiplomaGeneratorTest extends DiplomaGeneratorTest {
 	}
 
 	@Test
-	void testEncryptedPdfTest() throws IOException, DocumentException {
+	void testEncryptedPdfTest() throws IOException, DocumentException, FileException {
 
 		Student stu = new Student(1, "Nicolas", "", "nico");
 		DiplomaGenerator generator = new MiageDiplomaGenerator(stu, DiplomaGeneratorTest.currentDate);
