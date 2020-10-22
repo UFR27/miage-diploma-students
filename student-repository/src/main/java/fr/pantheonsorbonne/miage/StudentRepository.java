@@ -3,6 +3,8 @@ package fr.pantheonsorbonne.miage;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
@@ -21,6 +23,9 @@ public class StudentRepository implements Iterable<Student> {
 	}
 
 	public static StudentRepository withDB(String db) {
+		if (!Files.exists(Paths.get(db))) {
+			throw new IllegalArgumentException("failed to find" + Paths.get(db).toAbsolutePath().toString());
+		}
 		return new StudentRepository(db);
 	}
 
@@ -56,7 +61,6 @@ public class StudentRepository implements Iterable<Student> {
 	public java.util.Iterator<Student> iterator() {
 		java.util.Iterator<Student> currentIterator = null;
 		try (FileReader reader = new FileReader(this.db)) {
-			
 
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
 			currentIterator = parser.getRecords().stream()
@@ -69,5 +73,6 @@ public class StudentRepository implements Iterable<Student> {
 			return Collections.<Student>emptySet().iterator();
 		}
 	}
+	
 
 }
