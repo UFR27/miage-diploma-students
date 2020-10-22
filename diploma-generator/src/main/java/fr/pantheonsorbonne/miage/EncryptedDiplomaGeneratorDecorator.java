@@ -33,7 +33,7 @@ public class EncryptedDiplomaGeneratorDecorator extends DiplomaGeneratorDecorato
 	}
 
 	@Override
-	public InputStream getContent() {
+	public InputStream getContent() throws FailedToGenerateException {
 
 		try (InputStream is = other.getContent()) {
 			try (ByteArrayOutputStream os = new ByteArrayOutputStream()) {
