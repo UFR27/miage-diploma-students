@@ -25,7 +25,7 @@ import org.junit.jupiter.api.Test;
 
 import com.google.common.io.ByteStreams;
 
-public class DiplomaGeneratorTest {
+class DiplomaGeneratorTest {
 
 	static protected Date currentDate;
 	{
