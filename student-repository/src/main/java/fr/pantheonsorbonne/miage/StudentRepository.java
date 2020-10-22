@@ -61,10 +61,17 @@ public class StudentRepository implements Iterable<Student> {
 		try (FileReader reader = new FileReader(this.db)) {
 			java.util.Iterator<Student> currentIterator = null;
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
+<<<<<<< HEAD
 			currentIterator = parser.getRecords().stream()
 					.map(reccord -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1)))
 					.map(c ->  c).iterator();
 			return currentIterator;
+=======
+			this.currentIterator = parser.getRecords().stream()
+					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
+					.map(c -> (Student) c).iterator();
+			return this.currentIterator;
+>>>>>>> encryption
 
 		} catch (IOException e) {
 			Logger.getGlobal().info("IO PB" + e.getMessage());
