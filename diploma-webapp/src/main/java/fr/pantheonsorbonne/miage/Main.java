@@ -65,12 +65,13 @@ public class Main {
 		for (Student student : repo) {
 			if(student.getId() == studentId) {
 				return student;
-
+			}
+		}
 		throw new NoSuchElementException();
 
 	}
 
-	protected static void handleResponse(Response response, int studentId) throws IOException {
+	protected static void handleResponse(Response response, int studentId) throws IOException, FailedToGenerateException {
 
 		response.setContentType("application/pdf");
 
