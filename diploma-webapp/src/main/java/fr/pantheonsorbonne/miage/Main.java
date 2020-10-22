@@ -38,10 +38,10 @@ public class Main {
 		{
 			server.start();
 			java.awt.Desktop.getDesktop().browse(new URI("http://localhost:8080/home"));
-			logger.log(Level.INFO,"Press any key to stop the server...");
+			System.out.println("Press any key to stop the server...");
 			System.in.read();
 		} catch (Exception e) {
-			logger.println(e);
+			System.err.println(e);
 		}
 	}
 
