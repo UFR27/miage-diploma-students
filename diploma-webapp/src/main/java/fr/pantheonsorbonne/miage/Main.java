@@ -43,6 +43,7 @@ public class Main {
 		} catch (Exception e) {
 			System.err.println(e);
 		}
+		
 	}
 
 	protected static Student getStudentData(int studentId, StudentRepository repo) {
