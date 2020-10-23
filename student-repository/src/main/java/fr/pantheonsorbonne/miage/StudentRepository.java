@@ -4,7 +4,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
+
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collections;
@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
+
 
 public class StudentRepository implements Iterable<Student> {
 
@@ -33,12 +34,14 @@ public class StudentRepository implements Iterable<Student> {
 
 	public static List<String> toReccord(Student stu) {
 
+
 		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId());
 	}
 
 
 	@SuppressWarnings("resource")
 	public StudentRepository add(Student s)throws FailedToUpdateException{
+
 		Iterator<Student> previousContent = StudentRepository.withDB(this.db).iterator();
 		try (FileWriter writer = new FileWriter(this.db)) {
 			CSVPrinter csvFilePrinter = new CSVPrinter(writer, CSVFormat.DEFAULT);
@@ -47,11 +50,13 @@ public class StudentRepository implements Iterable<Student> {
 				try {
 					csvFilePrinter.printRecord(toReccord(student));
 				} catch (IOException e) {
+
 					try {
 						throw new FailedToUpdateException("failed to update db file");
 					} catch (Exception e1) {
 						e1.printStackTrace();
 					}
+
 				}
 			});
 			csvFilePrinter.printRecord(toReccord(s));
@@ -79,6 +84,7 @@ public class StudentRepository implements Iterable<Student> {
 					.map(reccord -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1),reccord.get(3)))
 					.map(c -> c).iterator();
 			return currentIterator;
+
 
 
 
