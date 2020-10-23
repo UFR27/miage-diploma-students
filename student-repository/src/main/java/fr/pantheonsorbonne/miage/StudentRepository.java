@@ -22,9 +22,9 @@ public class StudentRepository implements Iterable<Student> {
 		this.db = db;
 	};
 
-	public static StudentRepository withDB(String db) {
+	public static StudentRepository withDB(String db) throws NoSuchFileException{
 		if (!Files.exists(Paths.get(db))) {
-			throw new RuntimeException("failed to find" + Paths.get(db).toAbsolutePath().toString());
+			throw new NoSuchFileException("failed to find" + Paths.get(db).toAbsolutePath().toString());
 		}
 		return new StudentRepository(db);
 	}
@@ -34,7 +34,7 @@ public class StudentRepository implements Iterable<Student> {
 		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId());
 	}
 
-	public StudentRepository add(Student s) throws UpdateFailed {
+	public StudentRepository add(Student s) throws UpdateFailed,NoSuchFileException {
 		Iterator<Student> previousContent = StudentRepository.withDB(this.db).iterator();
 		try (FileWriter writer = new FileWriter(this.db)) {
 			CSVPrinter csvFilePrinter = new CSVPrinter(writer, CSVFormat.DEFAULT);
@@ -63,8 +63,9 @@ public class StudentRepository implements Iterable<Student> {
 		try (FileReader reader = new FileReader(this.db)) {
 
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
+
 			currentIterator = parser.getRecords().stream()
-					.map(reccord -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1)))
+					.map(reccord -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
 					.map(c -> c).iterator();
 			return currentIterator;
 
