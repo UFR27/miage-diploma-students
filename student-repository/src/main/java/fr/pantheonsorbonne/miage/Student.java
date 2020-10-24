@@ -14,6 +14,7 @@ public class Student {
 		this.password = password;
 	}
 
+
 	public String getName() {
 		return name;
 	}
@@ -30,6 +31,7 @@ public class Student {
 		this.title = title;
 	}
 
+	
 
 	public int getId() {
 		return this.id;
