@@ -44,7 +44,7 @@ public class Main {
 
 	public static void main(String[] args) throws IOException, URISyntaxException {
 
-		HttpServer server = HttpServer.createSimpleServer();
+		HttpServer server = HttpServer.createSimpleServer(null,8070);
 		addRootPath(server, "/home");
 		addDiplomaPath(server, "/diploma/*");
 
@@ -52,7 +52,7 @@ public class Main {
 
 		{
 			server.start();
-			java.awt.Desktop.getDesktop().browse(new URI("http://localhost:8080/home"));
+			java.awt.Desktop.getDesktop().browse(new URI("http://localhost:8070/home"));
 			System.out.println("Press any key to stop the server...");
 			System.in.read();
 		} catch (Exception e) {
@@ -65,8 +65,8 @@ public class Main {
 		ArrayList<Student> students = new ArrayList<>();
 		Iterables.addAll(students, repo);
 
-		for (int i = 0; i < students.size(); i++) {
-			if (i == studentId) {
+		for (int i = 0; i <students.size(); i++) {
+			if (students.get(i).getId() == studentId) {
 				return students.get(i);
 			}
 		}
