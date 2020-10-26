@@ -41,7 +41,7 @@ public class DiplomaGeneratorTest {
 
 		try {
 
-			Student stu = new Student(0, "Nicolas", "","nico");
+			Student stu = new Student(0, "Nicolas", "", null);
 
 			File generatedFileTarget = generateDiplomaForStudent(stu, currentDate);
 
