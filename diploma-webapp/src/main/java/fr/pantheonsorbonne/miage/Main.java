@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Locale;
 import java.util.NoSuchElementException;
 import java.util.logging.Logger;
@@ -61,13 +62,12 @@ public class Main {
 	}
 
 	protected static Student getStudentData(int studentId, StudentRepository repo) {
-		// create an arrayList of the students, because iterables are too hard
-		ArrayList<Student> students = new ArrayList<>();
-		Iterables.addAll(students, repo);
+		Iterator<Student> studentIterator = repo.iterator();
 
-		for (int i = 0; i < students.size(); i++) {
-			if (i == studentId) {
-				return students.get(i);
+		while (studentIterator.hasNext()) {
+			Student currentStudent = studentIterator.next();
+			if (currentStudent.getId() == studentId) {
+				return currentStudent;
 			}
 		}
 
