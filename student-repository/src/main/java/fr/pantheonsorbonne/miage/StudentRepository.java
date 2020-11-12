@@ -44,7 +44,7 @@ public class StudentRepository implements Iterable<Student> {
 				try {
 					csvFilePrinter.printRecord(toReccord(student));
 				} catch (IOException e) {
-					throw new IllegalArgumentException("failed to update db file");
+					e.printStackTrace();
 				}
 			});
 			csvFilePrinter.printRecord(toReccord(s));
