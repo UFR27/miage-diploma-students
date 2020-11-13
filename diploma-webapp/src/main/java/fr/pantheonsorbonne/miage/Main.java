@@ -69,6 +69,7 @@ public class Main {
 			if (stu.getId() == studentId) {
 				return stu;
 			}
+			
 		}
 
 		throw new NoSuchElementException();
