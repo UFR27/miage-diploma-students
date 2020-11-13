@@ -44,7 +44,7 @@ public class StudentRepository implements Iterable<Student> {
 				try {
 					csvFilePrinter.printRecord(toReccord(student));
 				} catch (IOException e) {
-					throw new RuntimeException("failed to update db file");
+					throw new StudentRepositoryException("failed to update db file");
 				}
 			});
 			csvFilePrinter.printRecord(toReccord(s));
@@ -52,7 +52,7 @@ public class StudentRepository implements Iterable<Student> {
 			csvFilePrinter.close(true);
 
 		} catch (IOException e) {
-			throw new RuntimeException("failed to update db file");
+			throw new StudentRepositoryException("failed to update db file");
 		}
 		return this;
 
