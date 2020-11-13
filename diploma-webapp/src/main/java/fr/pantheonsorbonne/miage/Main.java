@@ -64,10 +64,10 @@ public class Main {
 		// create an arrayList of the students, because iterables are too hard
 		ArrayList<Student> students = new ArrayList<>();
 		Iterables.addAll(students, repo);
-
-		for (int i = 0; i < students.size(); i++) {
+//Ayant eu des problèmes pour le débogage j'ai pris la solution de David
+		for (int i = 1; i <= students.size(); i++) {
 			if (i == studentId) {
-				return students.get(i);
+				return students.get(i-1);
 			}
 		}
 
