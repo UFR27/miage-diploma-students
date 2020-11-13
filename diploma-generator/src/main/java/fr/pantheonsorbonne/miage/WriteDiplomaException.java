@@ -1,9 +1,9 @@
 package fr.pantheonsorbonne.miage;
 
-public class WriteDiplomaException extends Exception {
+public class WriteDiplomaException extends RuntimeException {
 
-	public WriteDiplomaException(String message, Exception e) {
-		super(message, e);
+	public WriteDiplomaException(String message) {
+		super(message);
 	}
 
 }
