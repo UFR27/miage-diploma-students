@@ -71,12 +71,6 @@ public class Main {
 			}
 		}
 
-		/*for (int i = 0; i < students.size(); i++) {
-			if (i == studentId) {
-				return students.get(i);
-			}
-		}*/
-
 		throw new NoSuchElementException();
 
 	}
