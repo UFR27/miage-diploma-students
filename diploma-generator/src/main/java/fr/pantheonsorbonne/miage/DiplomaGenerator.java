@@ -16,6 +16,6 @@ public interface DiplomaGenerator {
 	 * @return
 	 * @throws AbstractDiplomaGeneratorException 
 	 */
-	InputStream getContent() throws AbstractDiplomaGeneratorException;
+	InputStream getContent();
 
 }

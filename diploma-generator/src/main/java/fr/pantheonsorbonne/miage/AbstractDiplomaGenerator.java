@@ -41,7 +41,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 	 * @see fr.pantheonsorbonne.miage.DiplomaGenerator#getContent()
 	 */
 	@Override
-	public InputStream getContent() throws AbstractDiplomaGeneratorException {
+	public InputStream getContent() {
 
 		try (ByteArrayOutputStream bos = new ByteArrayOutputStream();) {
 
@@ -56,7 +56,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
 	}
 
-	protected void writeToStream(OutputStream os) throws AbstractDiplomaGeneratorException {
+	protected void writeToStream(OutputStream os) {
 		Document document = new Document();
 	
 		try {
