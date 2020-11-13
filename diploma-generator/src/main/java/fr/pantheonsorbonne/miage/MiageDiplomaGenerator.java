@@ -28,9 +28,13 @@ public class MiageDiplomaGenerator extends AbstractDiplomaGenerator {
 
 	/**
 	 * Create the generator using a student name
-	 * 
 	 *
+	 * @param name
 	 */
+	public MiageDiplomaGenerator(Student student) {
+		this(student, new Date());
+	}
+
 	public MiageDiplomaGenerator(Student student, Date date) {
 		this.student = student;
 		this.date = date;
