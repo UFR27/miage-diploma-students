@@ -1,5 +1,4 @@
 package fr.pantheonsorbonne.miage;
-
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
