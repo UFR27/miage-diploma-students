@@ -32,7 +32,11 @@ public class StudentRepository implements Iterable<Student> {
 
 	public static List<String> toReccord(Student stu) {
 
+<<<<<<< HEAD
 		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId());
+=======
+		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId(),stu.getPassword());
+>>>>>>> encryption-unit-tests
 	}
 
 	public StudentRepository add(Student s) {
