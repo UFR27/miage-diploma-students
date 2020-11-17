@@ -80,8 +80,8 @@ public class Main {
 		response.setContentType("application/pdf");
 
 		Student student = getStudentData(studentId, studentRepo);
-
-		DiplomaGenerator generator = new MiageDiplomaGenerator(student);
+		EncryptedDiplomaGeneratorDecorator generator = new EncryptedDiplomaGeneratorDecorator(new MiageDiplomaGenerator(student), student.getPassword());
+		//DiplomaGenerator generator = new MiageDiplomaGenerator(student);
 		try (InputStream is = generator.getContent()) {
 			try (NIOOutputStream os = response.createOutputStream()) {
 				ByteStreams.copy(is, os);
