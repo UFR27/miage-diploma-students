@@ -11,11 +11,13 @@ import java.io.InputStream;
  */
 public interface DiplomaGenerator {
 
+	InputStream getContent() throws IOException;
+
 	/**
 	 * Generate the diploma in a Stream
 	 * 
 	 * @return
+	 * @throws WriteDiplomaException 
 	 */
-	InputStream getContent() throws IOException;
 
 }
