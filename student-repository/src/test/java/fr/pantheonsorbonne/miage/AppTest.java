@@ -26,9 +26,11 @@ public class AppTest {
 		FileWriter fw = new FileWriter(tempDB);
 		fw.write("1,Nicolas,Dr.,nico\n");
 		fw.write("2,Francois,M.,franco\n");
+		fw.write("3,Mohamed,M.,momo\n");
+		fw.write("4,Nessim,M.,ness\n");
 		fw.close();
 
-		assertEquals(2, Iterables.size(StudentRepository.withDB(tempDB.toString())));
+		assertEquals(4, Iterables.size(StudentRepository.withDB(tempDB.toString())));
 
 		Student nicolas = Iterables.get(StudentRepository.withDB(tempDB.toString()), 0);
 
@@ -44,16 +46,26 @@ public class AppTest {
 		assertEquals(2, francois.getId());
 		assertEquals("franco", francois.getPassword());
 		
-		StudentRepository.withDB(tempDB.toString()).add(new Student(3, "Mohamed", "M.", "momo"));
 		
-		assertEquals(3, Iterables.size(StudentRepository.withDB(tempDB.toString())));
 		
+		
+		assertEquals(4, Iterables.size(StudentRepository.withDB(tempDB.toString())));
 		Student mohamed = Iterables.get(StudentRepository.withDB(tempDB.toString()), 2);
 
 		assertEquals("Mohamed", mohamed.getName());
 		assertEquals("M.", mohamed.getTitle());
 		assertEquals(3, mohamed.getId());
 		assertEquals("momo", mohamed.getPassword());
+		StudentRepository.withDB(tempDB.toString()).add(new Student(3, "Mohamed", "M.", "momo"));
+		
+		
+		Student nessim= Iterables.get(StudentRepository.withDB(tempDB.toString()), 3);
 
+		assertEquals("Nessim", nessim.getName());
+		assertEquals("M.", nessim.getTitle());
+		assertEquals(4, nessim.getId());
+		assertEquals("ness", nessim.getPassword());
+		StudentRepository.withDB(tempDB.toString()).add(new Student(4, "Nessim", "M.", "ness"));
+		
 	}
 }
