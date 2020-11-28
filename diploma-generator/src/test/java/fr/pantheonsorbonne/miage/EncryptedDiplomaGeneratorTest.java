@@ -40,7 +40,12 @@ public class EncryptedDiplomaGeneratorTest extends DiplomaGeneratorTest {
 		Path tempFileEncrypted = Files.createTempFile("prefix", ".pdf");
 		Path tempFileDecrypted = Files.createTempFile("prefix", ".pdf");
 
-		adapter.generateFile(tempFileEncrypted.toString());
+		try {
+			adapter.generateFile(tempFileEncrypted.toString());
+		} catch (GenerateFileException | GetContentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		PdfReader reader = new PdfReader(tempFileEncrypted.toString(), "abc".getBytes());
 

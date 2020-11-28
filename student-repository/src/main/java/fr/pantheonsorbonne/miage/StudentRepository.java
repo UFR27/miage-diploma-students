@@ -33,8 +33,8 @@ public class StudentRepository implements Iterable<Student> {
 
 	public static List<String> toReccord(Student stu) {
 
-		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId(),stu.getPassword());
-	}
+		return Arrays.asList("" + stu.getId(), stu.getName(), stu.getTitle(),stu.getPassword());
+		}
 
 	public StudentRepository add(Student s) {
 		Iterator<Student> previousContent = StudentRepository.withDB(this.db).iterator();
@@ -66,10 +66,11 @@ public class StudentRepository implements Iterable<Student> {
 		try (FileReader reader = new FileReader(this.db)) {
 
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
-			this.currentIterator = parser.getRecords().stream()
+			currentIterator = parser.getRecords().stream()
 					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
 					.map(c -> (Student) c).iterator();
-			return this.currentIterator;
+			
+			return currentIterator;
 
 
 		} catch (IOException e) {
