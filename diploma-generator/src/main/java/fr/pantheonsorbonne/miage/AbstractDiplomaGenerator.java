@@ -49,7 +49,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
 		} catch (IOException e) {
 
-			throw new WriteDiplomaException("failed to generate the file to stream to", e);
+			throw new GenerateDocumentException("failed to generate the file to stream to", e);
 		}
 
 	}
