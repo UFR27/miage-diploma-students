@@ -15,7 +15,7 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfStamper;
 
-public class EncryptedDiplomaGeneratorTest extends DiplomaGeneratorTest {
+class EncryptedDiplomaGeneratorTest extends DiplomaGeneratorTest {
 
 	private final class EncryptedPdfReader extends PdfReader {
 		private EncryptedPdfReader(String filename, String password) throws IOException {
@@ -30,7 +30,7 @@ public class EncryptedDiplomaGeneratorTest extends DiplomaGeneratorTest {
 	}
 
 	@Test
-	public void testEncryptedPdfTest() throws IOException, DocumentException {
+	void testEncryptedPdfTest() throws IOException, DocumentException {
 
 		Student stu = new Student(1, "Nicolas", "", "nico");
 		DiplomaGenerator generator = new MiageDiplomaGenerator(stu, DiplomaGeneratorTest.currentDate);
@@ -39,15 +39,14 @@ public class EncryptedDiplomaGeneratorTest extends DiplomaGeneratorTest {
 
 		Path tempFileEncrypted = Files.createTempFile("prefix", ".pdf");
 		Path tempFileDecrypted = Files.createTempFile("prefix", ".pdf");
-
+		
 		adapter.generateFile(tempFileEncrypted.toString());
-
+		
 		PdfReader reader = new PdfReader(tempFileEncrypted.toString(), "abc".getBytes());
 
 		PdfStamper stamper = new PdfStamper(reader, new FileOutputStream(tempFileDecrypted.toString()));
 		stamper.close();
 		reader.close();
-
 		// write the bytes of an image version of the generated pdf diploma in this
 		// OutputStream
 		ByteArrayOutputStream generatedImageData = new ByteArrayOutputStream();
