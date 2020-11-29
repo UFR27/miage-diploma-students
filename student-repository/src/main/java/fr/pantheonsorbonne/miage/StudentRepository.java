@@ -30,7 +30,7 @@ public class StudentRepository implements Iterable<Student> {
 
 	public static StudentRepository withDB(String db) {
 		if (!Files.exists(Paths.get(db))) {
-			throw new RuntimeException("failed to find" + Paths.get(db).toAbsolutePath().toString());
+			throw new StudentRepositoryException("failed to find" + Paths.get(db).toAbsolutePath().toString());
 		}
 		return new StudentRepository(db);
 	}
@@ -69,7 +69,7 @@ public class StudentRepository implements Iterable<Student> {
 			java.util.Iterator<Student> currentIterator;
 
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
-      this.currentIterator = parser.getRecords().stream()
+			currentIterator = parser.getRecords().stream()
 					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
 					.map(c -> (Student) c).iterator();
 			return currentIterator;
