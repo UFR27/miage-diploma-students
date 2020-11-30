@@ -71,9 +71,8 @@ public class Main {
 //			}
 //		}
 		
-		Object[] studentsArray = students.toArray();
-		for (int i = 0; i < studentsArray.length; i++) {
-			if (((Student) studentsArray[i]).getId() == studentId) {
+		for (int i = 0; i < students.size(); i++) {
+			if(students.get(i).getId() == studentId) {
 				return students.get(i);
 			}
 		}
