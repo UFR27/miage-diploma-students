@@ -8,19 +8,14 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
-import org.apache.commons.csv.CSVRecord;
 
 public class StudentRepository implements Iterable<Student> {
 
 	private String db;
-	private java.util.Iterator<Student> currentIterator = null;
 
 	private StudentRepository(String db) {
 		this.db = db;
@@ -35,7 +30,7 @@ public class StudentRepository implements Iterable<Student> {
 		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId());
 	}
 
-	public StudentRepository add(Student s) {
+	public static StudentRepository add(Student s) {
 		Iterator<Student> previousContent = StudentRepository.withDB(this.db).iterator();
 		try (FileWriter writer = new FileWriter(this.db)) {
 			CSVPrinter csvFilePrinter = new CSVPrinter(writer, CSVFormat.DEFAULT);
@@ -44,7 +39,7 @@ public class StudentRepository implements Iterable<Student> {
 				try {
 					csvFilePrinter.printRecord(toReccord(student));
 				} catch (IOException e) {
-					throw new RuntimeException("failed to update db file");
+					throw new UpdateDBException("failed to update db file");
 				}
 			});
 			csvFilePrinter.printRecord(toReccord(s));
@@ -52,7 +47,7 @@ public class StudentRepository implements Iterable<Student> {
 			csvFilePrinter.close(true);
 
 		} catch (IOException e) {
-			throw new RuntimeException("failed to update db file");
+			throw new UpdateDBException("failed to update db file");
 		}
 		return this;
 
@@ -60,14 +55,15 @@ public class StudentRepository implements Iterable<Student> {
 
 	@Override
 	public java.util.Iterator<Student> iterator() {
+		java.util.Iterator<Student> currentIterator = null;
 		try (FileReader reader = new FileReader(this.db)) {
 			
 
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
-			this.currentIterator = parser.getRecords().stream()
-					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1)))
-					.map(c -> (Student) c).iterator();
-			return this.currentIterator;
+			currentIterator = parser.getRecords().stream()
+					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
+					.map(c -> c).iterator();
+			return currentIterator;
 
 		} catch (IOException e) {
 			Logger.getGlobal().info("IO PB" + e.getMessage());
