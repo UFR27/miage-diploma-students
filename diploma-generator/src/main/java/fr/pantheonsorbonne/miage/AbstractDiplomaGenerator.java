@@ -22,8 +22,6 @@ import fr.pantheonsorbonne.miage.diploma.DiplomaSnippet;
 
 public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
-	private Collection<DiplomaSnippet> snippets = new HashSet<>();
-
 	public AbstractDiplomaGenerator() {
 		super();
 		
@@ -43,7 +41,11 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 	 * @see fr.pantheonsorbonne.miage.DiplomaGenerator#getContent()
 	 */
 	@Override
+<<<<<<< HEAD
+	public InputStream getContent() throws DiplomaGenerationException, GenerateDocumentException, GenerateFileException {
+=======
 	public InputStream getContent() throws DiplomaGenerationException, DocumentGenerationException {
+>>>>>>> master
 
 		try (ByteArrayOutputStream bos = new ByteArrayOutputStream();) {
 
@@ -53,12 +55,20 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
 		} catch (IOException e) {
 
+<<<<<<< HEAD
+			throw new GenerateFileException("failed to generate the file to stream to", e);
+=======
 			throw new DiplomaGenerationException("failed to generate the file to stream to", e);
+>>>>>>> master
 		}
 
 	}
 
+<<<<<<< HEAD
+	protected void writeToStream(OutputStream os) throws GenerateDocumentException {
+=======
 	protected void writeToStream(OutputStream os) throws DocumentGenerationException {
+>>>>>>> master
 		Document document = new Document();
 	
 		try {
@@ -77,7 +87,11 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 			document.add(Image.getInstance(image.toAbsolutePath().toString()));
 
 		} catch (DocumentException | IOException e) {
+<<<<<<< HEAD
+			throw new GenerateDocumentException("failed to generate Document", e);
+=======
 			throw new DocumentGenerationException("failed to generate Document", e);
+>>>>>>> master
 		} finally {
 			document.close();
 		}

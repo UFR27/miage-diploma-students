@@ -5,10 +5,11 @@ public class Student {
 	private int id;
 
 
-	public Student(int id, String name, String title) {
+	public Student(int id, String name, String title, String pwd) {
 		this.name = name;
 		this.title = title;
 		this.id = id;
+		this.pwd = pwd;
 
 	}
 
@@ -40,6 +41,16 @@ public class Student {
 	public String toString() {
 		return this.getTitle() + " " + this.getName();
 	}
+	
+	public String getPwd() {
+		return pwd;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
+
+	private String pwd;
 
 	
 }
