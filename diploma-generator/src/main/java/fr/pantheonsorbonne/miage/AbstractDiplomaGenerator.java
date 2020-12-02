@@ -52,7 +52,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
 	protected void writeToStream(OutputStream os) throws DocumentGenerationException {
 		Document document = new Document();
-	
+	 
 		try {
 
 			Path image = new File("src/main/resources/diploma.png").toPath();
