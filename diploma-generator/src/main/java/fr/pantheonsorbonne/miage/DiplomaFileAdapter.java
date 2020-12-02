@@ -6,6 +6,7 @@ import java.io.InputStream;
 
 import com.google.common.io.ByteStreams;
 
+
 public class DiplomaFileAdapter extends FileGenerator<AbstractDiplomaGenerator> {
 
 	public DiplomaFileAdapter(AbstractDiplomaGenerator generator) {
