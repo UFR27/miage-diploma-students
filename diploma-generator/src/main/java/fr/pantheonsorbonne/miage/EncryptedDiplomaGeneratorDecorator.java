@@ -1,3 +1,4 @@
+
 package fr.pantheonsorbonne.miage;
 
 import java.io.ByteArrayInputStream;
@@ -49,7 +50,7 @@ public class EncryptedDiplomaGeneratorDecorator extends DiplomaGeneratorDecorato
 		} catch (IOException | DocumentException e) {
 
 			e.printStackTrace();
-			throw new GenerateEncryptedFileException("failed to generate Encrypted File");
+			throw new GenerateEncryptionException("failed to generate Encrypted File");
 		}
 
 	}
@@ -60,3 +61,4 @@ public class EncryptedDiplomaGeneratorDecorator extends DiplomaGeneratorDecorato
 	}
 
 }
+

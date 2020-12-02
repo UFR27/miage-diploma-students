@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Path;
 import java.util.Collection;
+
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
@@ -30,7 +31,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 	 * 
 	 * @return
 	 */
-	protected abstract Collection<DiplomaSnippet> getDiplomaSnippets();
+     protected abstract Collection<DiplomaSnippet> getDiplomaSnippets();
 
 	/*
 	 * (non-Javadoc)
@@ -48,7 +49,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
 		} catch (IOException e) {
 
-			throw new GenerateFileException("failed to generate the file to stream to", e);
+			throw new GenerateDocumentException("failed to generate the file to stream to", e);
 		}
 
 	}
