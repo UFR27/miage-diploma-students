@@ -1,12 +1,12 @@
 package fr.pantheonsorbonne.miage;
 
-public class WriteDiplomaException extends Exception {
+public class TestDateException extends RuntimeException {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public WriteDiplomaException(String string, Exception e) {
+	public TestDateException(String string, Exception e) {
 		super(string, e);
 	}
 }

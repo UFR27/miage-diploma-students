@@ -25,14 +25,14 @@ import org.junit.jupiter.api.Test;
 
 import com.google.common.io.ByteStreams;
 
-public class DiplomaGeneratorTest {
-
+class DiplomaGeneratorTest {
+	
 	static protected Date currentDate;
 	{
 		try {
 			currentDate = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").parse("11/23/2018 17:00:00");
 		} catch (ParseException e) {
-			throw new RuntimeException("failed to compute test date", e);
+			throw new TestDateException("failed to compute test date", e);
 		}
 	}
 
@@ -73,7 +73,7 @@ public class DiplomaGeneratorTest {
 		ByteStreams.copy(generatedImageReader, generatedImageData);
 	}
 
-	protected File generateDiplomaForStudent(Student stu, Date date) throws IOException, FileNotFoundException, WriteDiplomaException, DiplomaGenerationException, GenerateDocumentException, GenerateFileException {
+	protected File generateDiplomaForStudent(Student stu, Date date) throws IOException, FileNotFoundException, FileGenerationException, DocumentGenerationException, WriteDiplomaFileException, DiplomaGenerationException {
 		ByteArrayOutputStream generatedFileContent = new ByteArrayOutputStream();
 		File generatedFileTarget = Files.createTempFile("prefix_", "_suffic").toFile();
 		MiageDiplomaGenerator generator = new MiageDiplomaGenerator(stu, date);

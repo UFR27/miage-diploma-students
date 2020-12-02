@@ -1,12 +1,12 @@
 package fr.pantheonsorbonne.miage;
 
-public class GenerateDocumentException extends Exception {
+public class FileGenerationException extends Exception {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public GenerateDocumentException(String string, Exception e) {
+	public FileGenerationException(String string, Exception e) {
 		super(string, e);
 	}
 }

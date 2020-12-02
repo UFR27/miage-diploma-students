@@ -1,6 +1,5 @@
 package fr.pantheonsorbonne.miage;
 
-<<<<<<< HEAD
 public class DiplomaGenerationException extends Exception {
 	/**
 	 * 
@@ -10,14 +9,4 @@ public class DiplomaGenerationException extends Exception {
 	public DiplomaGenerationException(String string, Exception e) {
 		super(string, e);
 	}
-=======
-import java.io.IOException;
-
-public class DiplomaGenerationException extends Exception {
-
-	public DiplomaGenerationException(String string, IOException e) {
-		super(string, e);
-	}
-
->>>>>>> master
 }
