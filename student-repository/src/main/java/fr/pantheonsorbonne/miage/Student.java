@@ -3,15 +3,15 @@ package fr.pantheonsorbonne.miage;
 public class Student {
 
 	private int id;
-
+	private String password;
 
 	public Student(int id, String name, String title, String pwd) {
 		this.name = name;
 		this.title = title;
 		this.id = id;
 		this.pwd = pwd;
-
 	}
+
 
 	private String name;
 
@@ -52,5 +52,7 @@ public class Student {
 
 	private String pwd;
 
-	
+	public String getPassword() {
+		return this.password;
+	}
 }
