@@ -14,5 +14,9 @@ public abstract class FileGenerator<G extends DiplomaGenerator> {
 		this.generator = t;
 	}
 
+<<<<<<< HEAD
 	public abstract void generateFile(String outputFile) throws WriteDiplomaException, DiplomaGenerationException, GenerateDocumentException, GenerateFileException;
+=======
+	public abstract void generateFile(String outputFile) throws DiplomaGenerationException, DocumentGenerationException, WriteDiplomaFileException;
+>>>>>>> master
 }
