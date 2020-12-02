@@ -77,6 +77,7 @@ class DiplomaGeneratorTest {
 		ByteArrayOutputStream generatedFileContent = new ByteArrayOutputStream();
 		File generatedFileTarget = Files.createTempFile("prefix_", "_suffic").toFile();
 		MiageDiplomaGenerator generator = new MiageDiplomaGenerator(stu, date);
+//		EncryptedDiplomaGeneratorDecorator generator = new EncryptedDiplomaGeneratorDecorator(new MiageDiplomaGenerator(stu, date), "");
 		new DiplomaFileAdapter(generator).generateFile(generatedFileTarget.getPath());
 		FileInputStream generatedFileReader = new FileInputStream(generatedFileTarget);
 		ByteStreams.copy(generatedFileReader, generatedFileContent);

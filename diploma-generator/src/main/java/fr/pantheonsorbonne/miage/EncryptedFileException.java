@@ -1,7 +1,5 @@
 package fr.pantheonsorbonne.miage;
 
-import java.io.IOException;
-
 public class EncryptedFileException extends RuntimeException {
 	/**
 	 * 
