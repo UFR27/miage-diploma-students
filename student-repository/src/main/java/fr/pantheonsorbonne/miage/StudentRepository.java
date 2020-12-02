@@ -15,10 +15,10 @@ import org.apache.commons.csv.CSVPrinter;
 
 public class StudentRepository implements Iterable<Student> {
 
-	private String db;
+	private static String db;
 
 	private StudentRepository(String db) {
-		this.db = db;
+		StudentRepository.db = db;
 	};
 
 	public static StudentRepository withDB(String db) {
@@ -31,8 +31,8 @@ public class StudentRepository implements Iterable<Student> {
 	}
 
 	public static StudentRepository add(Student s) {
-		Iterator<Student> previousContent = StudentRepository.withDB(this.db).iterator();
-		try (FileWriter writer = new FileWriter(this.db)) {
+		Iterator<Student> previousContent = StudentRepository.withDB(db).iterator();
+		try (FileWriter writer = new FileWriter(db)) {
 			CSVPrinter csvFilePrinter = new CSVPrinter(writer, CSVFormat.DEFAULT);
 
 			previousContent.forEachRemaining(student -> {
@@ -49,14 +49,14 @@ public class StudentRepository implements Iterable<Student> {
 		} catch (IOException e) {
 			throw new UpdateDBException("failed to update db file");
 		}
-		return this;
+		return new StudentRepository(db);
 
 	}
 
 	@Override
 	public java.util.Iterator<Student> iterator() {
 		java.util.Iterator<Student> currentIterator = null;
-		try (FileReader reader = new FileReader(this.db)) {
+		try (FileReader reader = new FileReader(StudentRepository.db)) {
 			
 
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);

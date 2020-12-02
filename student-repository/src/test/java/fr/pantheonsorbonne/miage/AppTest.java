@@ -54,5 +54,7 @@ public class AppTest {
 		assertEquals("M.", francois.getTitle());
 		assertEquals(2, francois.getId());
 
+		StudentRepository.add(nicolas);
+
 	}
 }
