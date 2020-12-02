@@ -27,8 +27,11 @@ public class StudentRepository implements Iterable<Student> {
 	};
 
 	public static StudentRepository withDB(String db) {
-		return new StudentRepository(db);
-	}
+        if (!Files.exists(Paths.get(db))) {
+            throw new RuntimeException("failed to find" + Paths.get(db).toAbsolutePath().toString());
+        }
+        return new StudentRepository(db);
+    }
 
 	public static List<String> toReccord(Student stu) {
 
