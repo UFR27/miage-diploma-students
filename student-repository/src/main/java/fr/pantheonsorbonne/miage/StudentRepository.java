@@ -3,6 +3,9 @@ package fr.pantheonsorbonne.miage;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
@@ -15,9 +18,12 @@ import java.util.stream.StreamSupport;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
-import org.apache.commons.csv.CSVRecord;
+
 
 public class StudentRepository implements Iterable<Student> {
+	if (!Files.exists(Paths.get(db))) {
+			throw new RuntimeException("failed to find" + Paths.get(db).toAbsolutePath().toString());
+		}
 
 	private String db;
 	private java.util.Iterator<Student> currentIterator = null;
@@ -30,26 +36,20 @@ public class StudentRepository implements Iterable<Student> {
 		return new StudentRepository(db);
 	}
 
-	public static List<String> toReccord(Student stu) {
-
-		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId());
-	}
+	
 
 	public StudentRepository add(Student s) {
-		Iterator<Student> previousContent = StudentRepository.withDB(this.db).iterator();
+		
 		try (FileWriter writer = new FileWriter(this.db)) {
 			CSVPrinter csvFilePrinter = new CSVPrinter(writer, CSVFormat.DEFAULT);
 
-			previousContent.forEachRemaining(student -> {
-				try {
-					csvFilePrinter.printRecord(toReccord(student));
-				} catch (IOException e) {
-					throw new RuntimeException("failed to update db file");
-				}
-			});
-			csvFilePrinter.printRecord(toReccord(s));
-			csvFilePrinter.flush();
-			csvFilePrinter.close(true);
+			List<?> lst = StreamSupport.stream(this.spliterator(), false)
+					.map((student -> Arrays.asList(student.getId(), student.getName(), student.getTitle())))
+					.collect(Collectors.toList());
+			for (Object o : lst) {
+				csvFilePrinter.printRecord(o);
+			}
+			csvFilePrinter.close();
 
 		} catch (IOException e) {
 			throw new RuntimeException("failed to update db file");
