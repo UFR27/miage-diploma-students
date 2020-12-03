@@ -12,10 +12,17 @@
 	<modules>
 		<module>diploma-generator</module>
 		<module>student-repository</module>
+		<module>diploma-webapp</module>
 	</modules>
 
 	<dependencyManagement>
 		<dependencies>
+		
+			<dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-commons</artifactId>
+            <version>1.5.2</version>
+ 			</dependency>
 			
 			<dependency>
 				<groupId>com.google.guava</groupId>
