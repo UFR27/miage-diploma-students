@@ -12,6 +12,7 @@
 	<modules>
 		<module>diploma-generator</module>
 		<module>student-repository</module>
+		<module>diploma-webapp</module>
 	</modules>
 
 	<dependencyManagement>
@@ -25,7 +26,7 @@
 			<dependency>
 				<groupId>org.junit.jupiter</groupId>
 				<artifactId>junit-jupiter-api</artifactId>
-				<version>5.1.0</version>
+				<version>5.7.0</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
