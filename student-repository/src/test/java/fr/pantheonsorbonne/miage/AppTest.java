@@ -31,7 +31,6 @@ public class AppTest {
 		assertEquals(2, Iterables.size(StudentRepository.withDB(tempDB.toString())));
 
 		Student nicolas = Iterables.get(StudentRepository.withDB(tempDB.toString()), 0);
-
 		assertEquals("Nicolas", nicolas.getName());
 		assertEquals("Dr.", nicolas.getTitle());
 		assertEquals(1, nicolas.getId());
@@ -54,6 +53,7 @@ public class AppTest {
 		assertEquals("M.", mohamed.getTitle());
 		assertEquals(3, mohamed.getId());
 		assertEquals("momo", mohamed.getPassword());
+
 
 	}
 }
