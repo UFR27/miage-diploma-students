@@ -5,12 +5,13 @@ import com.google.common.collect.Iterables;
 public class Main {
 
 	public static void main(String[] args) {
-		StudentRepository repo = StudentRepository.withDB("../student-repository/src/main/resources/students.db");
-		Student student = Iterables.get(repo, 0);
+		StudentRepository rep = StudentRepository.withDB("../student-repository/src/main/resources/students.db");
+		for (Student student : rep) {
 		
 		MiageDiplomaGenerator generator = new MiageDiplomaGenerator(student);
 		DiplomaFileAdapter adapter = new DiplomaFileAdapter(generator);
-		adapter.generateFile("temp_diploma.pdf");
+		adapter.generateFile("diploma_" + student.getName() + ".pdf");
+		}
 				
 				
 
