@@ -8,8 +8,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Path;
 import java.util.Collection;
-import java.util.HashSet;
-
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
@@ -37,7 +35,6 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 	 * (non-Javadoc)
 	 * 
 	 * @see fr.pantheonsorbonne.miage.DiplomaGenerator#getContent()
-	 * @throw 
 	 */
 	@Override
 	public InputStream getContent() {
