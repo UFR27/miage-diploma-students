@@ -65,10 +65,14 @@ public class Main {
 		ArrayList<Student> students = new ArrayList<>();
 		Iterables.addAll(students, repo);
 
-		for (int i = 0; i < students.size(); i++) {
+		/*for (int i = 0; i < students.size(); i++) {
 			if (i == studentId) {
 				return students.get(i);
 			}
+		}*/
+		
+		for(Student stu : students) {
+			if(stu.getId() == studentId) return stu;
 		}
 
 		throw new NoSuchElementException();
