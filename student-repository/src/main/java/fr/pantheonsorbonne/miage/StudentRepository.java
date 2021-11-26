@@ -36,8 +36,8 @@ public class StudentRepository implements Iterable<Student> {
 		return Arrays.asList("" + stu.getId(), stu.getName(), stu.getTitle(),stu.getPassword());
 /*=======
 		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId());
->>>>>>> origin/encryption
-	}*/
+>>>>>>> origin/encryption*/
+	}
 
 	public StudentRepository add(Student s) {
 		Iterator<Student> previousContent = StudentRepository.withDB(this.db).iterator();
