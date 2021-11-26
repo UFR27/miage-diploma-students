@@ -1,6 +1,7 @@
 package fr.pantheonsorbonne.miage;
 
 import java.io.FileOutputStream;
+
 import java.io.IOException;
 import java.io.InputStream;
 import com.google.common.io.ByteStreams;
@@ -20,7 +21,7 @@ public class DiplomaFileAdapter extends FileGenerator<AbstractDiplomaGenerator> 
 			is.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-			throw new RuntimeException("failed to write diploma file", e);
+			throw new DbMajException("failed to write diploma file", e);
 		}
 	}
 
