@@ -14,18 +14,18 @@ import com.google.common.collect.Iterables;
 /**
  * Unit test for simple App.
  */
-public class AppTest {
+ class AppTest {
 	/**
 	 * Rigorous Test :-)
 	 * 
 	 * @throws IOException
 	 */
 	@Test
-	public void shouldAnswerWithTrue() throws IOException {
+	 void shouldAnswerWithTrue() throws IOException {
 		File tempDB = Files.createTempFile("prefix", ".csv").toFile();
 		FileWriter fw = new FileWriter(tempDB);
-		fw.write("1,Nicolas,Dr.,nico\n");
-		fw.write("2,Francois,M.,franco\n");
+		fw.write("Nicolas,Dr.,1,nico\n");
+		fw.write("Francois,M.,2,franco\n");
 		fw.close();
 
 		assertEquals(2, Iterables.size(StudentRepository.withDB(tempDB.toString())));
@@ -43,23 +43,23 @@ public class AppTest {
 		assertEquals("M.", francois.getTitle());
 		assertEquals(2, francois.getId());
 		assertEquals("franco", francois.getPassword());
-		
+
 		StudentRepository.withDB(tempDB.toString()).add(new Student(3, "Mohamed", "M.", "momo"));
-		
+
 		assertEquals(3, Iterables.size(StudentRepository.withDB(tempDB.toString())));
-		
+
 		Student mohamed = Iterables.get(StudentRepository.withDB(tempDB.toString()), 2);
 
 		assertEquals("Mohamed", mohamed.getName());
 		assertEquals("M.", mohamed.getTitle());
 		assertEquals(3, mohamed.getId());
 		assertEquals("momo", mohamed.getPassword());
-		assertEquals("M. Mohamed", mohamed.toString());
-		mohamed.setTitle("Dr.");
 		mohamed.setName("Mimi");
+		mohamed.setTitle("Dr.");
 		assertEquals("Dr.", mohamed.getTitle());
 		assertEquals("Mimi", mohamed.getName());
-		
 
 	}
 }
+		
+		
