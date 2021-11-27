@@ -54,6 +54,12 @@ public class AppTest {
 		assertEquals("M.", mohamed.getTitle());
 		assertEquals(3, mohamed.getId());
 		assertEquals("momo", mohamed.getPassword());
+		assertEquals("M. Mohamed", mohamed.toString());
+		mohamed.setTitle("Dr.");
+		mohamed.setName("Mimi");
+		assertEquals("Dr.", mohamed.getTitle());
+		assertEquals("Mimi", mohamed.getName());
+		
 
 	}
 }

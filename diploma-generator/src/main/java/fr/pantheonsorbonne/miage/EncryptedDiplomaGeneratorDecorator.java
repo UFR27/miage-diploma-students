@@ -36,15 +36,12 @@ public class EncryptedDiplomaGeneratorDecorator extends DiplomaGeneratorDecorato
 				pdfStamper.close();
 				return new ByteArrayInputStream(os.toByteArray());
 			}
-
 		} catch (IOException | DocumentException e) {
-
 			e.printStackTrace();
 			throw new RuntimeException("failed to generate Encrypted File");
 		}
 
 	}
-
 	@Override
 	protected Collection<DiplomaSnippet> getDiplomaSnippets() {
 		return Collections.emptyList();
