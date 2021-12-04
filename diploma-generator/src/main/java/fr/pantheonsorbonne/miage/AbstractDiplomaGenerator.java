@@ -3,15 +3,11 @@ package fr.pantheonsorbonne.miage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Path;
 import java.util.Collection;
-import java.util.HashSet;
-
-import com.google.common.io.ByteStreams;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
@@ -22,26 +18,14 @@ import fr.pantheonsorbonne.miage.diploma.DiplomaSnippet;
 
 public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
-	private Collection<DiplomaSnippet> snippets = new HashSet<>();
 
-	public AbstractDiplomaGenerator() {
+	protected AbstractDiplomaGenerator() {
 		super();
 		
 
 	}
 
-	/**
-	 * provides all the snippets used for the concrete diploma implementation
-	 * 
-	 * @return
-	 */
-	abstract protected Collection<DiplomaSnippet> getDiplomaSnippets();
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see fr.pantheonsorbonne.miage.DiplomaGenerator#getContent()
-	 */
+	
 	@Override
 	public InputStream getContent() {
 
@@ -57,6 +41,14 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 		}
 
 	}
+	
+	protected abstract Collection<DiplomaSnippet> getDiplomaSnippets();
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see fr.pantheonsorbonne.miage.DiplomaGenerator#getContent()
+	 */
 
 	protected void writeToStream(OutputStream os) {
 		Document document = new Document();
@@ -82,5 +74,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 			document.close();
 		}
 	}
+
+	
 
 }

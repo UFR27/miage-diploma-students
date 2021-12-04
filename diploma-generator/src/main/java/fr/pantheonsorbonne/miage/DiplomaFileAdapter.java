@@ -3,8 +3,6 @@ package fr.pantheonsorbonne.miage;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Collection;
-
 import com.google.common.io.ByteStreams;
 
 import fr.pantheonsorbonne.miage.diploma.DiplomaSnippet;

@@ -10,7 +10,7 @@ public abstract class FileGenerator<GENERATOR extends DiplomaGenerator> {
 
 	protected final GENERATOR generator;
 
-	public FileGenerator(GENERATOR t) {
+	protected FileGenerator(GENERATOR t) {
 		this.generator = t;
 	}
 
