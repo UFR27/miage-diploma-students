@@ -33,7 +33,7 @@ public class EncryptedDiplomaGeneratorDecorator extends DiplomaGeneratorDecorato
 	}
 
 	@Override
-	public InputStream getContent() {
+	public InputStream getContent() throws FileGeneratorException {
 
 		try (InputStream is = other.getContent()) {
 			try (ByteArrayOutputStream os = new ByteArrayOutputStream()) {
@@ -46,10 +46,10 @@ public class EncryptedDiplomaGeneratorDecorator extends DiplomaGeneratorDecorato
 				return new ByteArrayInputStream(os.toByteArray());
 			}
 
-		} catch (IOException | DocumentException e) {
+		} catch (IOException | DocumentException | FileGeneratorException e) {
 
 			e.printStackTrace();
-			throw new RuntimeException("failed to generate Encrypted File");
+			throw new FileGeneratorException(e);
 		}
 
 	}
