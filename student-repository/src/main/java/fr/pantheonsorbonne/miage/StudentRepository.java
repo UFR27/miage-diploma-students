@@ -3,7 +3,13 @@ package fr.pantheonsorbonne.miage;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+<<<<<<< HEAD
 
+=======
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Paths;
+>>>>>>> parent of aa9cdd5 (Revert "Merge branch 'webapp'")
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
@@ -26,6 +32,9 @@ public class StudentRepository implements Iterable<Student> {
 	}
 
 	public static StudentRepository withDB(String db) {
+		if (!Files.exists(Paths.get(db))) {
+			throw new RuntimeException("failed to find" + Paths.get(db).toAbsolutePath().toString());
+		}
 		return new StudentRepository(db);
 	}
 
@@ -61,8 +70,12 @@ public class StudentRepository implements Iterable<Student> {
 	@Override
 	public java.util.Iterator<Student> iterator() {
 		try (FileReader reader = new FileReader(this.db)) {
+<<<<<<< HEAD
 			
 			java.util.Iterator<Student> currentIterator = null;
+=======
+
+>>>>>>> parent of aa9cdd5 (Revert "Merge branch 'webapp'")
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
 			currentIterator = parser.getRecords().stream()
 					.map(reccord -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
