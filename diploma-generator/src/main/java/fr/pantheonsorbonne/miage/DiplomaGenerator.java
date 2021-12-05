@@ -1,6 +1,7 @@
 package fr.pantheonsorbonne.miage;
 
 import java.io.InputStream;
+import java.util.concurrent.ExecutionException;
 
 /**
  * a Diploma generator for the MIAGE section
@@ -14,7 +15,8 @@ public interface DiplomaGenerator {
 	 * Generate the diploma in a Stream
 	 * 
 	 * @return
+	 * @throws ExecutionException 
 	 */
-	InputStream getContent();
+	InputStream getContent() throws ExecutionException;
 
 }
