@@ -87,6 +87,8 @@ public class Main {
 				ByteStreams.copy(is, os);
 			}
 
+		} catch (GenerateFileException e) {
+			e.printStackTrace();
 		}
 		return;
 	}
