@@ -81,7 +81,7 @@ public class Main {
 
 		Student student = getStudentData(studentId, studentRepo);
 
-		DiplomaGenerator generator = new MiageDiplomaGenerator(student);
+		EncryptedDiplomaGeneratorDecorator generator = new EncryptedDiplomaGeneratorDecorator(new MiageDiplomaGenerator(student),"ChristmasEvel");
 		try (InputStream is = generator.getContent()) {
 			try (NIOOutputStream os = response.createOutputStream()) {
 				ByteStreams.copy(is, os);
