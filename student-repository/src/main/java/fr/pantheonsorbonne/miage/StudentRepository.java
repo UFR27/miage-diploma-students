@@ -4,7 +4,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collections;
@@ -32,7 +31,7 @@ public class StudentRepository implements Iterable<Student> {
 
 	public static List<String> toReccord(Student stu) {
 
-		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId());
+		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId(),stu.getPassword());
 	}
 
 	public StudentRepository add(Student s) {
