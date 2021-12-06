@@ -1,10 +1,12 @@
 package fr.pantheonsorbonne.miage;
 
+import java.util.concurrent.ExecutionException;
+
 import com.google.common.collect.Iterables;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ExecutionException {
 		StudentRepository repo = StudentRepository.withDB("../student-repository/src/main/resources/students.db");
 		Student student = Iterables.get(repo, 0);
 		
