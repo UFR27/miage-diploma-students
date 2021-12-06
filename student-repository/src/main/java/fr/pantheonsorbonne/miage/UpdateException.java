@@ -1,6 +1,8 @@
 package fr.pantheonsorbonne.miage;
 
-public class UpdateException extends Exception {
+import java.io.IOException;
+
+public class UpdateException extends RuntimeException {
 
 	/**
 	 * 
