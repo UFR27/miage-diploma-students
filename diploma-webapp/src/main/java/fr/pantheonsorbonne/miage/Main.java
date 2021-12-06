@@ -95,7 +95,7 @@ public class Main {
 		server.getServerConfiguration().addHttpHandler(new HttpHandler() {
 			public void service(Request request, Response response) throws Exception {
 				// get the id of the student
-				int id = Integer.parseInt(request.getPathInfo().substring(1));
+				int id = Integer.parseInt(request.getPathInfo().substring(1))-1;
 
 				handleResponse(response, id);
 				response.setContentType("text/html; charset=utf-8");
@@ -114,8 +114,7 @@ public class Main {
 				sb.append("<!DOCTYPE html><head><meta charset='utf-8'></head><body><h1>Liste des diplômés</h1><ul>");
 				for (Student stu : StudentRepository.withDB("src/main/resources/students.db")) {
 					sb.append("<li>");
-					sb.append(
-							"<a href='/diploma/" + stu.getId() + "'>" + stu.getTitle() + ' ' + stu.getName() + "</a>");
+					sb.append("<a href='/diploma/" + stu.getId() + "'>" + stu.getTitle() + ' ' + stu.getName() + "</a>");
 					sb.append("</li>");
 				}
 
