@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import com.google.common.collect.Iterables;
@@ -14,14 +15,14 @@ import com.google.common.collect.Iterables;
 /**
  * Unit test for simple App.
  */
-public class AppTest {
+class AppTest {
 	/**
 	 * Rigorous Test :-)
 	 * 
 	 * @throws IOException
 	 */
 	@Test
-	public void shouldAnswerWithTrue() throws IOException {
+	void shouldAnswerWithTrue() throws IOException {
 		File tempDB = Files.createTempFile("prefix", ".csv").toFile();
 		FileWriter fw = new FileWriter(tempDB);
 		fw.write("Nicolas,Dr.,1,nico\n");
@@ -36,6 +37,12 @@ public class AppTest {
 		assertEquals("Dr.", nicolas.getTitle());
 		assertEquals(1, nicolas.getId());
 		assertEquals("nico", nicolas.getPassword());
+		
+		assertEquals("Dr. Nicolas", nicolas.toString());
+		nicolas.setTitle("Professeur");
+		assertEquals("Professeur", nicolas.getTitle());
+		nicolas.setName("POO");
+		assertEquals("POO", nicolas.getName());
 
 		Student francois = Iterables.get(StudentRepository.withDB(tempDB.toString()), 1);
 
@@ -54,6 +61,20 @@ public class AppTest {
 		assertEquals("M.", mohamed.getTitle());
 		assertEquals(3, mohamed.getId());
 		assertEquals("momo", mohamed.getPassword());
-
+		
+		File testDB = Files.createTempFile("testfile", ".csv").toFile();
+		testDB.setReadOnly();
+		try {
+			StudentRepository.withDB(testDB.toString()).add(new Student(4, "Mary", "Miss.", "bag"));
+		}catch (IllegalArgumentException e) {
+			Assertions.assertTrue(e.getMessage().contains("failed to update db file"));
+		}
+		
+		testDB.delete();
+		try {
+			StudentRepository.withDB(testDB.toString()).add(new Student(4, "Mary", "Miss.", "bag"));
+		}catch (RuntimeException e) {
+			Assertions.assertTrue(e.getMessage().contains("failed to find"));
+		}
 	}
 }
