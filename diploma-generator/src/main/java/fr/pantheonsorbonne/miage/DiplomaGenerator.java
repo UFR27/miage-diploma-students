@@ -22,6 +22,6 @@ public interface DiplomaGenerator {
 	 * @throws DocumentException 
 	 * @throws MalformedURLException 
 	 */
-	InputStream getContent() throws MalformedURLException, DocumentException, IOException;
+	InputStream getContent() throws  DocumentException, IOException;
 
 }
