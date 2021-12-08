@@ -65,9 +65,16 @@ public class Main {
 		ArrayList<Student> students = new ArrayList<>();
 		Iterables.addAll(students, repo);
 
-		for (int i = 0; i < students.size(); i++) {
+		/*for (int i = 0; i < students.size(); i++) {
 			if (i == studentId) {
 				return students.get(i);
+			}
+		}*/
+		
+		for (Student currStudent:students) {
+			int id = currStudent.getId();
+			if (studentId == id) {
+				return currStudent;
 			}
 		}
 
@@ -88,7 +95,7 @@ public class Main {
 			}
 
 		}
-		return;
+		//return;
 	}
 
 	protected static void addDiplomaPath(HttpServer server, String path) {
