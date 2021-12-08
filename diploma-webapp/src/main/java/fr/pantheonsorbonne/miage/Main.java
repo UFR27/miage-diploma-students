@@ -67,11 +67,12 @@ public class Main {
 
 		for (int i = 0; i < students.size(); i++) {
 			if (i == studentId) {
-			if (students.get(i).getId() == studentId) {
 				return students.get(i);
 			}
 		}
+
 		throw new NoSuchElementException();
+
 	}
 
 	protected static void handleResponse(Response response, int studentId) throws IOException {
