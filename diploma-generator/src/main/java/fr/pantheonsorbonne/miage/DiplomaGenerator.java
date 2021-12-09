@@ -1,5 +1,6 @@
 package fr.pantheonsorbonne.miage;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -15,6 +16,6 @@ public interface DiplomaGenerator {
 	 * 
 	 * @return
 	 */
-	InputStream getContent();
+	InputStream getContent() throws IOException;
 
 }
