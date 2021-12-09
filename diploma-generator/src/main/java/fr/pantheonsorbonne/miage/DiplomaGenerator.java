@@ -5,7 +5,7 @@ import java.io.InputStream;
 /**
  * a Diploma generator for the MIAGE section
  * 
- * @author nherbaut
+ * @author Ilan
  *
  */
 public interface DiplomaGenerator {
@@ -15,6 +15,6 @@ public interface DiplomaGenerator {
 	 * 
 	 * @return
 	 */
-	InputStream getContent();
+	InputStream getContent()  throws GetContentException;
 
 }
