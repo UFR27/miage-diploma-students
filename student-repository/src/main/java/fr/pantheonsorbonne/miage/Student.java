@@ -5,6 +5,7 @@ public class Student {
 	private int id;
 	private String password;
 
+
 	public Student(int id, String name, String title, String password) {
 		this.name = name;
 		this.title = title;
@@ -13,9 +14,9 @@ public class Student {
 	}
 
 	private String name;
-
+  
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
@@ -23,7 +24,7 @@ public class Student {
 	}
 
 	public String getTitle() {
-		return title;
+		return this.title;
 	}
 
 	public void setTitle(String title) {
