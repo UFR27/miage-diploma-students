@@ -24,14 +24,13 @@ public class AppTest {
 	public void shouldAnswerWithTrue() throws IOException {
 		File tempDB = Files.createTempFile("prefix", ".csv").toFile();
 		FileWriter fw = new FileWriter(tempDB);
-		fw.write("Nicolas,Dr.,1,nico\n");
-		fw.write("Francois,M.,2,franco\n");
+		fw.write("1,Nicolas,Dr.,nico\n");
+		fw.write("2,Francois,M.,franco\n");
 		fw.close();
 
 		assertEquals(2, Iterables.size(StudentRepository.withDB(tempDB.toString())));
 
 		Student nicolas = Iterables.get(StudentRepository.withDB(tempDB.toString()), 0);
-
 		assertEquals("Nicolas", nicolas.getName());
 		assertEquals("Dr.", nicolas.getTitle());
 		assertEquals(1, nicolas.getId());
