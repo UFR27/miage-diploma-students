@@ -42,7 +42,7 @@ public class AppTest {
 
 		assertEquals("Francois", francois.getName());
 		assertEquals("M.", francois.getTitle());
-		//assertEquals(2, francois.getId());
+		assertEquals(2, francois.getId());
 		assertEquals("franco", francois.getPassword());
 		
 		StudentRepository.withDB(tempDB.toString()).add(new Student(3, "M.", "Mohamed", "momo"));
