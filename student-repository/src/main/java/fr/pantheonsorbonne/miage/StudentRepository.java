@@ -17,6 +17,8 @@ import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
 
+import com.google.common.base.VerifyException;
+
 public class StudentRepository implements Iterable<Student> {
 
 	private String db;
@@ -44,7 +46,7 @@ public class StudentRepository implements Iterable<Student> {
 				try {
 					csvFilePrinter.printRecord(toReccord(student));
 				} catch (IOException e) {
-					throw new RuntimeException("failed to update db file");
+					throw new VerifyException("failed to update db file");
 				}
 			});
 			csvFilePrinter.printRecord(toReccord(s));
@@ -52,7 +54,7 @@ public class StudentRepository implements Iterable<Student> {
 			csvFilePrinter.close(true);
 
 		} catch (IOException e) {
-			throw new RuntimeException("failed to update db file");
+			throw new VerifyException("failed to update db file");
 		}
 		return this;
 
@@ -66,7 +68,7 @@ public class StudentRepository implements Iterable<Student> {
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
 			this.currentIterator = parser.getRecords().stream()
 					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1)))
-					.map(c -> (Student) c).iterator();
+					.map(c -> c).iterator();
 			return this.currentIterator;
 
 		} catch (IOException e) {
