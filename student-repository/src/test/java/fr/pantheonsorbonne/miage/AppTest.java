@@ -32,15 +32,15 @@ public class AppTest {
 
 		Student nicolas = Iterables.get(StudentRepository.withDB(tempDB.toString()), 0);
 
-		assertEquals("Nicolas", nicolas.getName());
-		assertEquals("Dr.", nicolas.getTitle());
+		assertEquals("Dr.", nicolas.getName());
+		assertEquals("Nicolas", nicolas.getTitle());
 		assertEquals(1, nicolas.getId());
 		assertEquals("nico", nicolas.getPassword());
 
 		Student francois = Iterables.get(StudentRepository.withDB(tempDB.toString()), 1);
 
-		assertEquals("Francois", francois.getName());
-		assertEquals("M.", francois.getTitle());
+		assertEquals("M.", francois.getName());
+		assertEquals("Francois", francois.getTitle());
 		assertEquals(2, francois.getId());
 		assertEquals("franco", francois.getPassword());
 		
@@ -50,8 +50,8 @@ public class AppTest {
 		
 		Student mohamed = Iterables.get(StudentRepository.withDB(tempDB.toString()), 2);
 
-		assertEquals("Mohamed", mohamed.getName());
-		assertEquals("M.", mohamed.getTitle());
+		assertEquals("M.", mohamed.getName());
+		assertEquals("Mohamed", mohamed.getTitle());
 		assertEquals(3, mohamed.getId());
 		assertEquals("momo", mohamed.getPassword());
 
