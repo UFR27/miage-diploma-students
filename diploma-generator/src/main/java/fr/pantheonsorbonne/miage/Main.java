@@ -4,7 +4,7 @@ import com.google.common.collect.Iterables;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws GenerationException, WriteException {
 		StudentRepository repo = StudentRepository.withDB("../student-repository/src/main/resources/students.db");
 		Student student = Iterables.get(repo, 0);
 		
