@@ -15,14 +15,16 @@ public class DiplomaFileAdapter extends FileGenerator<AbstractDiplomaGenerator> 
 	}
 
 	@Override
-	public void generateFile(String outputFile) throws FailedWritingDiplomaException, GenerateFileException   {
+
+	public void generateFile(String outputFile) throws DiplomaGeneratorException {
 		try (FileOutputStream fos = new FileOutputStream(outputFile)) {
 			InputStream is = this.generator.getContent();
 			ByteStreams.copy(is, fos);
 			is.close();
-		} catch (IOException e) {
+		} catch (IOException | DiplomaGeneratorException e) {
 			e.printStackTrace();
-			throw new FailedWritingDiplomaException("failed to write diploma file");
+			throw new DiplomaGeneratorException("failed to write diploma file", e);
+
 		}
 	}
 
