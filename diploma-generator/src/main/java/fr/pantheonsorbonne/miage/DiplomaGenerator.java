@@ -17,4 +17,5 @@ public interface DiplomaGenerator {
 	 */
 	InputStream getContent() throws DiplomaGeneratorException;
 
+
 }

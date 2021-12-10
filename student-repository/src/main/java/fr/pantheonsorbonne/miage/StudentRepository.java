@@ -6,23 +6,24 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
 
+import com.google.common.base.VerifyException;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
 
 public class StudentRepository implements Iterable<Student> {
 
-	private String db;
+
 	private java.util.Iterator<Student> currentIterator = null;
+	private String db;
 
 	private StudentRepository(String db) {
 		this.db = db;
-	};
+	}
 
 	public static StudentRepository withDB(String db) {
 		if (!Files.exists(Paths.get(db))) {
@@ -36,7 +37,8 @@ public class StudentRepository implements Iterable<Student> {
 		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId(), stu.getPassword());
 	}
 
-	public StudentRepository add(Student s) throws BaseUpdateException {
+
+	public StudentRepository add(Student s) throws BdUpdateExeption{
 		Iterator<Student> previousContent = StudentRepository.withDB(this.db).iterator();
 		try (FileWriter writer = new FileWriter(this.db)) {
 			CSVPrinter csvFilePrinter = new CSVPrinter(writer, CSVFormat.DEFAULT);
@@ -45,11 +47,8 @@ public class StudentRepository implements Iterable<Student> {
 				try {
 					csvFilePrinter.printRecord(toReccord(student));
 				} catch (IOException e) {
-					try {
-						throw new BaseUpdateException("failed to update db file");
-					} catch (BaseUpdateException ex) {
-						ex.printStackTrace();
-					}
+
+					throw new BdUpdateExeption("failed to update db file",e);
 				}
 			});
 			csvFilePrinter.printRecord(toReccord(s));
@@ -57,21 +56,24 @@ public class StudentRepository implements Iterable<Student> {
 			csvFilePrinter.close(true);
 
 		} catch (IOException e) {
-			throw new BaseUpdateException("failed to update db file");
+
+			throw new BdUpdateExeption("failed to update db file",e);
 		}
 		return this;
 
 	}
 
+
 	@Override
 	public java.util.Iterator<Student> iterator() {
+
 		try (FileReader reader = new FileReader(this.db)) {
-			
 
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
 			this.currentIterator = parser.getRecords().stream()
-					.map(reccord -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
-					.map(c -> c).iterator();
+
+					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1)))
+					.map(Student.class::cast).iterator();
 			return this.currentIterator;
 
 		} catch (IOException e) {

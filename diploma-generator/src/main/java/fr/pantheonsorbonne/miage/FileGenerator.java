@@ -15,4 +15,5 @@ public abstract class FileGenerator<G extends DiplomaGenerator> {
 	}
 
 	public abstract void generateFile(String outputFile) throws DiplomaGeneratorException, WriteException;
+
 }
