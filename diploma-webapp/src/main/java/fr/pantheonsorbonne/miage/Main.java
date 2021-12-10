@@ -75,7 +75,7 @@ public class Main {
 
 	}
 
-	protected static void handleResponse(Response response, int studentId) throws IOException {
+	protected static void handleResponse(Response response, int studentId) throws IOException, FileToStreamGenerationFailException, DocumentGenerationFailException  {
 
 		response.setContentType("application/pdf");
 		Student student = getStudentData(studentId, studentRepo);

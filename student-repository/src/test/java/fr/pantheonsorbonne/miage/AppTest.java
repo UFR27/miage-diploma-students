@@ -36,6 +36,14 @@ public class AppTest {
 		assertEquals("Dr.", nicolas.getTitle());
 		assertEquals(1, nicolas.getId());
 		assertEquals("nico", nicolas.getPassword());
+		assertEquals("Dr. Nicolas", nicolas.toString());
+
+		nicolas.setTitle("Mr.");
+		assertEquals("Mr.", nicolas.getTitle());
+		nicolas.setName("Herbault");
+		assertEquals("Herbault", nicolas.getName());
+
+
 
 		Student francois = Iterables.get(StudentRepository.withDB(tempDB.toString()), 1);
 

@@ -19,6 +19,9 @@ import org.apache.commons.csv.CSVRecord;
 public class StudentRepository implements Iterable<Student> {
 
 	private String db;
+
+	private Iterator<Student> currentIterator;
+	
 	private StudentRepository(String db) {
 		this.db = db;
 	}
