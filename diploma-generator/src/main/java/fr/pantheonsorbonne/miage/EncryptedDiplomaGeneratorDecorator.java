@@ -33,8 +33,7 @@ public class EncryptedDiplomaGeneratorDecorator extends DiplomaGeneratorDecorato
 	}
 
 	@Override
-	public InputStream getContent() throws GetContentException {
-
+  
 		try (InputStream is = other.getContent()) {
 			try (ByteArrayOutputStream os = new ByteArrayOutputStream()) {
 				PdfReader pdfReader = new PdfReader(is);
