@@ -10,11 +10,12 @@ import java.io.InputStream;
  */
 public interface DiplomaGenerator {
 
-	/**
-	 * Generate the diploma in a Stream
-	 * 
-	 * @return
-	 */
-	InputStream getContent();
+    /**
+     * Generate the diploma in a Stream
+     * 
+     * @return
+     * @throws FileGenerationException 
+     */
+    InputStream getContent() throws FileGenException;
 
 }
