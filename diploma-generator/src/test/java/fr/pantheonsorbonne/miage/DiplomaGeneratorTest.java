@@ -23,7 +23,7 @@ import org.junit.jupiter.api.Test;
 
 import com.google.common.io.ByteStreams;
 
-class DiplomaGeneratorTest {
+public class DiplomaGeneratorTest {
 
 	static protected Date currentDate;
 	{
@@ -82,4 +82,4 @@ class DiplomaGeneratorTest {
 		return generatedFileTarget;
 	}
 
-}
+} 
