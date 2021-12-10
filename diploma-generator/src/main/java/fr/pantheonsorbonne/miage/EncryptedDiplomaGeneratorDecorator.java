@@ -20,7 +20,7 @@ import fr.pantheonsorbonne.miage.diploma.DiplomaSnippet;
  * DiplomaGenerator generator = new MiageDiplomaGenerator(...);
  * by
  * EncryptedDiplomaGeneratorDecorator generator = new EncryptedDiplomaGeneratorDecorator(new MiageDiplomaGenerator(...)); 
- * @author nherbaut
+ * @author Ilan
  *
  */
 public class EncryptedDiplomaGeneratorDecorator extends DiplomaGeneratorDecorator {
@@ -33,7 +33,7 @@ public class EncryptedDiplomaGeneratorDecorator extends DiplomaGeneratorDecorato
 	}
 
 	@Override
-	public InputStream getContent() {
+	public InputStream getContent() throws GetContentException {
 
 		try (InputStream is = other.getContent()) {
 			try (ByteArrayOutputStream os = new ByteArrayOutputStream()) {
