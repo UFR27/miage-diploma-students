@@ -50,7 +50,11 @@ public class EncryptedDiplomaGeneratorDecorator extends DiplomaGeneratorDecorato
 
 			e.printStackTrace();
 			throw new RuntimeException("failed to generate Encrypted File");
+		} catch (GetContentException e1) {
+			e1.printStackTrace();
 		}
+		return null;
+
 
 	}
 
