@@ -20,7 +20,7 @@ import fr.pantheonsorbonne.miage.diploma.DiplomaSnippet;
  * DiplomaGenerator generator = new MiageDiplomaGenerator(...);
  * by
  * EncryptedDiplomaGeneratorDecorator generator = new EncryptedDiplomaGeneratorDecorator(new MiageDiplomaGenerator(...)); 
- * @author nherbaut
+ * @author Ilan
  *
  */
 public class EncryptedDiplomaGeneratorDecorator extends DiplomaGeneratorDecorator {
