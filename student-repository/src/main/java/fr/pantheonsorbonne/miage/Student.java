@@ -1,6 +1,6 @@
 package fr.pantheonsorbonne.miage;
 
-public class Student {
+public class Student  {
 
 	private int id;
 
