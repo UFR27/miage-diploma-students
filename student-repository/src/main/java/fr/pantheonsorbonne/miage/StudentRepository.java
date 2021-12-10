@@ -29,7 +29,7 @@ public class StudentRepository implements Iterable<Student> {
 
 	public static List<String> toReccord(Student stu) {
 
-		return Arrays.asList("" + stu.getId(), stu.getName(), stu.getTitle(),stu.getPassword());
+
 	}
 
 	public StudentRepository add(Student s) {
@@ -62,7 +62,7 @@ public class StudentRepository implements Iterable<Student> {
 
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
 			this.currentIterator = parser.getRecords().stream()
-					.map((reccord) -> new Student(Integer.parseInt(reccord.get(0)), reccord.get(1), reccord.get(2), reccord.get(3)))
+
 					.map(c -> (Student) c).iterator();
 			return this.currentIterator;
 

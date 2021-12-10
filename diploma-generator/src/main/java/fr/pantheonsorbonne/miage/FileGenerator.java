@@ -3,14 +3,14 @@ package fr.pantheonsorbonne.miage;
 /**
  * an object able to be serialized as a File
  * 
- * @author nherbaut
+ * @author Ilan
  *
  */
-public abstract class FileGenerator<GENERATOR extends DiplomaGenerator> {
+public abstract class FileGenerator< G extends DiplomaGenerator> {
 
-	protected final GENERATOR generator;
+	protected final G generator;
 
-	public FileGenerator(GENERATOR t) {
+	public FileGenerator(G t) {
 		this.generator = t;
 	}
 

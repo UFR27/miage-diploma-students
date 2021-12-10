@@ -14,6 +14,15 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import fr.pantheonsorbonne.miage.diploma.DiplomaSnippet;
 
+/**
+ * This decorator pattern allow you to encrypt whatever DiplomaGenerator by providing a password.
+ * to use it, simply replace
+ * DiplomaGenerator generator = new MiageDiplomaGenerator(...);
+ * by
+ * EncryptedDiplomaGeneratorDecorator generator = new EncryptedDiplomaGeneratorDecorator(new MiageDiplomaGenerator(...)); 
+ * @author Ilan
+ *
+ */
 public class EncryptedDiplomaGeneratorDecorator extends DiplomaGeneratorDecorator {
 
 	private String password;
@@ -24,8 +33,7 @@ public class EncryptedDiplomaGeneratorDecorator extends DiplomaGeneratorDecorato
 	}
 
 	@Override
-	public InputStream getContent() {
-		
+  
 		try (InputStream is = other.getContent()) {
 			try (ByteArrayOutputStream os = new ByteArrayOutputStream()) {
 				PdfReader pdfReader = new PdfReader(is);
