@@ -10,18 +10,20 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
 
+import com.google.common.base.VerifyException;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
 
 public class StudentRepository implements Iterable<Student> {
 
-	private String db;
+
 	private java.util.Iterator<Student> currentIterator = null;
+	private String db;
 
 	private StudentRepository(String db) {
 		this.db = db;
-	};
+	}
 
 	public static StudentRepository withDB(String db) {
 		if (!Files.exists(Paths.get(db))) {
@@ -45,6 +47,7 @@ public class StudentRepository implements Iterable<Student> {
 					csvFilePrinter.printRecord(toReccord(student));
 				} catch (IOException e) {
 					throw new BdUpdateExeption("failed to update db file",e);
+
 				}
 			});
 			csvFilePrinter.printRecord(toReccord(s));
@@ -53,19 +56,23 @@ public class StudentRepository implements Iterable<Student> {
 
 		} catch (IOException e) {
 			throw new BdUpdateExeption("failed to update db file",e);
+
 		}
 		return this;
 
 	}
 
+
 	@Override
 	public java.util.Iterator<Student> iterator() {
+
 		try (FileReader reader = new FileReader(this.db)) {
 
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
 			this.currentIterator = parser.getRecords().stream()
 					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1)))
 					.map(Student.class::cast).iterator();
+
 			return this.currentIterator;
 
 		} catch (IOException e) {
