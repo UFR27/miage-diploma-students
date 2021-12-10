@@ -65,11 +65,19 @@ public class Main {
 		ArrayList<Student> students = new ArrayList<>();
 		Iterables.addAll(students, repo);
 
-		for (int i = 0; i < students.size(); i++) {
-			if (i == studentId) {
-				return students.get(i);
+//		for (int i = 0; i < students.size(); i++) {
+//			if (i == studentId) {
+//				return students.get(i);
+//			}
+//		}
+		
+		//Bonjour de la part de Monsieur Git
+		for (Student i : students) {
+			if (i.getId() == studentId) {
+				return i;
 			}
 		}
+		
 
 		throw new NoSuchElementException();
 
@@ -88,7 +96,6 @@ public class Main {
 			}
 
 		}
-		return;
 	}
 
 	protected static void addDiplomaPath(HttpServer server, String path) {
