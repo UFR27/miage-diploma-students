@@ -37,17 +37,23 @@ public class AppTest {
 		assertEquals(1, nicolas.getId());
 		assertEquals("nico", nicolas.getPassword());
 
+		assertEquals("Dr. Nicolas", nicolas.toString());
+		nicolas.setTitle("Mr.");
+		nicolas.setName("Herbault");
+		assertEquals("Mr.", nicolas.getTitle());
+		assertEquals("Herbault", nicolas.getName());
+
 		Student francois = Iterables.get(StudentRepository.withDB(tempDB.toString()), 1);
 
 		assertEquals("Francois", francois.getName());
 		assertEquals("M.", francois.getTitle());
 		assertEquals(2, francois.getId());
 		assertEquals("franco", francois.getPassword());
-		
+
 		StudentRepository.withDB(tempDB.toString()).add(new Student(3, "Mohamed", "M.", "momo"));
-		
+
 		assertEquals(3, Iterables.size(StudentRepository.withDB(tempDB.toString())));
-		
+
 		Student mohamed = Iterables.get(StudentRepository.withDB(tempDB.toString()), 2);
 
 		assertEquals("Mohamed", mohamed.getName());
