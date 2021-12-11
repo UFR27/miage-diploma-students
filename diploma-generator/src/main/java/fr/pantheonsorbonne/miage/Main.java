@@ -12,7 +12,6 @@ public class Main {
 		DiplomaFileAdapter adapter = new DiplomaFileAdapter(generator);
 		adapter.generateFile("temp_diploma.pdf");
 				
-				
 
 	}
 
