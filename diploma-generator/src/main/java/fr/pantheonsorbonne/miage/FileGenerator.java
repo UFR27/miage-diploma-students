@@ -11,8 +11,8 @@ public abstract class FileGenerator<G extends DiplomaGenerator> {
 	protected final G generator;
 
 	protected FileGenerator(G t) {
-		this.G = t;
+		this.generator = t;
 	}
 
-	public abstract void generateFile(String outputFile);
+	public abstract void generateFile(String outputFile) throws MyOwnRuntimeException2;
 }

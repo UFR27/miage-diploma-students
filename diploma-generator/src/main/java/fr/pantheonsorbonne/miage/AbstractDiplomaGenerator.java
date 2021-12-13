@@ -36,7 +36,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 	 * @see fr.pantheonsorbonne.miage.DiplomaGenerator#getContent()
 	 */
 	@Override
-	public InputStream getContent() {
+	public InputStream getContent() throws MyOwnRuntimeException2 {
 
 		try (ByteArrayOutputStream bos = new ByteArrayOutputStream();) {
 
@@ -46,12 +46,12 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
 		} catch (IOException e) {
 
-			throw new MyOwnRuntimeException("failed to generate the file to stream to", e);
+			throw new MyOwnRuntimeException2("failed to generate the file to stream to", e);
 		}
 
 	}
 
-	protected void writeToStream(OutputStream os) {
+	protected void writeToStream(OutputStream os) throws MyOwnRuntimeException2 {
 		Document document = new Document();
 	
 		try {
@@ -70,7 +70,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 			document.add(Image.getInstance(image.toAbsolutePath().toString()));
 
 		} catch (DocumentException | IOException e) {
-			throw new MyOwnRuntimeException("failed to generate Document", e);
+			throw new MyOwnRuntimeException2("failed to generate Document", e);
 		} finally {
 			document.close();
 		}
