@@ -19,9 +19,10 @@ public class AppTest {
 	 * Rigorous Test :-)
 	 * 
 	 * @throws IOException
+	 * @throws UpdateException 
 	 */
 	@Test
-	public void shouldAnswerWithTrue() throws IOException {
+	public void shouldAnswerWithTrue() throws IOException, UpdateException {
 		File tempDB = Files.createTempFile("prefix", ".csv").toFile();
 		FileWriter fw = new FileWriter(tempDB);
 		fw.write("Nicolas,Dr.,1,nico\n");
