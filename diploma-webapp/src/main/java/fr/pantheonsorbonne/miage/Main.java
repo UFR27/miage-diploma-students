@@ -42,7 +42,7 @@ public class Main {
 	private static final Logger logger = Logger.getLogger(Main.class.getName());
 	private static StudentRepository studentRepo = StudentRepository.withDB("src/main/resources/students.db");
 
-	public static void main(String[] args) throws IOException, URISyntaxException {
+	public static void main(String[] args) throws IOException, URISyntaxException, MyOwnRuntimeException {
 
 		HttpServer server = HttpServer.createSimpleServer();
 		addRootPath(server, "/home");
@@ -75,7 +75,7 @@ public class Main {
 
 	}
 
-	protected static void handleResponse(Response response, int studentId) throws IOException {
+	protected static void handleResponse(Response response, int studentId) throws IOException, MyOwnRuntimeException2 {
 
 		response.setContentType("application/pdf");
 
