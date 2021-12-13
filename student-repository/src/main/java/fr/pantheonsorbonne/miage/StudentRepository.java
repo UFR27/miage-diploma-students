@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
+import org.apache.commons.csv.CSVRecord;
 
 public class StudentRepository implements Iterable<Student> {
 
@@ -36,6 +37,7 @@ public class StudentRepository implements Iterable<Student> {
 	}
 
 	public StudentRepository add(Student s) throws UpdateException{
+
 		Iterator<Student> previousContent = StudentRepository.withDB(this.db).iterator();
 		try (FileWriter writer = new FileWriter(this.db)) {
 			CSVPrinter csvFilePrinter = new CSVPrinter(writer, CSVFormat.DEFAULT);
