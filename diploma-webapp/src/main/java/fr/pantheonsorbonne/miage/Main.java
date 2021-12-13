@@ -68,7 +68,7 @@ public class Main {
 
 	}
 
-	protected static void handleResponse(Response response, int studentId) throws IOException {
+	protected static void handleResponse(Response response, int studentId) throws IOException, GenerationException {
 		response.setContentType("application/pdf");
 		Student student = getStudentData(studentId, studentRepo);
 		DiplomaGenerator generator = new MiageDiplomaGenerator(student);
