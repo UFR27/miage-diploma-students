@@ -18,27 +18,14 @@ public class Student {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public String getTitle() {
 		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
 	}
 
 	private String title;
 
 	public int getId() {
 		return this.id;
-	}
-
-	@Override
-	public String toString() {
-		return this.getTitle() + " " + this.getName();
 	}
 
 	public String getPassword() {
