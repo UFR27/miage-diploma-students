@@ -15,7 +15,6 @@ public interface DiplomaGenerator {
 	 * 
 	 * @return
 	 * @throws Exp 
-
 	 */
 	InputStream getContent() throws Exp;
 

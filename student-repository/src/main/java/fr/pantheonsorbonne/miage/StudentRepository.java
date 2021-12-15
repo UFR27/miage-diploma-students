@@ -24,11 +24,12 @@ public class StudentRepository implements Iterable<Student> {
 	}
 
 	public static List<String> toReccord(Student stu) {
-
 		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId());
 	}
 
-	public StudentRepository add(Student s) throws Exp{		Iterator<Student> previousContent = StudentRepository.withDB(this.db).iterator();
+	public StudentRepository add(Student s) throws Exp{		
+		Iterator<Student> previousContent = StudentRepository.withDB(this.db).iterator();
+
 		try (FileWriter writer = new FileWriter(this.db)) {
 			CSVPrinter csvFilePrinter = new CSVPrinter(writer, CSVFormat.DEFAULT);
 
@@ -60,6 +61,7 @@ public class StudentRepository implements Iterable<Student> {
  					.map(reccord -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), db))
  					.map(c -> c).iterator();
  			return currentIterator;
+
 
 
 

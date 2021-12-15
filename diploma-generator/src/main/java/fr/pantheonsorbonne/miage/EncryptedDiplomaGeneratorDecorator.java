@@ -35,6 +35,7 @@ public class EncryptedDiplomaGeneratorDecorator extends DiplomaGeneratorDecorato
 	@Override
 	public InputStream getContent() throws Exp {
 
+
 		try (InputStream is = other.getContent()) {
 			try (ByteArrayOutputStream os = new ByteArrayOutputStream()) {
 				PdfReader pdfReader = new PdfReader(is);
@@ -49,7 +50,7 @@ public class EncryptedDiplomaGeneratorDecorator extends DiplomaGeneratorDecorato
 		} catch (IOException | DocumentException e) {
 
 			e.printStackTrace();
-			throw new RuntimeException("failed to generate Encrypted File");
+			throw new Exp("failed to generate Encrypted File", e);
 		}
 
 	}

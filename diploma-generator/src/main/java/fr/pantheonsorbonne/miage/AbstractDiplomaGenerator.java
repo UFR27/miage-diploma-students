@@ -26,7 +26,8 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 	}
 
 	/**
-	 * provides all the snippet used for the concrete diploma implementation	 * 
+	 * provides all the snippet used for the concrete diploma implementation
+	 * 
 	 * @return
 	 */
 	 protected abstract Collection<DiplomaSnippet> getDiplomaSnippets();
@@ -37,13 +38,15 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 	 * @see fr.pantheonsorbonne.miage.DiplomaGenerator#getContent()
 	 */
 	@Override
-	public InputStream getContent() throws Exp {
+
+	public InputStream getContent() throws Exp{
+
 		try (ByteArrayOutputStream bos = new ByteArrayOutputStream();) {
 
 			this.writeToStream(bos);
 
 			return new ByteArrayInputStream(bos.toByteArray());
-
+			
 		} catch (IOException e) {
 
 			throw new Exp("failed to generate the file to stream to", e);
@@ -51,7 +54,8 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
 	}
 
-	protected void writeToStream(OutputStream os) throws Exp  {
+
+	protected void writeToStream(OutputStream os) throws Exp {
 		Document document = new Document();
 	
 		try {
@@ -70,7 +74,8 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 			document.add(Image.getInstance(image.toAbsolutePath().toString()));
 
 		} catch (DocumentException | IOException e) {
-			throw new Exp("failed to generate Document", e);		} finally {
+			throw new Exp("failed to generate Document", e);
+		} finally {
 			document.close();
 		}
 	}
