@@ -21,6 +21,9 @@ public class StudentRepository implements Iterable<Student> {
 		this.db = db;
 	}
 
+	
+	
+	
 	public static StudentRepository withDB(String db) {
 		if (!Files.exists(Paths.get(db))) {
 			throw new RuntimeException("failed to find" + Paths.get(db).toAbsolutePath().toString());
