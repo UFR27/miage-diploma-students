@@ -5,7 +5,7 @@ public class Student {
 	private int id;
 	private String password;
 
-	public Student( String name, String title, int id, String password) {
+	public Student( int id,String name, String title,  String password) {
 		this.name = name;
 		this.title = title;
 		this.id = id;
