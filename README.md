@@ -6,3 +6,5 @@ Des fois, les cours sur zoom, ça me manque, car je pouvais faire cours en pyjam
 
 bonne journée, au revoir
 
+I don't even know what to say :( Oui
+
