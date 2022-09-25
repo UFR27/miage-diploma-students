@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -62,8 +63,8 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 		Document document = new Document();
 	
 		try {
-
-			Path image = new File("src/main/resources/diploma.png").toPath();
+			Path diplomaPath = Paths.get("src", "main", "resources", "diploma.png").toAbsolutePath();
+			Path image = new File(diplomaPath.toString()).toPath();
 			Rectangle rect = new Rectangle(800f, 600f);
 			document.setPageSize(rect);
 
@@ -74,7 +75,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 				snippet.write(writer);
 			}
 
-			document.add(Image.getInstance(image.toAbsolutePath().toString()));
+			document.add(Image.getInstance(image.toString()));
 
 		} catch (DocumentException | IOException e) {
 			throw new RuntimeException("failed to generate Document", e);
