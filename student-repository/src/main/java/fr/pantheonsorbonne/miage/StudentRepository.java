@@ -65,12 +65,12 @@ public class StudentRepository implements Iterable<Student> {
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
 			this.currentIterator = parser.getRecords().stream()
 					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1)))
-					.map(c ->  c).iterator();
+					.map(Student.class::cast).iterator();
 			return this.currentIterator;
 
 		} catch (IOException e) {
 			Logger.getGlobal().info("IO PB" + e.getMessage());
-			return Collections.EMPTY_SET.iterator();
+			return Collections.emptyIterator();
 		}
 	}
 
