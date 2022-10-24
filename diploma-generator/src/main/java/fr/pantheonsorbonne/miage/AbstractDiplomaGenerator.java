@@ -29,7 +29,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 	 * 
 	 * @return
 	 */
-	abstract protected Collection<DiplomaSnippet> getDiplomaSnippets();
+	protected abstract  Collection<DiplomaSnippet> getDiplomaSnippets();
 
 	/*
 	 * (non-Javadoc)
