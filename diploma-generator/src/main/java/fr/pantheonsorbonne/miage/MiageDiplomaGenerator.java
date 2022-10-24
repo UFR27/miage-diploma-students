@@ -42,7 +42,7 @@ public class MiageDiplomaGenerator extends AbstractDiplomaGenerator {
 
 	@Override
 	protected Collection<DiplomaSnippet> getDiplomaSnippets() {
-		String studentName = this.student.getName() + " " + this.student.getTitle();
+		String studentName = this.student.getTitle() +" "+this.student.getName();
 		return Arrays.asList(new DateSnippet(this.date), new NameSnippet(studentName));
 	}
 
