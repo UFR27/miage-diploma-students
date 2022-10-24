@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -16,7 +15,6 @@ import java.util.logging.Logger;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
-import org.apache.commons.csv.CSVRecord;
 
 public class StudentRepository implements Iterable<Student> {
 
@@ -67,8 +65,8 @@ public class StudentRepository implements Iterable<Student> {
 			java.util.Iterator<Student> currentIterator = null;
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
 			currentIterator = parser.getRecords().stream()
-					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
-					.map(c -> (Student) c).iterator();
+					.map(reccord -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
+					.map(c -> c).iterator();
 			return currentIterator;
 
 		} catch (IOException e) {

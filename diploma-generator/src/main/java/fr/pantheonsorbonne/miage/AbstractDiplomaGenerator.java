@@ -6,10 +6,10 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collection;
-
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
@@ -56,7 +56,13 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 		Document document = new Document();
 	
 		try {
-			Path diplomaPngPath = Paths.get( "diploma-generator", "src", "main", "resources", "diploma.png");
+			Path projectRoot = FileSystems.getDefault().getPath("").toAbsolutePath();
+			Path diplomaPngPath;
+			if (projectRoot.toString().contains("diploma-generator")) {
+				diplomaPngPath = Paths.get( "src", "main", "resources", "diploma.png");
+			} else {
+				diplomaPngPath = Paths.get("diploma-generator", "src", "main", "resources", "diploma.png");
+			}
 			Path image = new File(diplomaPngPath.toString()).toPath();
 			Rectangle rect = new Rectangle(800f, 600f);
 			document.setPageSize(rect);
