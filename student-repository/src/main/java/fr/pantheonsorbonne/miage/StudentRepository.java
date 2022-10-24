@@ -4,10 +4,11 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.HashSet;
+import java.util.Collections;
+
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
+
 import java.util.logging.Logger;
 
 
@@ -63,10 +64,10 @@ public class StudentRepository implements Iterable<Student> {
 		try (FileReader reader = new FileReader(this.db)) {
 			java.util.Iterator<Student> currentIterator = null;
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
-			this.currentIterator = parser.getRecords().stream()
-					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1)))
+			currentIterator = parser.getRecords().stream()
+					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), db))
 					.map(c -> (Student) c).iterator();
-			return this.currentIterator;
+			return currentIterator;
 
 		} catch (IOException e) {
 			Logger.getGlobal().info("IO PB" + e.getMessage());
