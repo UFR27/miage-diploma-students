@@ -3,15 +3,13 @@ package fr.pantheonsorbonne.miage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.FileSystems;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Collection;
-import java.util.HashSet;
-
-import com.google.common.io.ByteStreams;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
@@ -22,12 +20,8 @@ import fr.pantheonsorbonne.miage.diploma.DiplomaSnippet;
 
 public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
-	private Collection<DiplomaSnippet> snippets = new HashSet<>();
-
-	public AbstractDiplomaGenerator() {
+	protected AbstractDiplomaGenerator() {
 		super();
-		
-
 	}
 
 	/**
@@ -35,7 +29,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 	 * 
 	 * @return
 	 */
-	abstract protected Collection<DiplomaSnippet> getDiplomaSnippets();
+	protected abstract Collection<DiplomaSnippet> getDiplomaSnippets();
 
 	/*
 	 * (non-Javadoc)
@@ -53,7 +47,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
 		} catch (IOException e) {
 
-			throw new RuntimeException("failed to generate the file to stream to", e);
+			throw new UnsupportedOperationException("failed to generate the file to stream to", e);
 		}
 
 	}
@@ -62,8 +56,14 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 		Document document = new Document();
 	
 		try {
-
-			Path image = new File("src/main/resources/diploma.png").toPath();
+			Path projectRoot = FileSystems.getDefault().getPath("").toAbsolutePath();
+			Path diplomaPngPath;
+			if (projectRoot.toString().contains("diploma-generator")) {
+				diplomaPngPath = Paths.get( "src", "main", "resources", "diploma.png");
+			} else {
+				diplomaPngPath = Paths.get("diploma-generator", "src", "main", "resources", "diploma.png");
+			}
+			Path image = new File(diplomaPngPath.toString()).toPath();
 			Rectangle rect = new Rectangle(800f, 600f);
 			document.setPageSize(rect);
 
@@ -74,10 +74,10 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 				snippet.write(writer);
 			}
 
-			document.add(Image.getInstance(image.toAbsolutePath().toString()));
+			document.add(Image.getInstance(image.toString()));
 
 		} catch (DocumentException | IOException e) {
-			throw new RuntimeException("failed to generate Document", e);
+			throw new UnsupportedOperationException("failed to generate Document", e);
 		} finally {
 			document.close();
 		}
