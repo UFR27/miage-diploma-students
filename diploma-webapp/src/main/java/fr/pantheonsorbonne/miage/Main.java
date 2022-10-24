@@ -24,9 +24,10 @@ import com.google.common.io.ByteStreams;
  */
 public class Main {
 	public static final String HOST = "localhost";
+	public static final String DB_PATH = "diploma-webapp/src/main/resources/students.db";
 	public static final int PORT = 7000;
 	private static final Logger logger = Logger.getLogger(Main.class.getName());
-	private static StudentRepository studentRepo = StudentRepository.withDB("src/main/resources/students.db");
+	private static StudentRepository studentRepo = StudentRepository.withDB(DB_PATH);
 	private static String webAppURL = "http://localhost:8080/home";
 
 	public static void main(String[] args) throws IOException, URISyntaxException {
@@ -97,7 +98,7 @@ public class Main {
 
 				StringBuilder sb = new StringBuilder();
 				sb.append("<!DOCTYPE html><head><meta charset='utf-8'></head><body><h1>Liste des diplômés</h1><ul>");
-				for (Student stu : StudentRepository.withDB("src/main/resources/students.db")) {
+				for (Student stu : StudentRepository.withDB(DB_PATH)) {
 					sb.append("<li>");
 					sb.append(
 							"<a href='/diploma/" + stu.getId() + "'>" + stu.getTitle() + ' ' + stu.getName() + "</a>");
