@@ -56,7 +56,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 		Document document = new Document();
 	
 		try {
-			Path diplomaPngPath = Paths.get( "src", "main", "resources", "diploma.png");
+			Path diplomaPngPath = Paths.get( "diploma-generator", "src", "main", "resources", "diploma.png");
 			Path image = new File(diplomaPngPath.toString()).toPath();
 			Rectangle rect = new Rectangle(800f, 600f);
 			document.setPageSize(rect);
