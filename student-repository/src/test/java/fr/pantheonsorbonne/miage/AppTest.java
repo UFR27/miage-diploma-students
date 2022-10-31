@@ -24,11 +24,7 @@ public class AppTest {
 	public void shouldAnswerWithTrue() throws IOException {
 		File tempDB = Files.createTempFile("prefix", ".csv").toFile();
 		FileWriter fw = new FileWriter(tempDB);
-<<<<<<< HEAD
-		fw.write("Nicolas,Dr.,1,nico\n\n");
-=======
 		fw.write("Nicolas,Dr.,1,nico\n");
->>>>>>> encryption-unit-tests
 		fw.write("Francois,M.,2,franco\n");
 		fw.close();
 
@@ -40,10 +36,6 @@ public class AppTest {
 		assertEquals("Dr.", nicolas.getTitle());
 		assertEquals(1, nicolas.getId());
 		assertEquals("nico", nicolas.getPassword());
-<<<<<<< HEAD
-=======
-
->>>>>>> encryption-unit-tests
 		Student francois = Iterables.get(StudentRepository.withDB(tempDB.toString()), 1);
 
 		assertEquals("Francois", francois.getName());
