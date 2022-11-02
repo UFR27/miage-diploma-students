@@ -1,7 +1,6 @@
 package fr.pantheonsorbonne.miage;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
@@ -17,11 +16,7 @@ import java.util.Date;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.encryption.InvalidPasswordException;
-import org.apache.pdfbox.rendering.PDFRenderer;
-import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 import org.junit.jupiter.api.Test;
-
-import com.google.common.io.ByteStreams;
 
 public class DiplomaGeneratorTest {
 
@@ -39,7 +34,7 @@ public class DiplomaGeneratorTest {
 
 		try {
 
-			Student stu = new Student(0, "Nicolas", "","nico");
+			Student stu = new Student(0, "Nicolas", "");
 
 			File generatedFileTarget = generateDiplomaForStudent(stu, currentDate);
 
