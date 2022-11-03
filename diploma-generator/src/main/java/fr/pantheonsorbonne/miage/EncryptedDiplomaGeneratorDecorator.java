@@ -58,5 +58,4 @@ public class EncryptedDiplomaGeneratorDecorator extends DiplomaGeneratorDecorato
 	protected Collection<DiplomaSnippet> getDiplomaSnippets() {
 		return Collections.emptyList();
 	}
-
 }
