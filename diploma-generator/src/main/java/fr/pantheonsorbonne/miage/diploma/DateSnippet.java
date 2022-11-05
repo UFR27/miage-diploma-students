@@ -15,11 +15,6 @@ import com.itextpdf.text.pdf.PdfWriter;
 public class DateSnippet implements DiplomaSnippet {
 
 	private Date date;
-
-	public DateSnippet() {
-		this(new Date());
-	}
-
 	public DateSnippet(Date date) {
 		this.date = date;
 	}
