@@ -4,7 +4,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collections;
@@ -15,7 +14,6 @@ import java.util.logging.Logger;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
-import org.apache.commons.csv.CSVRecord;
 
 public class StudentRepository implements Iterable<Student> {
 
@@ -27,7 +25,7 @@ public class StudentRepository implements Iterable<Student> {
 
 	public static StudentRepository withDB(String db) {
 		if (!Files.exists(Paths.get(db))) {
-			throw new RuntimeException("failed to find" + Paths.get(db).toAbsolutePath().toString());
+			throw new UnsupportedOperationException("failed to find" + Paths.get(db).toAbsolutePath().toString());
 		}
 		return new StudentRepository(db);
 	}
@@ -46,7 +44,7 @@ public class StudentRepository implements Iterable<Student> {
 				try {
 					csvFilePrinter.printRecord(toReccord(student));
 				} catch (IOException e) {
-					throw new IllegalArgumentException("failed to update db file");
+					throw new UnsupportedOperationException("failed to update db file");
 				}
 			});
 			csvFilePrinter.printRecord(toReccord(s));
@@ -54,7 +52,7 @@ public class StudentRepository implements Iterable<Student> {
 			csvFilePrinter.close(true);
 
 		} catch (IOException e) {
-			throw new IllegalArgumentException("failed to update db file");
+			throw new UnsupportedOperationException("failed to update db file");
 		}
 		return this;
 
