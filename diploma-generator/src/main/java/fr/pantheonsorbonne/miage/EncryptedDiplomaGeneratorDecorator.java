@@ -49,7 +49,7 @@ package fr.pantheonsorbonne.miage;
  		} catch (IOException | DocumentException e) {
 
  			e.printStackTrace();
- 			throw new RuntimeException("failed to generate Encrypted File");
+ 			throw new UnsupportedOperationException("failed to generate Encrypted File");
  		}
 
  	}

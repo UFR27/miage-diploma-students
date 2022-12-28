@@ -65,9 +65,9 @@ package fr.pantheonsorbonne.miage;
  		ArrayList<Student> students = new ArrayList<>();
  		Iterables.addAll(students, repo);
 
- 		for (int i = 0; i <= students.size(); i++) {
+ 		for (int i = 0; i < students.size(); i++) {
  			if (i == studentId) {
- 				return students.get(i-1);
+ 				return students.get(i);
  			}
  		}
 
@@ -95,7 +95,7 @@ package fr.pantheonsorbonne.miage;
  		server.getServerConfiguration().addHttpHandler(new HttpHandler() {
  			public void service(Request request, Response response) throws Exception {
  				// get the id of the student
- 				int id = Integer.parseInt(request.getPathInfo().substring(1));
+ 				int id = Integer.parseInt(request.getPathInfo().substring(1)) - 1;
 
  				handleResponse(response, id);
  				response.setContentType("text/html; charset=utf-8");
