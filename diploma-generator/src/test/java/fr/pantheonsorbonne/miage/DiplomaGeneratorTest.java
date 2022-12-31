@@ -1,7 +1,6 @@
 package fr.pantheonsorbonne.miage;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.awt.image.BufferedImage;
@@ -18,7 +17,6 @@ import java.util.Date;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.encryption.InvalidPasswordException;
-import org.apache.pdfbox.rendering.ImageType;
 import org.apache.pdfbox.rendering.PDFRenderer;
 import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 import org.junit.jupiter.api.Test;
@@ -41,7 +39,7 @@ public class DiplomaGeneratorTest {
 
 		try {
 
-			Student stu = new Student(0, "Nicolas", "");
+			Student stu = new Student(0, "Nicolas","" ,"nico");
 
 			File generatedFileTarget = generateDiplomaForStudent(stu, currentDate);
 
@@ -76,7 +74,7 @@ public class DiplomaGeneratorTest {
 
 	protected File generateDiplomaForStudent(Student stu, Date date) throws IOException, FileNotFoundException {
 		ByteArrayOutputStream generatedFileContent = new ByteArrayOutputStream();
-		File generatedFileTarget = Files.createTempFile("prefix_", "_suffic").toFile();
+		File generatedFileTarget = Files.createTempFile("prefix_", ".pdf").toFile();
 		MiageDiplomaGenerator generator = new MiageDiplomaGenerator(stu, date);
 		new DiplomaFileAdapter(generator).generateFile(generatedFileTarget.getPath());
 		FileInputStream generatedFileReader = new FileInputStream(generatedFileTarget);
