@@ -41,7 +41,7 @@ public class DiplomaGeneratorTest {
 
 		try {
 
-			Student stu = new Student(0, "Nicolas", "");
+			Student stu = new Student(0, "Nicolas", "","nico");
 
 			File generatedFileTarget = generateDiplomaForStudent(stu, currentDate);
 
@@ -76,7 +76,7 @@ public class DiplomaGeneratorTest {
 
 	protected File generateDiplomaForStudent(Student stu, Date date) throws IOException, FileNotFoundException {
 		ByteArrayOutputStream generatedFileContent = new ByteArrayOutputStream();
-		File generatedFileTarget = Files.createTempFile("prefix_", "_suffic").toFile();
+		File generatedFileTarget = Files.createTempFile("prefix_", ".pdf").toFile();
 		MiageDiplomaGenerator generator = new MiageDiplomaGenerator(stu, date);
 		new DiplomaFileAdapter(generator).generateFile(generatedFileTarget.getPath());
 		FileInputStream generatedFileReader = new FileInputStream(generatedFileTarget);
