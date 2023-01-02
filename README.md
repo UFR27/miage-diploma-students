@@ -1,9 +1,4 @@
-Ce dépot contient le matériel pédagogique relatif au module DEVTOOL "Atelier de développement" https://cours.univ-paris1.fr/enrol/index.php?id=11601 donné dans le cadre de la licence MIAGE L3 à l'Université de Paris 1 Panthéon Sorbonne.
-
-Coucou
-
-Des fois, les cours sur zoom, ça me manque, car je pouvais faire cours en pyjama. une petite phrase rigolote
+Ce dépot contient le matériel pédagogique relatif au module DEVTOOL "Atelier de développement" https://cours.univ-paris1.fr/enrol/index.php?id=11601 donné dans le cadre de la licence MIAGE L3 à l'Université de Paris 1 Panthéon Sorbonne. 
 
 
-I don't even know what to say :( Oui
-
+Des fois, les cours sur zoom me manquent car je pouvais faire cours en pyjama
