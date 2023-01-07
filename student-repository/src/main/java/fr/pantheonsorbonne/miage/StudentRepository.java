@@ -17,9 +17,17 @@ public class StudentRepository implements Iterable<Student> {
 	private String db;
 	private java.util.Iterator<Student> currentIterator = null;
 
+	public java.util.Iterator<Student> getCurrentIterator() {
+		return currentIterator;
+	}
+
+	public void setCurrentIterator(java.util.Iterator<Student> currentIterator) {
+		this.currentIterator = currentIterator;
+	}
+
 	private StudentRepository(String db) {
 		this.db = db;
-	};
+	}
 
 	public static StudentRepository withDB(String db) {
 		return new StudentRepository(db);
