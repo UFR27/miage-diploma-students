@@ -17,7 +17,7 @@ public class DateSnippet implements DiplomaSnippet {
 	private Date date;
 
 	public DateSnippet() {
-		this(new Date());
+		this (new Date());
 	}
 
 	public DateSnippet(Date date) {
