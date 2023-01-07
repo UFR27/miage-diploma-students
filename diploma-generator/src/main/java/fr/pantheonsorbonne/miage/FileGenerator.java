@@ -6,11 +6,11 @@ package fr.pantheonsorbonne.miage;
  * @author nherbaut
  *
  */
-public abstract class FileGenerator<GENERATOR extends DiplomaGenerator> {
+public abstract class FileGenerator<T extends DiplomaGenerator> {
 
-	protected final GENERATOR generator;
+	protected final T generator;
 
-	public FileGenerator(GENERATOR t) {
+	protected FileGenerator(T t) {
 		this.generator = t;
 	}
 
