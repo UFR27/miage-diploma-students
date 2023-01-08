@@ -41,6 +41,7 @@
 						<mainClass>none</mainClass>
 					</configuration>
 				</plugin>
+				
 			</plugins>
 		</pluginManagement>
 
