@@ -5,32 +5,17 @@ public class Student {
 	private int id;
 	private String password;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 	public Student(int id, String name, String title,String password) {
 		this.name = name;
 		this.title = title;
 		this.id = id;
 		this.password=password;
 
-=======
-	public Student(int id, String title, String name, String password) {
->>>>>>> encryption-unit-tests
-=======
-	public Student(int id, String name, String title, String password) {
->>>>>>> encryption
-		this.name = name;
-		this.title = title;
-		this.id = id;
-		this.password = password;
->>>>>>> encryption
 	}
 
 	private String name;
 
-	public String getPassword(){
-		return this.password;
-	}
+
 
 	public String getName() {
 		return name;
