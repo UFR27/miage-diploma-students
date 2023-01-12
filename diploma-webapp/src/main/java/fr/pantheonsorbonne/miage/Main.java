@@ -27,6 +27,7 @@ public class Main {
 	public static final int PORT = 7000;
 	private static final Logger logger = Logger.getLogger(Main.class.getName());
 	private static StudentRepository studentRepo = StudentRepository.withDB("src/main/resources/students.db");
+	private static final String hosteee = "http://localhost:8080/home";
 
 	public static void main(String[] args) throws IOException, URISyntaxException {
 
@@ -38,7 +39,7 @@ public class Main {
 
 		{
 			server.start();
-			java.awt.Desktop.getDesktop().browse(new URI("http://localhost:8080/home"));
+			java.awt.Desktop.getDesktop().browse(new URI(hosteee));
 			logger.log(Level.INFO, "Press any key to stop the server...");
 			System.in.read();
 		} catch (Exception e) {
