@@ -74,8 +74,12 @@ public class StudentRepository implements Iterable<Student> {
 
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
 			this.currentIterator = parser.getRecords().stream()
+<<<<<<< HEAD
 					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1),
 							reccord.get(3)))
+=======
+					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
+>>>>>>> origin/encryption
 					.map(c -> (Student) c).iterator();
 			return this.currentIterator;
 
