@@ -13,14 +13,16 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
 
+
+
+
 public class StudentRepository implements Iterable<Student> {
 
 	private String db;
-	private java.util.Iterator<Student> currentIterator = null;
 
 	private StudentRepository(String db) {
 		this.db = db;
-	};
+	}
 
 	public static StudentRepository withDB(String db) {
 		return new StudentRepository(db);
@@ -49,6 +51,7 @@ public class StudentRepository implements Iterable<Student> {
 
 		} catch (IOException e) {
 			throw new UnsupportedOperationException("failed to update db file");
+			throw new UnsupportedOperationException("failed to update db file");
 		}
 		return this;
 
@@ -56,6 +59,7 @@ public class StudentRepository implements Iterable<Student> {
 	@Override
 	public java.util.Iterator<Student> iterator() {
 		try (FileReader reader = new FileReader(this.db)) {
+			java.util.Iterator<Student> currentIterator = null;
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
 			this.currentIterator = parser.getRecords().stream()
 					.map(studentRecord -> new Student(Integer.parseInt(studentRecord.get(2)), studentRecord.get(0), studentRecord.get(1), studentRecord.get(3)))
