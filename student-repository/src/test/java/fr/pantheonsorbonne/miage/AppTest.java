@@ -37,9 +37,12 @@ public class AppTest {
 		assertEquals("Dr.", nicolas.getTitle());
 		assertEquals(1, nicolas.getId());
 		assertEquals("nico", nicolas.getPassword());
+<<<<<<< HEAD
 		nicolas.setName("Nicolas");
 		nicolas.setTitle("Dr.");
 		assertEquals("Dr. Nicolas",nicolas.toString());
+=======
+>>>>>>> origin/encryption-unit-tests
 
 		Student francois = Iterables.get(StudentRepository.withDB(tempDB.toString()), 1);
 
@@ -53,6 +56,14 @@ public class AppTest {
 		assertEquals(3, Iterables.size(StudentRepository.withDB(tempDB.toString())));
 		
 		Student mohamed = Iterables.get(StudentRepository.withDB(tempDB.toString()), 2);
+<<<<<<< HEAD
+=======
+
+		assertEquals("Mohamed", mohamed.getName());
+		assertEquals("M.", mohamed.getTitle());
+		assertEquals(3, mohamed.getId());
+		assertEquals("momo", mohamed.getPassword());
+>>>>>>> origin/encryption-unit-tests
 
 		assertEquals("Mohamed", mohamed.getName());
 		assertEquals("M.", mohamed.getTitle());

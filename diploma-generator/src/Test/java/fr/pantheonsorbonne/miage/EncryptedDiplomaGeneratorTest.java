@@ -58,7 +58,14 @@ public class EncryptedDiplomaGeneratorTest extends DiplomaGeneratorTest {
 		ByteArrayOutputStream referenceImageData = new ByteArrayOutputStream();
 
 		writePDFImageRasterBytes(tempFileDecrypted.toFile(), generatedImageData);
+<<<<<<< HEAD:diploma-generator/src/Test/java/fr/pantheonsorbonne/miage/EncryptedDiplomaGeneratorTest.java
 		
+=======
+		writePDFImageRasterBytes(new File("src/test/resources/nicolas.pdf"), referenceImageData);
+
+		assertArrayEquals(referenceImageData.toByteArray(), generatedImageData.toByteArray());
+
+>>>>>>> origin/encryption-unit-tests:diploma-generator/src/test/java/fr/pantheonsorbonne/miage/EncryptedDiplomaGeneratorTest.java
 		stamper.close();
 		reader.close();
 
