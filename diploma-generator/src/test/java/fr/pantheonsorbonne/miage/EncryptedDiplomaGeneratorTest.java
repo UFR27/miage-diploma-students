@@ -39,7 +39,7 @@ public class EncryptedDiplomaGeneratorTest extends DiplomaGeneratorTest {
 
 		Path tempFileEncrypted = Files.createTempFile("prefix", ".pdf");
 		Path tempFileDecrypted = Files.createTempFile("prefix", ".pdf");
-
+		System.out.println(tempFileEncrypted.toString());
 		adapter.generateFile(tempFileEncrypted.toString());
 
 		PdfReader reader = new PdfReader(tempFileEncrypted.toString(), "abc".getBytes());
