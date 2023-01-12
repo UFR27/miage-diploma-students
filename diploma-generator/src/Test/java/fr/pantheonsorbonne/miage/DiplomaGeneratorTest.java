@@ -39,11 +39,7 @@ public class DiplomaGeneratorTest {
 
 		try {
 
-<<<<<<< HEAD:diploma-generator/src/Test/java/fr/pantheonsorbonne/miage/DiplomaGeneratorTest.java
 			Student stu = new Student(0, "Nicolas", "", "nico");
-=======
-			Student stu = new Student(0, "Nicolas", "","nico");
->>>>>>> origin/encryption-unit-tests:diploma-generator/src/test/java/fr/pantheonsorbonne/miage/DiplomaGeneratorTest.java
 
 			File generatedFileTarget = generateDiplomaForStudent(stu, currentDate);
 

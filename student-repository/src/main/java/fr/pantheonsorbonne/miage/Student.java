@@ -44,8 +44,4 @@ public class Student {
 	public String getPassword() {
 		return this.password;
 	}
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/encryption
