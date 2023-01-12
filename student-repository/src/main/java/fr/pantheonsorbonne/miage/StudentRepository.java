@@ -3,6 +3,9 @@ package fr.pantheonsorbonne.miage;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -61,7 +64,6 @@ public class StudentRepository implements Iterable<Student> {
 	@Override
 	public java.util.Iterator<Student> iterator() {
 		try (FileReader reader = new FileReader(this.db)) {
-			
 
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
 			return parser.getRecords().stream()
