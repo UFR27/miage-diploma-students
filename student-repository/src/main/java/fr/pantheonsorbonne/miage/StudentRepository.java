@@ -34,7 +34,16 @@ public class StudentRepository implements Iterable<Student> {
 	}
 
 	public static List<String> toReccord(Student stu) {
+<<<<<<< HEAD
 		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId(),stu.getPassword());
+=======
+
+<<<<<<< HEAD
+		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId(),stu.getPassword());
+=======
+		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId());
+>>>>>>> encryption
+>>>>>>> encryption-unit-tests
 	}
 
 	public StudentRepository add(Student s) {
@@ -71,7 +80,11 @@ public class StudentRepository implements Iterable<Student> {
 			.map(c -> (Student) c).iterator();
 =======
 			this.currentIterator = parser.getRecords().stream()
+<<<<<<< HEAD
+					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(1), reccord.get(0), reccord.get(3)))
+=======
 					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
+>>>>>>> encryption
 					.map(c -> (Student) c).iterator();
 			return this.currentIterator;
 >>>>>>> encryption

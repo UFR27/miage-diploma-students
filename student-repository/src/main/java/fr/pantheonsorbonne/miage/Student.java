@@ -6,6 +6,7 @@ public class Student {
 	private String password;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public Student(int id, String name, String title,String password) {
 		this.name = name;
 		this.title = title;
@@ -13,7 +14,11 @@ public class Student {
 		this.password=password;
 
 =======
+	public Student(int id, String title, String name, String password) {
+>>>>>>> encryption-unit-tests
+=======
 	public Student(int id, String name, String title, String password) {
+>>>>>>> encryption
 		this.name = name;
 		this.title = title;
 		this.id = id;
