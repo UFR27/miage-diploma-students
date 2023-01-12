@@ -8,7 +8,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Path;
 import java.util.Collection;
-import java.util.HashSet;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -19,9 +18,6 @@ import com.itextpdf.text.pdf.PdfWriter;
 import fr.pantheonsorbonne.miage.diploma.DiplomaSnippet;
 
 public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
-
-	private Collection<DiplomaSnippet> snippets = new HashSet<>();
-
 	protected AbstractDiplomaGenerator() {
 		super();
 		

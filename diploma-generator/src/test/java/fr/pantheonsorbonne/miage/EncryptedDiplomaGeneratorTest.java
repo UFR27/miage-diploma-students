@@ -48,6 +48,7 @@ import java.io.ByteArrayOutputStream;
 		assertArrayEquals(generatedImageData.toByteArray(), generatedImageData.toByteArray());
  		stamper.close();
  		reader.close();
+		
 
  	}
  }
