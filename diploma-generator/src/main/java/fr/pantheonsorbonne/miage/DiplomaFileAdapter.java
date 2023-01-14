@@ -10,6 +10,7 @@ import fr.pantheonsorbonne.miage.exception.FailedWritingDiploma;
 import fr.pantheonsorbonne.miage.exception.FailedGeneratingEncryptedFileException;
 
 
+
 public class DiplomaFileAdapter extends FileGenerator<AbstractDiplomaGenerator> {
 
 	public DiplomaFileAdapter(AbstractDiplomaGenerator generator) {
