@@ -16,7 +16,9 @@ import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import fr.pantheonsorbonne.miage.diploma.DiplomaSnippet;
+
 import fr.pantheonsorbonne.miage.exception.FailedGeneratingDocumentException;
+import fr.pantheonsorbonne.miage.exception.FailedGeneratingEncryptedFileException;
 import fr.pantheonsorbonne.miage.exception.FailedGeneratingFileException;
 
 public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
@@ -40,7 +42,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 	 * @see fr.pantheonsorbonne.miage.DiplomaGenerator#getContent()
 	 */
 	@Override
-	public InputStream getContent() {
+	public InputStream getContent() throws FailedGeneratingEncryptedFileException {
 
 		try (ByteArrayOutputStream bos = new ByteArrayOutputStream();) {
 

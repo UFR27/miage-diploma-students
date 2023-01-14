@@ -4,8 +4,17 @@ public class Student {
 
 	private int id;
 
+<<<<<<< Updated upstream
 
 	public Student(int id, String name, String title) {
+=======
+<<<<<<< Updated upstream
+	public Student(int id, String name, String title, String password) {
+=======
+
+	public Student(int id, String name, String title, String string) {
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 		this.name = name;
 		this.title = title;
 		this.id = id;

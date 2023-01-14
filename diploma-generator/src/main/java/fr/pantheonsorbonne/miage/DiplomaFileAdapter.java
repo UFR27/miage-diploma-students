@@ -7,6 +7,7 @@ import java.io.InputStream;
 import com.google.common.io.ByteStreams;
 
 import fr.pantheonsorbonne.miage.exception.FailedWritingDiploma;
+import fr.pantheonsorbonne.miage.exception.FailedGeneratingEncryptedFileException;
 
 
 public class DiplomaFileAdapter extends FileGenerator<AbstractDiplomaGenerator> {
@@ -17,7 +18,7 @@ public class DiplomaFileAdapter extends FileGenerator<AbstractDiplomaGenerator> 
 	}
 
 	@Override
-	public void generateFile(String outputFile) {
+	public void generateFile(String outputFile) throws FailedGeneratingEncryptedFileException {
 		try (FileOutputStream fos = new FileOutputStream(outputFile)) {
 			InputStream is = this.generator.getContent();
 			ByteStreams.copy(is, fos);
