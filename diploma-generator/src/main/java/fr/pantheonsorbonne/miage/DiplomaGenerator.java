@@ -12,8 +12,7 @@ public interface DiplomaGenerator {
 
 	/**
 	 * Generate the diploma in a Stream
-	 * 
-	 * @return
+	 *
 	 */
 	InputStream getContent();
 
