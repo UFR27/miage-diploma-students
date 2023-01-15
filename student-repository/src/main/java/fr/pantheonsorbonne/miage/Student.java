@@ -12,7 +12,10 @@ public class Student {
 
 	}
 
-	private String name;
+	public Student(int parseInt, String string, String string2, String string3) {
+    }
+
+    private String name;
 
 	public String getName() {
 		return name;
