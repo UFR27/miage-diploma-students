@@ -15,11 +15,8 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfStamper;
 
-<<<<<<< Updated upstream
-=======
 import fr.pantheonsorbonne.miage.exception.FailedGeneratingEncryptedFileException;
 
->>>>>>> Stashed changes
 public class EncryptedDiplomaGeneratorTest extends DiplomaGeneratorTest {
 
 	private final class EncryptedPdfReader extends PdfReader {
@@ -35,15 +32,9 @@ public class EncryptedDiplomaGeneratorTest extends DiplomaGeneratorTest {
 	}
 
 	@Test
-<<<<<<< Updated upstream
-	public void testEncryptedPdfTest() throws IOException, DocumentException {
-
-		Student stu = new Student(1, "Nicolas", "", "nico");
-=======
 	public void testEncryptedPdfTest() throws IOException, DocumentException, FailedGeneratingEncryptedFileException {
 
 		Student stu = new Student(1, "Nicolas", " ","nico");
->>>>>>> Stashed changes
 		DiplomaGenerator generator = new MiageDiplomaGenerator(stu, DiplomaGeneratorTest.currentDate);
 		AbstractDiplomaGenerator encryptedGenerator = new EncryptedDiplomaGeneratorDecorator(generator, "abc");
 		FileGenerator<AbstractDiplomaGenerator> adapter = new DiplomaFileAdapter(encryptedGenerator);
@@ -77,8 +68,4 @@ public class EncryptedDiplomaGeneratorTest extends DiplomaGeneratorTest {
 		reader.close();
 
 	}
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes

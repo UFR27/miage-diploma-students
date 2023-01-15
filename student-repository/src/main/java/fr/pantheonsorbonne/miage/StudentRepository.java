@@ -18,6 +18,7 @@ import fr.pantheonsorbonne.miage.exception.FailedUploadingDBFileException;
 public class StudentRepository implements Iterable<Student> {
 
 	private String db;
+	private Iterator<Student> currentIterator = null;
 
 	private StudentRepository(String db) {
 		this.db = db;
@@ -59,26 +60,12 @@ public class StudentRepository implements Iterable<Student> {
 	public java.util.Iterator<Student> iterator() {
 		try (FileReader reader = new FileReader(this.db)) {
 			
-			java.util.Iterator<Student> currentIterator = null;
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
-<<<<<<< Updated upstream
-			currentIterator = parser.getRecords().stream()
-					.map(reccord -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1)))
-					.iterator();
-			return currentIterator;
-=======
-<<<<<<< Updated upstream
+
 			this.currentIterator = parser.getRecords().stream()
 					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(1), reccord.get(0), reccord.get(3)))
 					.map(c -> (Student) c).iterator();
 			return this.currentIterator;
-=======
-			currentIterator = parser.getRecords().stream()
-					.map(reccord -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
-					.iterator();
-			return currentIterator;
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 
 		} catch (IOException e) {
 			Logger.getGlobal().info("IO PB" + e.getMessage());
