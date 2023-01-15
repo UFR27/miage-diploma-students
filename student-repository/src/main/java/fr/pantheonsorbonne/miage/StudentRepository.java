@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
+import org.apache.commons.csv.CSVRecord;
 
 
 public class StudentRepository implements Iterable<Student> {
@@ -29,14 +30,13 @@ public class StudentRepository implements Iterable<Student> {
 
 	public static List<String> toReccord(Student stu) {
 
-		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId());
+		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId(),stu.getPassword());
 	}
 
 	public StudentRepository add(Student s) {
 		Iterator<Student> previousContent = StudentRepository.withDB(this.db).iterator();
 		try (FileWriter writer = new FileWriter(this.db)) {
 			CSVPrinter csvFilePrinter = new CSVPrinter(writer, CSVFormat.DEFAULT);
-
 			previousContent.forEachRemaining(student -> {
 				try {
 					csvFilePrinter.printRecord(toReccord(student));
@@ -47,25 +47,20 @@ public class StudentRepository implements Iterable<Student> {
 			csvFilePrinter.printRecord(toReccord(s));
 			csvFilePrinter.flush();
 			csvFilePrinter.close(true);
-
 		} catch (IOException e) {
 			throw new UnsupportedOperationException("failed to update db file");
 		}
 		return this;
-
 	}
 
 	@Override
 	public java.util.Iterator<Student> iterator() {
 		try (FileReader reader = new FileReader(this.db)) {
 
-			java.util.Iterator<Student> currentIterator = null;
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
-			currentIterator = parser.getRecords().stream()
+			return parser.getRecords().stream()
 					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
 					.map(c -> (Student) c).iterator();
-			return currentIterator;
-
 		} catch (IOException e) {
 			Logger.getGlobal().info("IO PB" + e.getMessage());
 			return Collections.emptyIterator();
