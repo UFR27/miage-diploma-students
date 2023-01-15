@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -65,15 +66,16 @@ public class StudentRepository implements Iterable<Student> {
 		try (FileReader reader = new FileReader(this.db)) {
 
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
-			currentIterator = parser.getRecords().stream()
-					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
-                    .map(Student.class::cast).iterator();
-            return currentIterator;
-    }catch (IOException e) {
-        Logger.getGlobal().info("IO PB" + e.getMessage());
-        Set<Student> emptySet = new HashSet<>();
-            return emptySet.iterator();
-        }
-}
+			this.currentIterator = parser.getRecords().stream()
+					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1)))
+					.map(c -> (Student) c).iterator();
+			return this.currentIterator;
+
+		} catch (IOException e) {
+			Logger.getGlobal().info("IO PB" + e.getMessage());
+			return Collections.EMPTY_SET.iterator();
+		}
+	}
 
 }
+
