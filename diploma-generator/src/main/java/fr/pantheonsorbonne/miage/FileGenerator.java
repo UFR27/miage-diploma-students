@@ -18,3 +18,4 @@ public abstract class FileGenerator<GENERATOR extends DiplomaGenerator> {
 
 	public abstract void generateFile(String outputFile) throws FailedGeneratingEncryptedFileException;
 }
+

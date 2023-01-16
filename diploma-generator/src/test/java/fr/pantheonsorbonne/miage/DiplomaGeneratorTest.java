@@ -83,5 +83,6 @@ public class DiplomaGeneratorTest {
 		ByteStreams.copy(generatedFileReader, generatedFileContent);
 		return generatedFileTarget;
 	}
+}
 
 }

@@ -6,7 +6,7 @@ import java.io.InputStream;
 
 import com.google.common.io.ByteStreams;
 
-import fr.pantheonsorbonne.miage.exception.FailedWritingDiploma;
+import fr.pantheonsorbonne.miage.exception.FailedWritingDiplomaException;
 import fr.pantheonsorbonne.miage.exception.FailedGeneratingEncryptedFileException;
 
 
@@ -26,7 +26,7 @@ public class DiplomaFileAdapter extends FileGenerator<AbstractDiplomaGenerator> 
 			is.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-			throw new FailedWritingDiploma("failed to write diploma file", e);
+			throw new FailedWritingDiplomaException("failed to write diploma file", e);
 		}
 	}
 

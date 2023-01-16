@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.util.Set;
 import java.util.logging.Logger;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -15,9 +16,12 @@ import org.apache.commons.csv.CSVPrinter;
 
 import fr.pantheonsorbonne.miage.exception.FailedUploadingDBFileException;
 
+import fr.pantheonsorbonne.miage.exception.FailedUploadingDBFileException;
+
 public class StudentRepository implements Iterable<Student> {
 
 	private String db;
+	private Iterator<Student> currentIterator = null;
 	private Iterator<Student> currentIterator = null;
 
 	private StudentRepository(String db) {
@@ -30,7 +34,7 @@ public class StudentRepository implements Iterable<Student> {
 
 	public static List<String> toReccord(Student stu) {
 
-		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId());
+		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId(), stu.getPassword());
 	}
 
 	public StudentRepository add(Student s) {
@@ -43,6 +47,7 @@ public class StudentRepository implements Iterable<Student> {
 					csvFilePrinter.printRecord(toReccord(student));
 				} catch (IOException e) {
 					throw new FailedUploadingDBFileException("failed to update db file");
+					throw new FailedUploadingDBFileException("failed to update db file");
 				}
 			});
 			csvFilePrinter.printRecord(toReccord(s));
@@ -50,6 +55,7 @@ public class StudentRepository implements Iterable<Student> {
 			csvFilePrinter.close(true);
 
 		} catch (IOException e) {
+			throw new FailedUploadingDBFileException("failed to update db file");
 			throw new FailedUploadingDBFileException("failed to update db file");
 		}
 		return this;
@@ -62,13 +68,16 @@ public class StudentRepository implements Iterable<Student> {
 			
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
 
+
 			this.currentIterator = parser.getRecords().stream()
-					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(1), reccord.get(0), reccord.get(3)))
+					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(1), reccord.get(0), reccord.get(3), reccord.get(3)))
 					.map(c -> (Student) c).iterator();
 			return this.currentIterator;
 
 		} catch (IOException e) {
 			Logger.getGlobal().info("IO PB" + e.getMessage());
+			Set<Student> emptyStudentSet= Collections.emptySet() ;
+			return emptyStudentSet.iterator();
 			Set<Student> emptyStudentSet= Collections.emptySet() ;
 			return emptyStudentSet.iterator();
 		}
