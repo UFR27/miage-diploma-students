@@ -24,8 +24,8 @@ public class AppTest {
 	public void shouldAnswerWithTrue() throws IOException {
 		File tempDB = Files.createTempFile("prefix", ".csv").toFile();
 		FileWriter fw = new FileWriter(tempDB);
-		fw.write("Dr.,Nicolas,1,nico\n");
-		fw.write("M.,Francois,2,franco\n");
+		fw.write("Nicolas,Dr.,1,nico\n");
+		fw.write("Francois,M.,2,franco\n");
 		
 		fw.close();
 
@@ -45,7 +45,7 @@ public class AppTest {
 		assertEquals(2, francois.getId());
 		assertEquals("franco", francois.getPassword());
 		
-		StudentRepository.withDB(tempDB.toString()).add(new Student(3, "M.", "Mohamed", "momo"));
+		StudentRepository.withDB(tempDB.toString()).add(new Student(3, "Mohamed", "M.", "momo"));
 		
 		assertEquals(3, Iterables.size(StudentRepository.withDB(tempDB.toString())));
 		

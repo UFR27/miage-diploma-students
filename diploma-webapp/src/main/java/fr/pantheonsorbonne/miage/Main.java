@@ -116,6 +116,7 @@ public class Main {
 					sb.append("<li>");
 					sb.append(
 							"<a href='/diploma/" + stu.getId() + "'>" + stu.getTitle() + ' ' + stu.getName() + "</a>");
+
 					sb.append("</li>");
 				}
 

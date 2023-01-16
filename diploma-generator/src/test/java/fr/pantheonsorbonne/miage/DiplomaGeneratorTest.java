@@ -41,8 +41,8 @@ public class DiplomaGeneratorTest {
 
 		try {
 
-			Student stu = new Student(0, "Nicolas", "","nico");
-
+			Student stu = new Student(0, " Nicolas", "","nico");
+			
 			File generatedFileTarget = generateDiplomaForStudent(stu, currentDate);
 
 			// write the bytes of an image version of the generated pdf diploma in this
@@ -55,7 +55,7 @@ public class DiplomaGeneratorTest {
 			writePDFImageRasterBytes(new File("src/test/resources/nicolas.pdf"), referenceImageData);
 
 			// check that the content is the same
-			//assertArrayEquals(referenceImageData.toByteArray(), generatedImageData.toByteArray());
+			assertArrayEquals(referenceImageData.toByteArray(), generatedImageData.toByteArray());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage());
