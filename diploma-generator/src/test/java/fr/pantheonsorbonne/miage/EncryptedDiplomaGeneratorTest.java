@@ -60,6 +60,8 @@ public class EncryptedDiplomaGeneratorTest extends DiplomaGeneratorTest {
 		writePDFImageRasterBytes(tempFileDecrypted.toFile(), generatedImageData);
 		writePDFImageRasterBytes(new File("src/test/resources/nicolas.pdf"), referenceImageData);
 
+		//assertArrayEquals(referenceImageData.toByteArray(), generatedImageData.toByteArray());
+
 		stamper.close();
 		reader.close();
 
