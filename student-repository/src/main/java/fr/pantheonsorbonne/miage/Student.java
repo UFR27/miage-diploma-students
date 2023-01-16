@@ -44,9 +44,4 @@ public class Student {
 	public String getPassword() {
 		return this.password;
 	}
-
-	public String getPassword() {
-		return this.password;
-	}
-	
 }
