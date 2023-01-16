@@ -3,6 +3,8 @@ package fr.pantheonsorbonne.miage;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
@@ -41,7 +43,7 @@ public class DiplomaGeneratorTest {
 
 		try {
 
-			Student stu = new Student(1, " Nicolas", "","nico");
+			Student stu = new Student(0, " Nicolas", "","nico");
 			
 			File generatedFileTarget = generateDiplomaForStudent(stu, currentDate);
 
@@ -56,6 +58,7 @@ public class DiplomaGeneratorTest {
 
 			// check that the content is the same
 			//assertArrayEquals(referenceImageData.toByteArray(), generatedImageData.toByteArray());
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage());

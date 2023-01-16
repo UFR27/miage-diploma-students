@@ -1,6 +1,8 @@
 package fr.pantheonsorbonne.miage;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -61,6 +63,7 @@ public class EncryptedDiplomaGeneratorTest extends DiplomaGeneratorTest {
 		writePDFImageRasterBytes(new File("src/test/resources/nicolas.pdf"), referenceImageData);
 
 		//assertArrayEquals(referenceImageData.toByteArray(), generatedImageData.toByteArray());
+
 
 		stamper.close();
 		reader.close();
