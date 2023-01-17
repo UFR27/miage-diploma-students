@@ -23,7 +23,7 @@ public class Main {
 	public static final String HOST = "localhost";
 	public static final int PORT = 7000;
 	private static final Logger logger = Logger.getLogger(Main.class.getName());
-	private static StudentRepository studentRepo = StudentRepository.withDB("src/main/resources/students.db");
+	private static StudentRepository studentRepo = StudentRepository.withDB("diploma-webapp/src/main/resources/students.db");
 
 	public static void main(String[] args) throws IOException, URISyntaxException {
 
