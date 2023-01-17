@@ -41,11 +41,7 @@ public class DiplomaGeneratorTest {
 
 		try {
 
-<<<<<<< HEAD
-			Student stu = new Student(0, "Nicolas", "","nico");
-=======
-			Student stu = new Student(0, "Nicolas", "", "nico");
->>>>>>> encryption
+			Student stu = new Student("Nicolas", "", 0,"nico");
 
 			File generatedFileTarget = generateDiplomaForStudent(stu, currentDate);
 
