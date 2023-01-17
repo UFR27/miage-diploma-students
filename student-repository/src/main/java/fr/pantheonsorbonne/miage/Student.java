@@ -5,10 +5,6 @@ public class Student {
 	private int id;
 	private String password;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/encryption
 	public Student(int id, String name, String title, String password) {
 		this.name = name;
 		this.title = title;
@@ -47,9 +43,5 @@ public class Student {
 	@Override
 	public String toString() {
 		return this.getTitle() + " " + this.getName();
-	}
-
-	public String getPassword() {
-		return this.password;
 	}
 }
