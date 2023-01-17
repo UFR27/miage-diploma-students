@@ -4,7 +4,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -28,7 +27,7 @@ public class StudentRepository implements Iterable<Student> {
 
 	public static StudentRepository withDB(String db) {
 		if (!Files.exists(Paths.get(db))) {
-			throw new RuntimeException("failed to find" + Paths.get(db).toAbsolutePath().toString());
+			throw new UnsupportedOperationException("failed to find" + Paths.get(db).toAbsolutePath().toString());
 		}
 		return new StudentRepository(db);
 	}
