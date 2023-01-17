@@ -5,7 +5,11 @@ public class Student {
 	private int id;
 	private String password;
 
+<<<<<<< HEAD
+	public Student( String name, String title, int id, String password) {
+=======
 	public Student(int id, String name, String title, String password) {
+>>>>>>> encryption
 		this.name = name;
 		this.title = title;
 		this.id = id;
@@ -15,7 +19,7 @@ public class Student {
 	private String name;
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
