@@ -1,4 +1,5 @@
 package fr.pantheonsorbonne.miage;
+
 public class Student {
     private int id;
     private String password;
