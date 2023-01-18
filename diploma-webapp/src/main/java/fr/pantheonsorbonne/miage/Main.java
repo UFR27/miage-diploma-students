@@ -65,11 +65,13 @@ public class Main {
 		ArrayList<Student> students = new ArrayList<>();
 		Iterables.addAll(students, repo);
 
-		for (int i = 0; i < students.size(); i++) {
-			if (i == studentId) {
-				return students.get(i);
+// EXO 1 - DEVTOOLS - DEBEUGER
+		for (Student student:repo) {
+			if (student.getId() == studentId) {
+				return student;
 			}
 		}
+// Terminal > mvn clean package exec:java
 
 		throw new NoSuchElementException();
 
