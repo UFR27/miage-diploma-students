@@ -12,6 +12,7 @@ public class Student {
 		this.password = password;
 	}
 
+
 	private String name;
 
 	public String getName() {
