@@ -1,6 +1,7 @@
 package fr.pantheonsorbonne.miage;
 
 import java.io.InputStream;
+import java.util.Date;
 
 /**
  * a Diploma generator for the MIAGE section
@@ -10,7 +11,9 @@ import java.io.InputStream;
  */
 public interface DiplomaGenerator {
 
-	/**
+	Date currentDate = null;
+
+    /**
 	 * Generate the diploma in a Stream
 	 * 
 	 * @return
