@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
+import org.apache.commons.csv.CSVRecord;
 
 public class StudentRepository implements Iterable<Student> {
 
@@ -33,7 +34,11 @@ public class StudentRepository implements Iterable<Student> {
 
 	public static List<String> toReccord(Student stu) {
 
+<<<<<<< HEAD
 		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId());
+=======
+		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId(),stu.getPassword());
+>>>>>>> origin/encryption-unit-tests
 	}
 
 	public StudentRepository add(Student s) {
@@ -45,7 +50,11 @@ public class StudentRepository implements Iterable<Student> {
 				try {
 					csvFilePrinter.printRecord(toReccord(student));
 				} catch (IOException e) {
+<<<<<<< HEAD
 					throw new UnsupportedOperationException("failed to update db file");
+=======
+					throw new RuntimeException("failed to update db file");
+>>>>>>> origin/encryption-unit-tests
 				}
 			});
 			csvFilePrinter.printRecord(toReccord(s));
@@ -66,10 +75,17 @@ public class StudentRepository implements Iterable<Student> {
 		try (FileReader reader = new FileReader(this.db)) {
 
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
+<<<<<<< HEAD
 			currentIterator = parser.getRecords().stream()
 					.map(reccord -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1)))
 					.iterator();
 			return currentIterator;
+=======
+			this.currentIterator = parser.getRecords().stream()
+					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
+					.map(c -> (Student) c).iterator();
+			return this.currentIterator;
+>>>>>>> origin/encryption-unit-tests
 
 		} catch (IOException e) {
 			Logger.getGlobal().info("IO PB" + e.getMessage());
