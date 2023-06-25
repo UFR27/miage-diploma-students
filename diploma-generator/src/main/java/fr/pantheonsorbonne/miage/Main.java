@@ -1,6 +1,9 @@
+
 package fr.pantheonsorbonne.miage;
 
 import com.google.common.collect.Iterables;
+
+import java.io.IOException;
 
 public class Main {
 
@@ -10,10 +13,11 @@ public class Main {
 		
 		MiageDiplomaGenerator generator = new MiageDiplomaGenerator(student);
 		DiplomaFileAdapter adapter = new DiplomaFileAdapter(generator);
-		adapter.generateFile("temp_diploma.pdf");
-				
-				
-
+		try {
+			adapter.generateFile("temp_diploma.pdf");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
