@@ -7,3 +7,6 @@ Des fois, les cours sur zoom, ça me manque, car je pouvais faire cours en pyjam
 
 Salut, on mange bientôt?
 ce midi, c'est bouchées Thai
+
+
+J'ai vraiment faim mais on mange dans 30 minutes donc ça va.
