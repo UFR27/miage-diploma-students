@@ -6,4 +6,4 @@ Des fois, les cours sur zoom, ça me manque, car je pouvais faire cours en pyjam
 
 
 Salut, on mange bientôt?
-ce midi, c'est bouchées Thai
+ce midi, on n'a pas de bouchées Thai
