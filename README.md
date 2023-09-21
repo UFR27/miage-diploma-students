@@ -5,5 +5,5 @@ Coucou
 Des fois, les cours sur zoom, ça me manque, car je pouvais faire cours en pyjama. une petite phrase rigolote
 
 
-Salut, on mange bientôt?
+Salut, on mange bientôt? Non merci, j'ai pas vraiment faim, j'ai déjà mangé mes donuts sucrés au sucre.
 ce midi, c'est bouchées Thai
