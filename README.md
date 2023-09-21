@@ -7,3 +7,5 @@ Des fois, les cours sur zoom, ça me manque, car je pouvais faire cours en pyjam
 
 Salut, on mange bientôt?
 ce midi, c'est bouchées Thai
+
+初めまして、私の名前は　クレチェヴスキ・ダン。
