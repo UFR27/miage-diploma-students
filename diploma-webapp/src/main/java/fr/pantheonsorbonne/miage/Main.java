@@ -67,7 +67,7 @@ public class Main {
 
 		for (Student student:students) {
 			if (student.getId() == studentId) {
-				return student;
+				return student; 
 		}
 
 		throw new NoSuchElementException();
