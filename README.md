@@ -11,3 +11,5 @@ Salut, on mange bientôt?
 ce midi, c'est bouchées Thai
 
 Le Roi des Pirates ce sera moi ! (Hmidou) 
+
+J'ai vraiment faim mais on mange dans 30 minutes donc ça va.
