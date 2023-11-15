@@ -66,8 +66,8 @@ public class Main {
 		Iterables.addAll(students, repo);
 
 		for (int i = 0; i < students.size(); i++) {
-			if (i == studentId) {
-				return students.get(i);
+			if (students.getId() == studentId) {
+				return students;
 			}
 		}
 
