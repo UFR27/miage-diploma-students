@@ -15,6 +15,7 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
 
+
 public class StudentRepository implements Iterable<Student> {
 
 	private String db;
@@ -33,7 +34,7 @@ public class StudentRepository implements Iterable<Student> {
 
 	public static List<String> toReccord(Student stu) {
 
-		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId());
+		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId(),stu.getPassword());
 	}
 
 	public StudentRepository add(Student s) {
