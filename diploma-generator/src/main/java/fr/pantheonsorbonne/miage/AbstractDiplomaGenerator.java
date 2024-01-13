@@ -71,7 +71,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 			document.add(Image.getInstance(image.toAbsolutePath().toString()));
 
 		} catch (DocumentException | IOException e) {
-			throw new RuntimeException("failed to generate Document", e);
+			throw new UnsupportedOperationException("failed to generate Document", e);
 		} finally {
 			document.close();
 		}
