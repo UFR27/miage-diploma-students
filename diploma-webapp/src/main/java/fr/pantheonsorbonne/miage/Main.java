@@ -2,34 +2,20 @@ package fr.pantheonsorbonne.miage;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Date;
-import java.util.Locale;
 import java.util.NoSuchElementException;
+import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import javax.servlet.Servlet;
-import javax.servlet.ServletRegistration;
 
 import org.glassfish.grizzly.http.io.NIOOutputStream;
 import org.glassfish.grizzly.http.server.HttpHandler;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.grizzly.http.server.Request;
 import org.glassfish.grizzly.http.server.Response;
-import org.glassfish.grizzly.http.util.ContentType;
-import org.glassfish.grizzly.servlet.WebappContext;
-import org.glassfish.jersey.grizzly2.servlet.GrizzlyWebContainerFactory;
 
-import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Streams;
 import com.google.common.io.ByteStreams;
 
 /**
@@ -41,6 +27,7 @@ public class Main {
 	public static final int PORT = 7000;
 	private static final Logger logger = Logger.getLogger(Main.class.getName());
 	private static StudentRepository studentRepo = StudentRepository.withDB("src/main/resources/students.db");
+	private static String webAppURL = "http://localhost:8080/home";
 
 	public static void main(String[] args) throws IOException, URISyntaxException {
 
@@ -52,11 +39,11 @@ public class Main {
 
 		{
 			server.start();
-			java.awt.Desktop.getDesktop().browse(new URI("http://localhost:8080/home"));
-			System.out.println("Press any key to stop the server...");
+			java.awt.Desktop.getDesktop().browse(new URI(webAppURL));
+			logger.log(Level.FINE, "Press any key to stop the server...");
 			System.in.read();
 		} catch (Exception e) {
-			System.err.println(e);
+			logger.log(Level.SEVERE, e.toString());
 		}
 	}
 
@@ -64,15 +51,12 @@ public class Main {
 		// create an arrayList of the students, because iterables are too hard
 		ArrayList<Student> students = new ArrayList<>();
 		Iterables.addAll(students, repo);
-
-		for (int i = 0; i < students.size(); i++) {
-			if (i == studentId) {
-				return students.get(i);
+		for (Student student : students) {
+			if (student.getId() == studentId) {
+				return student;
 			}
 		}
-
 		throw new NoSuchElementException();
-
 	}
 
 	protected static void handleResponse(Response response, int studentId) throws IOException {
@@ -88,7 +72,6 @@ public class Main {
 			}
 
 		}
-		return;
 	}
 
 	protected static void addDiplomaPath(HttpServer server, String path) {
