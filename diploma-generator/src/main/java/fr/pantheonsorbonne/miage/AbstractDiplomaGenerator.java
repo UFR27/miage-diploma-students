@@ -21,7 +21,6 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
 
 	protected AbstractDiplomaGenerator() {
-	protected AbstractDiplomaGenerator() {
 		super();
 
 	}
