@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -36,6 +37,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 	 * @return
 	 */
 	protected abstract Collection<DiplomaSnippet> getDiplomaSnippets();
+	
 
 	/*
 	 * (non-Javadoc)
