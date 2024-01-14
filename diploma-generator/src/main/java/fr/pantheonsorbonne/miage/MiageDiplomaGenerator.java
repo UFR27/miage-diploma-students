@@ -1,6 +1,9 @@
 package fr.pantheonsorbonne.miage;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> version1
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;

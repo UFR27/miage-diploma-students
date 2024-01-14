@@ -8,7 +8,10 @@ public class Main {
 		StudentRepository repo = StudentRepository.withDB("../student-repository/src/main/resources/students.db");
 		Student student = Iterables.get(repo, 0);
 		
+<<<<<<< HEAD
 		
+=======
+>>>>>>> version1
 		MiageDiplomaGenerator generator = new MiageDiplomaGenerator(student);
 		DiplomaFileAdapter adapter = new DiplomaFileAdapter(generator);
 		adapter.generateFile("temp_diploma.pdf");
