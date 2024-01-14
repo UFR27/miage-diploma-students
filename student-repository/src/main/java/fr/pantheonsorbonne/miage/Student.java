@@ -41,5 +41,10 @@ public class Student {
 		return this.getTitle() + " " + this.getName();
 	}
 
+    public Object getPassword() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getPassword'");
+    }
+
 	
 }
