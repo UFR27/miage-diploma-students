@@ -1,5 +1,9 @@
 package fr.pantheonsorbonne.miage;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> webapp
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
