@@ -4,6 +4,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+
 import com.google.common.io.ByteStreams;
 
 
@@ -22,7 +23,7 @@ public class DiplomaFileAdapter extends FileGenerator<AbstractDiplomaGenerator> 
 			is.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-			throw new UnsupportedOperationException("failed to write diploma file", e);
+			throw new FailedStreamException("failed to write diploma file", e);
 		}
 	}
 
