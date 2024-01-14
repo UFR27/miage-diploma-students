@@ -65,8 +65,8 @@ public class StudentRepository implements Iterable<Student> {
 
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
 			this.currentIterator = parser.getRecords().stream()
-					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(1), reccord.get(0), reccord.get(3)))
-					.map(c -> (Student) c).iterator();
+			.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1),
+			reccord.get(3))).map(c -> (Student) c).iterator();
 			return this.currentIterator;
 
 		} catch (IOException e) {
@@ -74,5 +74,4 @@ public class StudentRepository implements Iterable<Student> {
 			return Collections.EMPTY_SET.iterator();
 		}
 	}
-
 }
