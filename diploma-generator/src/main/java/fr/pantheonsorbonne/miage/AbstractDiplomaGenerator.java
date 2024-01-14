@@ -24,7 +24,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 		
 
 	}
-
+//1
 	/**
 	 * provides all the snippets used for the concrete diploma implementation
 	 * 
