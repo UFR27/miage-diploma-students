@@ -1,5 +1,7 @@
 package fr.pantheonsorbonne.miage;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -7,10 +9,16 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-class EncryptedDiplomaGeneratorTest extends DiplomaGeneratorTest {
+import org.junit.jupiter.api.Test;
+
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.PdfStamper;
+
+public class EncryptedDiplomaGeneratorTest extends DiplomaGeneratorTest {
 
 	@Test
-	void testEncryptedPdfTest() throws IOException, DocumentException {
+	public void testEncryptedPdfTest() throws IOException, DocumentException {
 
 		Student stu = new Student(1, "Nicolas", "", "nico");
 		DiplomaGenerator generator = new MiageDiplomaGenerator(stu, DiplomaGeneratorTest.currentDate);

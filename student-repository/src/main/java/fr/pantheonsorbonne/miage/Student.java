@@ -9,8 +9,7 @@ public class Student {
 		this.name = name;
 		this.title = title;
 		this.id = id;
-		this.password=password;
-
+		this.password = password;
 	}
 
 	private String name;
@@ -42,8 +41,7 @@ public class Student {
 		return this.getTitle() + " " + this.getName();
 	}
 
-	public String getPassword(){
+	public String getPassword() {
 		return this.password;
 	}
-	
 }

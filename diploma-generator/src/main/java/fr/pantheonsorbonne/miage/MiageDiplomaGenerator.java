@@ -3,6 +3,7 @@ package fr.pantheonsorbonne.miage;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
+
 import fr.pantheonsorbonne.miage.diploma.NameSnippet;
 import fr.pantheonsorbonne.miage.diploma.DateSnippet;
 import fr.pantheonsorbonne.miage.diploma.DiplomaSnippet;
@@ -28,7 +29,7 @@ public class MiageDiplomaGenerator extends AbstractDiplomaGenerator {
 
 	@Override
 	protected Collection<DiplomaSnippet> getDiplomaSnippets() {
-		String studentName = this.student.getTitle() + " " + this.student.getName();
+		String studentName =  this.student.getTitle() + " " + this.student.getName();
 		return Arrays.asList(new DateSnippet(this.date), new NameSnippet(studentName));
 	}
 

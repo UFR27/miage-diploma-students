@@ -16,13 +16,11 @@ public class DiplomaFileAdapter extends FileGenerator<AbstractDiplomaGenerator> 
 	public void generateFile(String outputFile) {
 		try (FileOutputStream fos = new FileOutputStream(outputFile)) {
 			InputStream is = this.generator.getContent();
-			if (is != null) {
-				ByteStreams.copy(is, fos);
-				is.close();
-			}
+			ByteStreams.copy(is, fos);
+			is.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-			throw new UnsupportedOperationException("failed to write diploma file", e);
+			throw new IllegalArgumentException("failed to write diploma file", e);
 		}
 	}
 

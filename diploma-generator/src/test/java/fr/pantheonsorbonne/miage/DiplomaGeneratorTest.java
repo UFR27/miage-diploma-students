@@ -1,8 +1,7 @@
 package fr.pantheonsorbonne.miage;
 
-import org.junit.*;
-import org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
@@ -18,7 +17,6 @@ import java.util.Date;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.encryption.InvalidPasswordException;
-import org.apache.pdfbox.rendering.ImageType;
 import org.apache.pdfbox.rendering.PDFRenderer;
 import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 import org.junit.jupiter.api.Test;
@@ -27,7 +25,7 @@ import com.google.common.io.ByteStreams;
 
 public class DiplomaGeneratorTest {
 
-	protected static Date currentDate;
+	static protected Date currentDate;
 	{
 		try {
 			currentDate = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").parse("11/23/2018 17:00:00");
