@@ -1,4 +1,5 @@
 package fr.pantheonsorbonne.miage;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -35,13 +36,16 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 	 */
 	@Override
 	public InputStream getContent() {
+
 		try (ByteArrayOutputStream bos = new ByteArrayOutputStream();) {
+
 			this.writeToStream(bos);
+
 			return new ByteArrayInputStream(bos.toByteArray());
 
 		} catch (IOException e) {
 
-			throw new UnsupportedOperationException("failed to generate the file to stream to", e);
+			throw new IllegalArgumentException("failed to generate the file to stream to", e);
 		}
 
 	}
@@ -54,17 +58,21 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 			Path image = new File("src/main/resources/diploma.png").toPath();
 			Rectangle rect = new Rectangle(800f, 600f);
 			document.setPageSize(rect);
+
 			PdfWriter writer = PdfWriter.getInstance(document, os);
 			document.open();
+
 			for (DiplomaSnippet snippet : this.getDiplomaSnippets()) {
 				snippet.write(writer);
 			}
+
 			document.add(Image.getInstance(image.toAbsolutePath().toString()));
 
 		} catch (DocumentException | IOException e) {
-			throw new UnsupportedOperationException("failed to generate Document", e);
+			throw new IllegalArgumentException("failed to generate Document", e);
 		} finally {
 			document.close();
 		}
 	}
+
 }
