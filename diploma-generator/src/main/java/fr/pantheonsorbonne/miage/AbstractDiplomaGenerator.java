@@ -20,6 +20,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
 	protected AbstractDiplomaGenerator() {
 		super();
+		
 
 	}
 
@@ -46,14 +47,14 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
 		} catch (IOException e) {
 
-			throw new IllegalArgumentException("failed to generate the file to stream to", e);
+			throw new UnsupportedOperationException("failed to generate the file to stream to", e);
 		}
 
 	}
 
 	protected void writeToStream(OutputStream os) {
 		Document document = new Document();
-
+	
 		try {
 
 			Path image = new File("src/main/resources/diploma.png").toPath();
@@ -70,7 +71,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 			document.add(Image.getInstance(image.toAbsolutePath().toString()));
 
 		} catch (DocumentException | IOException e) {
-			throw new IllegalArgumentException("failed to generate Document", e);
+			throw new UnsupportedOperationException("failed to generate Document", e);
 		} finally {
 			document.close();
 		}
