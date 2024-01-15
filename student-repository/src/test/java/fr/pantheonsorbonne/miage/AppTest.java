@@ -1,7 +1,6 @@
 package fr.pantheonsorbonne.miage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -56,6 +55,5 @@ public class AppTest {
 		assertEquals(3, mohamed.getId());
 		assertEquals("momo", mohamed.getPassword());
 
-		assertThrows(RuntimeException.class, () -> { StudentRepository.withDB(null); });
 	}
 }

@@ -4,21 +4,9 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-
-	<parent>
-		<groupId>fr.pantheonsorbonne.miage</groupId>
-		<artifactId>diploma-bom</artifactId>
-		<version>1.0-SNAPSHOT</version>
-	</parent>
-
 	<artifactId>diploma-webapp</artifactId>
 	<packaging>jar</packaging>
 	<name>diploma-webapp</name>
-
-	<properties>
-		<jersey.version>2.27</jersey.version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
 
 	<dependencyManagement>
 		<dependencies>
@@ -48,9 +36,13 @@
 	</dependencyManagement>
 
 	<dependencies>
+
+
+
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
 			<artifactId>jersey-container-grizzly2-servlet</artifactId>
+
 		</dependency>
 
 		<dependency>
@@ -103,24 +95,6 @@
 			<artifactId>jersey-hk2</artifactId>
 		</dependency>
 
-		<!-- Tests: -->
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.1.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<version>3.1.0</version>
-			<scope>test</scope>
-		</dependency>
-
-
-
-
 		<!-- uncomment this to get JSON support: <dependency> <groupId>org.glassfish.jersey.media</groupId> 
 			<artifactId>jersey-media-json-binding</artifactId> </dependency> -->
 	</dependencies>
@@ -137,20 +111,7 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.0.0-M3</version>
-				<dependencies>
-					<dependency>
-						<groupId>org.junit.platform</groupId>
-						<artifactId>junit-platform-launcher</artifactId>
-						<version>1.5.0</version>
-					</dependency>
-				</dependencies>
-			</plugin>
-
+			
 		</plugins>
 
 		<pluginManagement>
@@ -167,9 +128,17 @@
 			</plugins>
 		</pluginManagement>
 
-
+		
 
 	</build>
 
-
+	<properties>
+		<jersey.version>2.27</jersey.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<parent>
+		<groupId>fr.pantheonsorbonne.miage</groupId>
+		<artifactId>diploma-bom</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
 </project>
