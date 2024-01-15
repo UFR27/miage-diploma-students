@@ -1,85 +1,57 @@
 package fr.pantheonsorbonne.miage;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.fail;
 
-import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.nio.file.Files;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.nio.file.Path;
 
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.encryption.InvalidPasswordException;
-import org.apache.pdfbox.rendering.PDFRenderer;
-import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 import org.junit.jupiter.api.Test;
 
-import com.google.common.io.ByteStreams;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.PdfStamper;
 
-public class DiplomaGeneratorTest {
-
-	static protected Date currentDate;
-	{
-		try {
-			currentDate = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").parse("11/23/2018 17:00:00");
-		} catch (ParseException e) {
-			throw new RuntimeException("failed to compute test date", e);
-		}
-	}
+public class EncryptedDiplomaGeneratorTest extends DiplomaGeneratorTest {
 
 	@Test
-	void compareGeneratedDiploma() {
+	public void testEncryptedPdfTest() throws IOException, DocumentException {
 
-		try {
+		Student stu = new Student(1, "Nicolas", "", "nico");
+		DiplomaGenerator generator = new MiageDiplomaGenerator(stu, DiplomaGeneratorTest.currentDate);
+		AbstractDiplomaGenerator encryptedGenerator = new EncryptedDiplomaGeneratorDecorator(generator, "abc");
+		FileGenerator<AbstractDiplomaGenerator> adapter = new DiplomaFileAdapter(encryptedGenerator);
 
-			Student stu = new Student(0, "Nicolas", "", "nico");
+		Path tempFileEncrypted = Files.createTempFile("prefix", ".pdf");
+		Path tempFileDecrypted = Files.createTempFile("prefix", ".pdf");
 
-			File generatedFileTarget = generateDiplomaForStudent(stu, currentDate);
+		adapter.generateFile(tempFileEncrypted.toString());
 
-			// write the bytes of an image version of the generated pdf diploma in this
-			// OutputStream
-			ByteArrayOutputStream generatedImageData = new ByteArrayOutputStream();
-			writePDFImageRasterBytes(generatedFileTarget, generatedImageData);
+		PdfReader reader = new PdfReader(tempFileEncrypted.toString(), "abc".getBytes());
 
-			// write the bytes of an image version of a reference diploma
-			ByteArrayOutputStream referenceImageData = new ByteArrayOutputStream();
-			writePDFImageRasterBytes(new File("src/test/resources/nicolas.pdf"), referenceImageData);
+		PdfStamper stamper = new PdfStamper(reader, new FileOutputStream(tempFileDecrypted.toString()));
+		stamper.close();
+		reader.close();
 
-			// check that the content is the same
-			assertArrayEquals(referenceImageData.toByteArray(), generatedImageData.toByteArray());
-		} catch (Exception e) {
-			e.printStackTrace();
-			fail(e.getMessage());
-		}
+		// write the bytes of an image version of the generated pdf diploma in this
+		// OutputStream
+		ByteArrayOutputStream generatedImageData = new ByteArrayOutputStream();
+
+		System.out.println(tempFileDecrypted);
+
+		// write the bytes of an image version of a reference diploma
+		ByteArrayOutputStream referenceImageData = new ByteArrayOutputStream();
+
+		writePDFImageRasterBytes(tempFileDecrypted.toFile(), generatedImageData);
+		writePDFImageRasterBytes(new File("src/test/resources/nicolas.pdf"), referenceImageData);
+
+		assertArrayEquals(referenceImageData.toByteArray(), generatedImageData.toByteArray());
+
+		stamper.close();
+		reader.close();
 
 	}
-
-	protected void writePDFImageRasterBytes(File generatedFileTarget, OutputStream generatedImageData)
-			throws IOException, InvalidPasswordException, FileNotFoundException {
-		BufferedImage genetatedbim = new PDFRenderer(PDDocument.load(new File(generatedFileTarget.getPath())))
-				.renderImage(0);
-		File generatedImage = Files.createTempFile("prefix_", ".bmp").toFile();
-		System.out.println(generatedImage);
-		ImageIOUtil.writeImage(genetatedbim, generatedImage.getPath(), 20);
-		FileInputStream generatedImageReader = new FileInputStream(generatedImage);
-		ByteStreams.copy(generatedImageReader, generatedImageData);
-	}
-
-	protected File generateDiplomaForStudent(Student stu, Date date) throws IOException, FileNotFoundException {
-		ByteArrayOutputStream generatedFileContent = new ByteArrayOutputStream();
-		File generatedFileTarget = Files.createTempFile("prefix_", "_suffic").toFile();
-		MiageDiplomaGenerator generator = new MiageDiplomaGenerator(stu, date);
-		new DiplomaFileAdapter(generator).generateFile(generatedFileTarget.getPath());
-		FileInputStream generatedFileReader = new FileInputStream(generatedFileTarget);
-		ByteStreams.copy(generatedFileReader, generatedFileContent);
-		return generatedFileTarget;
-	}
-
 }
