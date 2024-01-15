@@ -27,7 +27,7 @@ import com.google.common.io.ByteStreams;
 
 public class DiplomaGeneratorTest {
 
-	static protected Date currentDate;
+	protected static Date currentDate;
 	{
 		try {
 			currentDate = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").parse("11/23/2018 17:00:00");
