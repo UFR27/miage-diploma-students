@@ -5,22 +5,12 @@ public class Student {
 	private int id;
 	private String password;
 
-
-
-	public Student(int id, String name, String title, String password) {
+	public Student(int id, String title, String name, String password) {
 		this.name = name;
 		this.title = title;
 		this.id = id;
 		this.password = password;
-
-
 	}
-
-	public String getPassword() {
-		return this.password;
-	}
-
-	
 
 	private String name;
 
@@ -51,5 +41,7 @@ public class Student {
 		return this.getTitle() + " " + this.getName();
 	}
 
-	
+	public String getPassword() {
+		return this.password;
+	}
 }
