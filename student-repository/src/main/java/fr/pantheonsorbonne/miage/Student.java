@@ -35,10 +35,10 @@ public class Student {
 	public int getId() {
 		return this.id;
 	}
-
+	
 	@Override
 	public String toString() {
-		return this.getTitle() + " " + this.getName();
+		return this.getTitle()+" "+this.getName();
 	}
 
 	public String getPassword() {
