@@ -19,7 +19,6 @@ import fr.pantheonsorbonne.miage.diploma.DiplomaSnippet;
 
 public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
-
 	protected AbstractDiplomaGenerator() {
 		super();
 		
@@ -35,7 +34,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 * es
 	 * @see fr.pantheonsorbonne.miage.DiplomaGenerator#getContent()
 	 */
 	@Override
