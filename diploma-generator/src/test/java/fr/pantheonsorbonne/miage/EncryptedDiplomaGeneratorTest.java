@@ -15,7 +15,7 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfStamper;
 
-public class EncryptedDiplomaGeneratorTest extends DiplomaGeneratorTest {
+class EncryptedDiplomaGeneratorTest extends DiplomaGeneratorTest {
 
 	private final class EncryptedPdfReader extends PdfReader {
 		private EncryptedPdfReader(String filename, String password) throws IOException {
@@ -24,13 +24,10 @@ public class EncryptedDiplomaGeneratorTest extends DiplomaGeneratorTest {
 
 		}
 
-		public void setEncrypted(boolean encrypted) {
-			this.encrypted = encrypted;
-		}
 	}
 
 	@Test
-	public void testEncryptedPdfTest() throws IOException, DocumentException {
+	void testEncryptedPdfTest() throws IOException, DocumentException {
 
 		Student stu = new Student(1, "Nicolas", "", "nico");
 		DiplomaGenerator generator = new MiageDiplomaGenerator(stu, DiplomaGeneratorTest.currentDate);
