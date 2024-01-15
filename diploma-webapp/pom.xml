@@ -1,5 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
@@ -49,12 +50,7 @@
 			<artifactId>grizzly-http-servlet</artifactId>
 			<version>2.4.3.1</version>
 		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.13.1</version>			<!-- or the version you are using -->
-			<scope>test</scope>
-		</dependency>
+
 
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
@@ -88,10 +84,15 @@
 			<artifactId>guava</artifactId>
 
 		</dependency>
+
 		<dependency>
-			<groupId>com.itextpdf</groupId>
-			<artifactId>itextpdf</artifactId>
-			<version>5.5.13</version>			<!-- or the version you are using -->
+			<groupId>fr.pantheonsorbonne.miage</groupId>
+			<artifactId>diploma-generator</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.jersey.inject</groupId>
+			<artifactId>jersey-hk2</artifactId>
 		</dependency>
 
 		<!-- uncomment this to get JSON support: <dependency> <groupId>org.glassfish.jersey.media</groupId> 
@@ -110,7 +111,7 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-
+			
 		</plugins>
 
 		<pluginManagement>
@@ -127,7 +128,7 @@
 			</plugins>
 		</pluginManagement>
 
-
+		
 
 	</build>
 
