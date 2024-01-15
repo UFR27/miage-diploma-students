@@ -16,7 +16,6 @@ import java.util.logging.Logger;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
-import org.apache.commons.csv.CSVRecord;
 
 public class StudentRepository implements Iterable<Student> {
 
@@ -48,11 +47,8 @@ public class StudentRepository implements Iterable<Student> {
 				try {
 					csvFilePrinter.printRecord(toReccord(student));
 				} catch (IOException e) {
-<<<<<<< HEAD
 					throw new DataBaseFlawException("failed to update db file");
-=======
-					throw new RuntimeException("failed to update db file");
->>>>>>> encryption-unit-tests
+
 				}
 			});
 			csvFilePrinter.printRecord(toReccord(s));
