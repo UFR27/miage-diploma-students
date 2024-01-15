@@ -45,5 +45,7 @@ public class Student {
 		return this.getTitle() + " " + this.getName();
 	}
 
-	
+	public String getPassword() {
+		return this.password;
+	}
 }
