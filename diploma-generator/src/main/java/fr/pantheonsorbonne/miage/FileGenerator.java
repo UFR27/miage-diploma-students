@@ -7,11 +7,9 @@ package fr.pantheonsorbonne.miage;
  *
  */
 public abstract class FileGenerator<G extends DiplomaGenerator> {
-
 	protected final G generator;
-
 	protected FileGenerator(G t) {
-		this.generator = t;
+				this.generator = t;
 	}
 
 	public abstract void generateFile(String outputFile);
