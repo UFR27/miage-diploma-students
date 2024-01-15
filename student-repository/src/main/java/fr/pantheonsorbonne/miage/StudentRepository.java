@@ -70,6 +70,7 @@ public class StudentRepository implements Iterable<Student> {
 			currentIterator = parser.getRecords().stream()
 			.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3))).map(c -> (Student) c).iterator();
 			return currentIterator;
+			
 
 		} catch (IOException e) {
 			Logger.getGlobal().info("IO PB" + e.getMessage());
