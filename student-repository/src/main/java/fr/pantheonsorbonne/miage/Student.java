@@ -6,7 +6,6 @@ public class Student {
 	private String password;
 
 
-
 	public Student(int id, String name, String title, String password) {
 		this.name = name;
 		this.title = title;

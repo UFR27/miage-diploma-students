@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Logger;
 
 import org.apache.commons.csv.CSVFormat;
@@ -46,7 +47,7 @@ public class StudentRepository implements Iterable<Student> {
 				try {
 					csvFilePrinter.printRecord(toReccord(student));
 				} catch (IOException e) {
-					throw new RuntimeException("failed to update db file");
+					throw new DataBaseFlawException("failed to update db file");
 				}
 			});
 			csvFilePrinter.printRecord(toReccord(s));
@@ -54,7 +55,7 @@ public class StudentRepository implements Iterable<Student> {
 			csvFilePrinter.close(true);
 
 		} catch (IOException e) {
-			throw new RuntimeException("failed to update db file");
+			throw new DataBaseFlawException("failed to update db file");
 		}
 		return this;
 
@@ -65,16 +66,18 @@ public class StudentRepository implements Iterable<Student> {
 		try (FileReader reader = new FileReader(this.db)) {
 			java.util.Iterator<Student> currentIterator = null;
 
+
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
 			currentIterator = parser.getRecords().stream()
-			.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3))).map(c -> (Student) c).iterator();
-
+					.map(reccord -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
+					.map(c -> c).iterator();
 			return currentIterator;
+
 
 		} catch (IOException e) {
 			Logger.getGlobal().info("IO PB" + e.getMessage());
-			return Collections.emptyListIterator();
-		}
+			Set<Student> set = Collections.emptySet();
+			return set.iterator();		}
 	}
 
 }

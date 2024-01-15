@@ -3,15 +3,12 @@ package fr.pantheonsorbonne.miage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Path;
 import java.util.Collection;
-import java.util.HashSet;
 
-import com.google.common.io.ByteStreams;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
@@ -24,7 +21,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
 	protected AbstractDiplomaGenerator() {
 		super();
-		
+
 
 	}
 
@@ -51,7 +48,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 
 		} catch (IOException e) {
 
-			throw new UnsupportedOperationException("failed to generate the file to stream to", e);
+			throw new FailedStreamException("failed to generate the file to stream to", e);
 		}
 
 	}
@@ -75,7 +72,7 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 			document.add(Image.getInstance(image.toAbsolutePath().toString()));
 
 		} catch (DocumentException | IOException e) {
-			throw new UnsupportedOperationException("failed to generate Document", e);
+			throw new FailedStreamException("failed to generate Document", e);
 		} finally {
 			document.close();
 		}
