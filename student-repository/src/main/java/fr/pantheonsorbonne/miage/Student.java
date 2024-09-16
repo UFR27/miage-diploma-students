@@ -38,7 +38,7 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return this.getTitle() + " " + this.getName();
+		return this.getTitle()+" "+this.getName();
 	}
 
 	
