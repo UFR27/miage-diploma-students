@@ -1,5 +1,6 @@
 package fr.pantheonsorbonne.miage;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -10,11 +11,13 @@ import java.io.InputStream;
  */
 public interface DiplomaGenerator {
 
+	InputStream getContent() throws IOException;
+
 	/**
 	 * Generate the diploma in a Stream
 	 * 
 	 * @return
+	 * @throws WriteDiplomaException 
 	 */
-	InputStream getContent();
 
 }
