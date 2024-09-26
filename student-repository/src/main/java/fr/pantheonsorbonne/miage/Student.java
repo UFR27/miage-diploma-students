@@ -3,16 +3,19 @@ package fr.pantheonsorbonne.miage;
 public class Student {
 
 	private int id;
+	private String password;
+<<<<<<< HEAD
+	private String name;
+	private String title;
+=======
+>>>>>>> origin/encryption
 
-
-	public Student(int id, String name, String title) {
+	public Student(int id, String name, String title, String password) {
 		this.name = name;
 		this.title = title;
 		this.id = id;
-
+		this.password = password;
 	}
-
-	private String name;
 
 	public String getName() {
 		return name;
@@ -30,8 +33,6 @@ public class Student {
 		this.title = title;
 	}
 
-	private String title;
-
 	public int getId() {
 		return this.id;
 	}
@@ -41,5 +42,7 @@ public class Student {
 		return this.getTitle() + " " + this.getName();
 	}
 
-	
+	public String getPassword() {
+		return this.password;
+	}
 }
