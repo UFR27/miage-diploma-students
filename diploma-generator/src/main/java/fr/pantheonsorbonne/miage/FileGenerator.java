@@ -3,10 +3,10 @@ package fr.pantheonsorbonne.miage;
 /**
  * an object able to be serialized as a File
  * 
- * @author nherbaut
+ * @author herbaut
  *
  */
-public abstract class FileGenerator<GENERATOR extends DiplomaGenerator> {
+public abstract class FileGenerator<GENERATOR> implements DiplomaGenerator {
 
 	protected final GENERATOR generator;
 
@@ -14,5 +14,6 @@ public abstract class FileGenerator<GENERATOR extends DiplomaGenerator> {
 		this.generator = t;
 	}
 
-	public abstract void generateFile(String outputFile);
+
+	public abstract void generateFile(String outputFile) throws FileUpdateWriteDiplomaException, FileUpdateException;
 }
