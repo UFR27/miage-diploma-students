@@ -15,6 +15,8 @@ import java.util.Locale;
 import java.util.NoSuchElementException;
 import java.util.logging.Logger;
 
+import java.util.logging.Level;
+
 import javax.servlet.Servlet;
 import javax.servlet.ServletRegistration;
 
@@ -41,6 +43,7 @@ public class Main {
 	public static final int PORT = 7000;
 	private static final Logger logger = Logger.getLogger(Main.class.getName());
 	private static StudentRepository studentRepo = StudentRepository.withDB("src/main/resources/students.db");
+	private static String webAppURL = "http://localhost:8080/home";
 
 	public static void main(String[] args) throws IOException, URISyntaxException {
 
@@ -52,11 +55,11 @@ public class Main {
 
 		{
 			server.start();
-			java.awt.Desktop.getDesktop().browse(new URI("http://localhost:8080/home"));
-			System.out.println("Press any key to stop the server...");
+			java.awt.Desktop.getDesktop().browse(new URI(webAppURL));
+ 			logger.log(Level.FINE, "Press any key to stop the server...");
 			System.in.read();
 		} catch (Exception e) {
-			System.err.println(e);
+			logger.log(Level.SEVERE, e.toString());
 		}
 	}
 
@@ -65,9 +68,9 @@ public class Main {
 		ArrayList<Student> students = new ArrayList<>();
 		Iterables.addAll(students, repo);
 
-		for (int i = 0; i < students.size(); i++) {
-			if (i == studentId) {
-				return students.get(i);
+		for (Student student : students) {
+			if (student.getId() == studentId) {
+				return student;
 			}
 		}
 
@@ -88,7 +91,6 @@ public class Main {
 			}
 
 		}
-		return;
 	}
 
 	protected static void addDiplomaPath(HttpServer server, String path) {
