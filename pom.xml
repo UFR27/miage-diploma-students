@@ -21,12 +21,12 @@
 			<dependency>
 				<groupId>com.google.guava</groupId>
 				<artifactId>guava</artifactId>
-				<version>27.0-jre</version>
+				<version>33.3.1-jre</version>
 			</dependency>
 			<dependency>
 				<groupId>org.junit.jupiter</groupId>
 				<artifactId>junit-jupiter-api</artifactId>
-				<version>5.1.0</version>
+				<version>5.11.3</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
