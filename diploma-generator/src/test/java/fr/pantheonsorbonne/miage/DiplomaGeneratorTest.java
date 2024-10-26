@@ -16,6 +16,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.encryption.InvalidPasswordException;
 import org.apache.pdfbox.rendering.ImageType;
@@ -65,7 +66,7 @@ public class DiplomaGeneratorTest {
 
 	protected void writePDFImageRasterBytes(File generatedFileTarget, OutputStream generatedImageData)
 			throws IOException, InvalidPasswordException, FileNotFoundException {
-		BufferedImage genetatedbim = new PDFRenderer(PDDocument.load(new File(generatedFileTarget.getPath())))
+		BufferedImage genetatedbim = new PDFRenderer(Loader.loadPDF(new File(generatedFileTarget.getPath())))
 				.renderImage(0);
 		File generatedImage = Files.createTempFile("prefix_", ".bmp").toFile();
 		System.out.println(generatedImage);
