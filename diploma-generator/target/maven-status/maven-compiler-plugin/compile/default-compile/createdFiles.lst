@@ -1,0 +1,9 @@
+fr\pantheonsorbonne\miage\MiageDiplomaGenerator.class
+fr\pantheonsorbonne\miage\AbstractDiplomaGenerator.class
+fr\pantheonsorbonne\miage\diploma\DateSnippet.class
+fr\pantheonsorbonne\miage\diploma\DiplomaSnippet.class
+fr\pantheonsorbonne\miage\DiplomaGeneratorDecorator.class
+fr\pantheonsorbonne\miage\DiplomaGenerator.class
+fr\pantheonsorbonne\miage\DiplomaFileAdapter.class
+fr\pantheonsorbonne\miage\FileGenerator.class
+fr\pantheonsorbonne\miage\diploma\NameSnippet.class

@@ -66,11 +66,11 @@ public class Main {
 		Iterables.addAll(students, repo);
 
 		for (int i = 0; i < students.size(); i++) {
-			if (i == studentId) {
-				return students.get(i);
-			}
+				if (students.get(i).getId() == studentId) {
+					return students.get(i);
+				}
 		}
-
+				
 		throw new NoSuchElementException();
 
 	}
@@ -78,15 +78,12 @@ public class Main {
 	protected static void handleResponse(Response response, int studentId) throws IOException {
 
 		response.setContentType("application/pdf");
-
 		Student student = getStudentData(studentId, studentRepo);
-
 		DiplomaGenerator generator = new MiageDiplomaGenerator(student);
 		try (InputStream is = generator.getContent()) {
 			try (NIOOutputStream os = response.createOutputStream()) {
 				ByteStreams.copy(is, os);
 			}
-
 		}
 		return;
 	}
