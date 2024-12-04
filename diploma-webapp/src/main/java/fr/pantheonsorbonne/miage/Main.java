@@ -69,8 +69,12 @@ public class Main {
 			if (i == studentId) {
 				return students.get(i);
 			}
+		for(Student stud: repo) {
+			if(stud.getId()==studentId) {
+				return stud;
+			}
 		}
-
+		}
 		throw new NoSuchElementException();
 
 	}
