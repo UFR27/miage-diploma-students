@@ -48,6 +48,8 @@ public class EncryptedDiplomaGeneratorTest extends DiplomaGeneratorTest {
 		stamper.close();
 		reader.close();
 
+		
+		
 		// write the bytes of an image version of the generated pdf diploma in this
 		// OutputStream
 		ByteArrayOutputStream generatedImageData = new ByteArrayOutputStream();
