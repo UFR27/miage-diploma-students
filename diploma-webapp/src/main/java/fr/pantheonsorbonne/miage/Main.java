@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.http.HttpClient;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -43,7 +44,7 @@ public class Main {
 	private static StudentRepository studentRepo = StudentRepository.withDB("src/main/resources/students.db");
 
 	public static void main(String[] args) throws IOException, URISyntaxException {
-
+		
 		HttpServer server = HttpServer.createSimpleServer();
 		addRootPath(server, "/home");
 		addDiplomaPath(server, "/diploma/*");
@@ -66,7 +67,8 @@ public class Main {
 		Iterables.addAll(students, repo);
 
 		for (int i = 0; i < students.size(); i++) {
-			if (i == studentId) {
+			
+			if (students.get(i).getId() == studentId) {
 				return students.get(i);
 			}
 		}
