@@ -1,2 +1,7 @@
-Nicolas Herbaut, Dr,1
-Mohamed Tebib, M.,2
+<<<<<<< HEAD
+Nicolas Herbaut, Dr,1,nico
+Mohamed Tebib, M.,2,momo
+=======
+Nicolas Herbaut, Dr.,1,nico
+Mohamed Tebib, M.,2,momo
+>>>>>>> 95dd29517a6ee278afbd0078ce62023d4d93f96f
