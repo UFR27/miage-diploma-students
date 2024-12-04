@@ -14,7 +14,14 @@ public interface DiplomaGenerator {
 	 * Generate the diploma in a Stream
 	 * 
 	 * @return
+	 * @throws FailedFileStreamException 
+<<<<<<< HEAD
 	 */
-	InputStream getContent();
+	InputStream getContent() throws FailedFileStreamException;
+=======
+	 * @throws FailedGenerateException 
+	 */
+	InputStream getContent() throws FailedFileStreamException, FailedGenerateException;
+>>>>>>> encryption
 
 }
