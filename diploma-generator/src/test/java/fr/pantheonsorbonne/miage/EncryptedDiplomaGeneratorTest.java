@@ -15,24 +15,15 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfStamper;
 
+import fr.pantheonsorbonne.miage.exception.FailedGeneratingEncryptedFileException;
+
 public class EncryptedDiplomaGeneratorTest extends DiplomaGeneratorTest {
 
-	private final class EncryptedPdfReader extends PdfReader {
-		private EncryptedPdfReader(String filename, String password) throws IOException {
-			super(filename);
-			this.password = password.getBytes();
-
-		}
-
-		public void setEncrypted(boolean encrypted) {
-			this.encrypted = encrypted;
-		}
-	}
-
+	
 	@Test
-	public void testEncryptedPdfTest() throws IOException, DocumentException {
+	public void testEncryptedPdfTest() throws IOException, DocumentException, FailedGeneratingEncryptedFileException {
 
-		Student stu = new Student(1, "Nicolas", "", "nico");
+		Student stu = new Student(1, "Nicolas", " ","nico");
 		DiplomaGenerator generator = new MiageDiplomaGenerator(stu, DiplomaGeneratorTest.currentDate);
 		AbstractDiplomaGenerator encryptedGenerator = new EncryptedDiplomaGeneratorDecorator(generator, "abc");
 		FileGenerator<AbstractDiplomaGenerator> adapter = new DiplomaFileAdapter(encryptedGenerator);

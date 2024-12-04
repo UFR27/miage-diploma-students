@@ -13,6 +13,7 @@ import com.itextpdf.text.pdf.PdfStamper;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import fr.pantheonsorbonne.miage.diploma.DiplomaSnippet;
+import fr.pantheonsorbonne.miage.exception.FailedGeneratingEncryptedFileException;
 
 public class EncryptedDiplomaGeneratorDecorator extends DiplomaGeneratorDecorator {
 
@@ -24,7 +25,7 @@ public class EncryptedDiplomaGeneratorDecorator extends DiplomaGeneratorDecorato
 	}
 
 	@Override
-	public InputStream getContent() {
+	public InputStream getContent() throws FailedGeneratingEncryptedFileException {
 
 		try (InputStream is = other.getContent()) {
 			try (ByteArrayOutputStream os = new ByteArrayOutputStream()) {
@@ -40,7 +41,7 @@ public class EncryptedDiplomaGeneratorDecorator extends DiplomaGeneratorDecorato
 		} catch (IOException | DocumentException e) {
 
 			e.printStackTrace();
-			throw new RuntimeException("failed to generate Encrypted File");
+			throw new FailedGeneratingEncryptedFileException("failed to generate Encrypted File");
 		}
 
 	}
