@@ -3,6 +3,8 @@ package fr.pantheonsorbonne.miage;
 public class Student {
 
 	private int id;
+	private String title;
+	private String name;
 
 
 	public Student(int id, String name, String title) {
@@ -11,8 +13,6 @@ public class Student {
 		this.id = id;
 
 	}
-
-	private String name;
 
 	public String getName() {
 		return name;
@@ -29,8 +29,6 @@ public class Student {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
-	private String title;
 
 	public int getId() {
 		return this.id;
