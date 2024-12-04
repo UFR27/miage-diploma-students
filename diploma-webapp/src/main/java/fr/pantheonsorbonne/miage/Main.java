@@ -95,7 +95,7 @@ public class Main {
 		server.getServerConfiguration().addHttpHandler(new HttpHandler() {
 			public void service(Request request, Response response) throws Exception {
 				// get the id of the student
-				int id = Integer.parseInt(request.getPathInfo().substring(1));
+				int id = Integer.parseInt(request.getPathInfo().substring(1)) - 1;
 
 				handleResponse(response, id);
 				response.setContentType("text/html; charset=utf-8");
