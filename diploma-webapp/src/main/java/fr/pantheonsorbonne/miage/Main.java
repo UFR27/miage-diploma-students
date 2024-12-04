@@ -79,7 +79,7 @@ public class Main {
 
 		response.setContentType("application/pdf");
 
-		Student student = getStudentData(studentId, studentRepo);
+		Student student = getStudentData(studentId-1, studentRepo);
 
 		DiplomaGenerator generator = new MiageDiplomaGenerator(student);
 		try (InputStream is = generator.getContent()) {
