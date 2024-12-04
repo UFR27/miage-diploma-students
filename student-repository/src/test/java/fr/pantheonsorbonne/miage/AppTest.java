@@ -44,7 +44,7 @@ public class AppTest {
 		assertEquals(2, francois.getId());
 		assertEquals("franco", francois.getPassword());
 		
-		StudentRepository.withDB(tempDB.toString()).add(new Student(3, "Mohamed", "M.", "momo"));
+		StudentRepository.withDB(tempDB.toString()).add(new Student(3, "M.", "Mohamed", "momo"));
 		
 		assertEquals(3, Iterables.size(StudentRepository.withDB(tempDB.toString())));
 		
