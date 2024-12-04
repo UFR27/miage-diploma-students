@@ -3,7 +3,6 @@ package fr.pantheonsorbonne.miage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -11,7 +10,6 @@ import java.nio.file.Path;
 import java.util.Collection;
 import java.util.HashSet;
 
-import com.google.common.io.ByteStreams;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
@@ -21,7 +19,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import fr.pantheonsorbonne.miage.diploma.DiplomaSnippet;
 
 public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
-
+	
 	private Collection<DiplomaSnippet> snippets = new HashSet<>();
 
 	public AbstractDiplomaGenerator() {
@@ -81,6 +79,14 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 		} finally {
 			document.close();
 		}
+	}
+
+	public Collection<DiplomaSnippet> getSnippets() {
+		return snippets;
+	}
+
+	public void setSnippets(Collection<DiplomaSnippet> snippets) {
+		this.snippets = snippets;
 	}
 
 }
