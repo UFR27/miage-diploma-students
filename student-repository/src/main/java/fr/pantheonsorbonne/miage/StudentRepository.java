@@ -3,14 +3,14 @@ package fr.pantheonsorbonne.miage;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -22,17 +22,25 @@ public class StudentRepository implements Iterable<Student> {
 	private String db;
 	private java.util.Iterator<Student> currentIterator = null;
 
+
 	private StudentRepository(String db) {
 		this.db = db;
-	};
+	}
 
 	public static StudentRepository withDB(String db) {
+		if (!Files.exists(Paths.get(db))) {
+			throw new RuntimeException("failed to find" + Paths.get(db).toAbsolutePath().toString());
+		}
 		return new StudentRepository(db);
 	}
 
 	public static List<String> toReccord(Student stu) {
+<<<<<<< HEAD
+		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId(),stu.getPassword());
+=======
 
 		return Arrays.asList(stu.getName(), stu.getTitle(), "" + stu.getId());
+>>>>>>> origin/encryption
 	}
 
 	public StudentRepository add(Student s) {
@@ -44,7 +52,11 @@ public class StudentRepository implements Iterable<Student> {
 				try {
 					csvFilePrinter.printRecord(toReccord(student));
 				} catch (IOException e) {
+<<<<<<< HEAD
+					throw new MyOwnRuntimeException("failed to update db file");
+=======
 					throw new RuntimeException("failed to update db file");
+>>>>>>> origin/encryption
 				}
 			});
 			csvFilePrinter.printRecord(toReccord(s));
@@ -52,27 +64,31 @@ public class StudentRepository implements Iterable<Student> {
 			csvFilePrinter.close(true);
 
 		} catch (IOException e) {
-			throw new RuntimeException("failed to update db file");
+			throw new MyOwnRuntimeException("failed to update db file");
 		}
 		return this;
 
 	}
 
 	@Override
-	public java.util.Iterator<Student> iterator() {
+	public Iterator<Student> iterator() {
 		try (FileReader reader = new FileReader(this.db)) {
-			
+			java.util.Iterator<Student> currentIterator = null;
+
 
 			CSVParser parser = CSVParser.parse(reader, CSVFormat.DEFAULT);
+
+			
 			this.currentIterator = parser.getRecords().stream()
-					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1)))
+					.map((reccord) -> new Student(Integer.parseInt(reccord.get(2)), reccord.get(0), reccord.get(1), reccord.get(3)))
 					.map(c -> (Student) c).iterator();
-			return this.currentIterator;
+			return currentIterator;
 
 		} catch (IOException e) {
 			Logger.getGlobal().info("IO PB" + e.getMessage());
-			return Collections.EMPTY_SET.iterator();
+			return (Iterator<Student>) Collections.emptySet();
 		}
 	}
+	
 
 }
