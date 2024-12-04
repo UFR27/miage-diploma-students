@@ -1,18 +1,20 @@
 package fr.pantheonsorbonne.miage;
 
+import java.io.IOException;
+
 /**
  * an object able to be serialized as a File
  * 
  * @author nherbaut
  *
  */
-public abstract class FileGenerator<GENERATOR extends DiplomaGenerator> {
+public abstract class FileGenerator<T> implements DiplomaGenerator {
 
-	protected final GENERATOR generator;
+	protected final T generator;
 
-	public FileGenerator(GENERATOR t) {
+	public FileGenerator(T t) {
 		this.generator = t;
 	}
 
-	public abstract void generateFile(String outputFile);
+	public abstract void generateFile(String outputFile) throws IOException;
 }
