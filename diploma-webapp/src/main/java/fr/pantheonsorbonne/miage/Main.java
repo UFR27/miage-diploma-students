@@ -64,13 +64,12 @@ public class Main {
 		// create an arrayList of the students, because iterables are too hard
 		ArrayList<Student> students = new ArrayList<>();
 		Iterables.addAll(students, repo);
+		for (Student student : students) {
+			if (student.getId() == studentId) {
+				return student;
 
-		for (int i = 0; i < students.size(); i++) {
-			if (i == studentId) {
-				return students.get(i);
 			}
 		}
-
 		throw new NoSuchElementException();
 
 	}
