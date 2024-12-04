@@ -29,6 +29,8 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 		
 
 	}
+	
+	//Deja corrigé
 
 	/**
 	 * provides all the snippets used for the concrete diploma implementation
@@ -41,9 +43,11 @@ public abstract class AbstractDiplomaGenerator implements DiplomaGenerator {
 	 * (non-Javadoc)
 	 * 
 	 * @see fr.pantheonsorbonne.miage.DiplomaGenerator#getContent()
+	 * 
 	 */
 	@Override
 	public InputStream getContent() {
+		
 
 		try (ByteArrayOutputStream bos = new ByteArrayOutputStream();) {
 
